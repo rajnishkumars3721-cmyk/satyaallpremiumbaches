@@ -24,7 +24,7 @@
       overflow-x: hidden;
     }
 
-    /* Landing / Splash Page Styling */
+    /* Landing / Splash Page Styling Fixed */
     #landing-page {
       position: fixed;
       top: 0;
@@ -39,7 +39,6 @@
       text-align: center;
       padding: 24px;
       z-index: 9999;
-      transition: opacity 0.5s ease;
     }
 
     .landing-logo {
@@ -58,24 +57,16 @@
       50% { transform: scale(1.03); box-shadow: 0 0 55px rgba(0, 210, 255, 0.85); }
       100% { transform: scale(0.98); box-shadow: 0 0 30px rgba(0, 210, 255, 0.5); }
     }
-    
-        .landing-content {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+
+    .landing-content {
+      opacity: 1 !important;
+      visibility: visible !important;
       display: flex;
       flex-direction: column;
       align-items: center;
-      visibility: hidden;
     }
-
-    .landing-content.show {
-      opacity: 1;
-      transform: translateY(0);
-      visibility: visible;
-    }
-
-    .landing-title {
+    
+       .landing-title {
       font-family: 'Syne', sans-serif;
       font-size: 38px;
       font-weight: 800;
@@ -297,7 +288,7 @@
   </style>
 </head>
 
-<body>
+ <body>
 
   <!-- Landing Screen -->
   <div id="landing-page">
@@ -351,7 +342,7 @@
 
       <div class="apps-list">
 
-        <!-- NEW PLATFORM: YES OFFICER -->
+        <!-- YES OFFICER -->
         <a href="https://marcoxjrni01.netlify.app/dashboard.html" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://ibb.co/99zPXkBb" alt="YES OFFICER" class="app-icon">
@@ -387,6 +378,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
+        <!-- Next Toppers -->
         <a href="https://nexttopperpro.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/xS2ksMk5/Next-Toppers-Logo.jpg" alt="Next Toppers" class="app-icon">
@@ -398,6 +390,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
+        <!-- Khan Global Studies -->
         <a href="https://sahukgs.vercel.app/batches" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/n8VR15xG/Screenshot-20260815-104329-2.jpg" alt="Khan Global Studies" class="app-icon">
@@ -409,7 +402,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
         
-              <a href="https://code-x-studys.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <a href="https://code-x-studys.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/nNkyYLHM/Chat-GPT-Image-Aug-12-2026-08-08-06-AM.png" alt="ALL STUDY PLATFORM IN ONE PLACE" class="app-icon">
             <div class="app-info">
@@ -497,7 +490,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-          <a href="https://cds.streamfiles.eu.org/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+            <a href="https://cds.streamfiles.eu.org/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/qLTDWYWj/Screenshot-20260815-111326-2.jpg" alt="CDS Journey" class="app-icon">
             <div class="app-info">
@@ -595,8 +588,8 @@
           </div>
           <div class="live-badge"><span class="live-dot"></span> AVAILABLE NOW</div>
         </a>
-        
-                <a href="https://studybeepro.site/tb/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+
+        <a href="https://studybeepro.site/tb/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/prPX5s0n/Target-Board-Logo.jpg" alt="TARGET BOARD" class="app-icon">
             <div class="app-info">
@@ -683,8 +676,8 @@
           </div>
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
-        
-                <a href="https://officers-academy.pages.dev/batch/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+
+          <a href="https://officers-academy.pages.dev/batch/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/3yxXbZbf/THE-OFFICERS-ACADEMY.jpg" alt="THE OFFICERS ACADEMY" class="app-icon">
             <div class="app-info">
@@ -732,40 +725,28 @@
     </div>
 
     <!-- Telegram & Community Section -->
-    <div class="telegram-card">
-      <h2>Join Our Active Learning Community</h2>
-      <p>Get instant updates, daily quiz material, PDF notes, and direct links to newly unlocked batches on our Telegram channel.</p>
-      <a href="https://t.me/+g0wmAK8VCGEwMTJl" target="_blank" class="tg-btn-large" onclick="vibratePhone(50)">
+    <div style="width: 100%; max-width: 480px; margin-top: 30px; background: #0f172a; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 20px; text-align: center;">
+      <h2 style="font-family: 'Syne', sans-serif; font-size: 18px; margin-bottom: 8px;">Join Our Active Learning Community</h2>
+      <p style="font-size: 12px; color: #94a3b8; line-height: 1.5; margin-bottom: 16px;">Get instant updates, daily quiz material, PDF notes, and direct links to newly unlocked batches on our Telegram channel.</p>
+      <a href="https://t.me/+g0wmAK8VCGEwMTJl" target="_blank" class="btn btn-telegram" onclick="vibratePhone(50)">
         ✈️ Join Official Telegram Channel
       </a>
     </div>
 
     <!-- Request Course Section -->
-    <div class="request-card">
-      <h2>Can't Find Your Course?</h2>
-      <p>Request any missing batch or report a broken link directly to our support team.</p>
-      <a href="https://t.me/rajnish_support_bot" target="_blank" class="request-btn" onclick="vibratePhone(40)">
+    <div style="width: 100%; max-width: 480px; margin-top: 14px; background: #0f172a; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 20px; text-align: center;">
+      <h2 style="font-family: 'Syne', sans-serif; font-size: 18px; margin-bottom: 8px;">Can't Find Your Course?</h2>
+      <p style="font-size: 12px; color: #94a3b8; line-height: 1.5; margin-bottom: 16px;">Request any missing batch or report a broken link directly to our support team.</p>
+      <a href="https://t.me/rajnish_support_bot" target="_blank" class="btn btn-primary" onclick="vibratePhone(40)">
         📩 Request Course / Support
       </a>
     </div>
 
-    <footer>
+    <footer style="margin-top: 40px; margin-bottom: 20px; text-align: center; color: #64748b; font-size: 12px;">
       <p>© 2026 RAJNISH PRIME. All Rights Reserved.</p>
-      <p style="margin-top: 8px; font-size: 0.8rem; color: var(--text-dim);">Designed for Students • 100% Free Educational Access</p>
+      <p style="margin-top: 6px;">Designed for Students • 100% Free Educational Access</p>
     </footer>
 
-  </div>
-
-  <!-- Popup / Announcement Modal -->
-  <div class="modal-overlay" id="announcementModal">
-    <div class="modal-content">
-      <span class="modal-close" onclick="closeModal()">&times;</span>
-      <h3 style="color: var(--primary-color); margin-bottom: 10px;">📢 Important Notice</h3>
-      <p style="font-size: 0.95rem; line-height: 1.5; color: var(--text-light);">
-        Welcome to <strong>RAJNISH PRIME</strong>! All batches and platforms are completely free. If any link is broken, please join our Telegram support channel to report it.
-      </p>
-      <button class="btn btn-primary" style="margin-top: 15px; width: 100%; justify-content: center;" onclick="closeModal()">Got It!</button>
-    </div>
   </div>
 
   <script>
@@ -776,32 +757,29 @@
       }
     }
 
-    // Landing Page Open Dashboard
+    // Ensure content visibility on DOM Load
+    window.addEventListener('DOMContentLoaded', () => {
+      const content = document.getElementById('landing-content');
+      if (content) {
+        content.style.opacity = '1';
+        content.style.visibility = 'visible';
+      }
+    });
+
+    // Landing Page Open Dashboard Action
     function openDashboard() {
       vibratePhone(50);
       const landing = document.getElementById('landing-page');
       const mainContent = document.getElementById('main-content');
       
-      landing.style.opacity = '0';
-      landing.style.transition = 'opacity 0.5s ease';
-      
-      setTimeout(() => {
+      if (landing) {
         landing.style.display = 'none';
-        mainContent.style.display = 'block';
+      }
+      if (mainContent) {
+        mainContent.style.display = 'flex';
         window.scrollTo(0, 0);
-      }, 500);
+      }
     }
-
-    // Modal Control
-    function closeModal() {
-      vibratePhone(20);
-      document.getElementById('announcementModal').classList.remove('active');
-    }
-
-    // Show Modal after dashboard load (optional)
-    window.addEventListener('DOMContentLoaded', () => {
-      // Auto trigger popup after short delay if needed
-    });
   </script>
 </body>
 </html>
