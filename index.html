@@ -13,7 +13,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     body {
@@ -24,7 +23,7 @@
       overflow-x: hidden;
     }
 
-    /* Landing / Splash Page Styling Fixed */
+    /* Landing / Splash Page Styling */
     #landing-page {
       position: fixed;
       top: 0;
@@ -39,6 +38,7 @@
       text-align: center;
       padding: 24px;
       z-index: 9999;
+      transition: opacity 0.5s ease;
     }
 
     .landing-logo {
@@ -57,16 +57,24 @@
       50% { transform: scale(1.03); box-shadow: 0 0 55px rgba(0, 210, 255, 0.85); }
       100% { transform: scale(0.98); box-shadow: 0 0 30px rgba(0, 210, 255, 0.5); }
     }
-
-    .landing-content {
-      opacity: 1 !important;
-      visibility: visible !important;
+    
+        .landing-content {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
       display: flex;
       flex-direction: column;
       align-items: center;
+      visibility: hidden;
     }
-    
-       .landing-title {
+
+    .landing-content.show {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+    }
+
+    .landing-title {
       font-family: 'Syne', sans-serif;
       font-size: 38px;
       font-weight: 800;
@@ -159,132 +167,130 @@
       border-radius: 2px; 
       box-shadow: 0 0 8px #38bdf8; 
     }
+    
+       .hero { 
+      width: 100%; 
+      max-width: 480px; 
+      text-align: center; 
+      margin-bottom: 24px; 
+    }
+    .pill-badge { 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 8px; 
+      background: rgba(6, 182, 212, 0.1); 
+      border: 1px solid rgba(6, 182, 212, 0.3); 
+      color: #38bdf8; 
+      font-size: 12px; 
+      font-weight: 600; 
+      padding: 6px 16px; 
+      border-radius: 30px; 
+      margin-bottom: 14px; 
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.15); 
+    }
+    .dot { 
+      width: 6px; 
+      height: 6px; 
+      background: #06b6d4; 
+      border-radius: 50%; 
+      box-shadow: 0 0 8px #06b6d4; 
+    }
+    .hero h1 { 
+      font-family: 'Syne', sans-serif; 
+      font-size: 36px; 
+      font-weight: 800; 
+      line-height: 1.1; 
+      margin-bottom: 12px; 
+      letter-spacing: -1px; 
+    }
+    .hero h1 span { 
+      background: linear-gradient(135deg, #38bdf8 0%, #fbbf24 100%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
+    .hero p { 
+      color: #94a3b8; 
+      font-size: 13px; 
+      line-height: 1.5; 
+      margin-bottom: 18px; 
+      padding: 0 10px; 
+    }
 
-    /* Hero Section */
-    .hero {
-      width: 100%;
-      max-width: 480px;
-      text-align: center;
-      margin-bottom: 24px;
+    .btn-group { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 12px; 
+      margin-bottom: 30px; 
     }
-    .pill-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      color: #38bdf8;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 50px;
-      margin-bottom: 16px;
+    .btn { 
+      width: 100%; 
+      padding: 14px; 
+      border-radius: 14px; 
+      font-family: 'Plus Jakarta Sans', sans-serif; 
+      font-size: 15px; 
+      font-weight: 700; 
+      text-decoration: none; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 10px; 
+      transition: all 0.3s ease; 
     }
-    .pill-badge .dot {
-      width: 6px;
-      height: 6px;
-      background: #38bdf8;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #38bdf8;
+    .btn-primary { 
+      background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #6366f1 100%); 
+      color: #ffffff; 
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 6px 25px rgba(6, 182, 212, 0.45); 
     }
-    .hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: 32px;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 12px;
-    }
-    .hero h1 span {
-      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero p {
-      color: #94a3b8;
-      font-size: 14px;
-      line-height: 1.5;
-      margin-bottom: 20px;
-    }
+    .btn-telegram { background: #0f172a; color: #38bdf8; border: 1.5px solid #38bdf8; box-shadow: 0 4px 15px rgba(56, 189, 248, 0.15); }
+    .btn-whatsapp { background: #0f172a; color: #22c55e; border: 1.5px solid #22c55e; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.15); }
+    .btn-youtube { background: #0f172a; color: #ef4444; border: 1.5px solid #ef4444; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.15); }
 
-    .btn-group {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      width: 100%;
+    .stats-bar { 
+      width: 100%; 
+      max-width: 480px; 
+      display: grid; 
+      grid-template-columns: repeat(4, 1fr); 
+      text-align: center; 
+      padding: 14px 0; 
+      border-top: 1px solid rgba(255, 255, 255, 0.08); 
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
+      margin-bottom: 30px; 
+      background: rgba(17, 24, 39, 0.4); 
+      border-radius: 16px; 
     }
-    .btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px;
-      border-radius: 14px;
-      font-size: 15px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-    .btn:active { transform: scale(0.97); }
-    .btn-primary { background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%); color: #fff; box-shadow: 0 4px 20px rgba(2, 132, 199, 0.4); }
-    .btn-telegram { background: #24A1DE; color: #fff; box-shadow: 0 4px 20px rgba(36, 161, 222, 0.3); }
-    .btn-whatsapp { background: #25D366; color: #fff; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3); }
-    .btn-youtube { background: #FF0000; color: #fff; box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3); }
+    .stat-item .num { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: #38bdf8; margin-bottom: 2px; }
+    .stat-item .label { font-size: 10px; color: #64748b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
 
-    /* Stats Bar */
-    .stats-bar {
-      width: 100%;
-      max-width: 480px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      background: #0f172a;
-      border: 1px solid rgba(255,255,255,0.06);
-      padding: 12px;
-      border-radius: 16px;
-      margin-bottom: 24px;
-      text-align: center;
-    }
-    .stat-item .num { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800; color: #38bdf8; }
-    .stat-item .label { font-size: 10px; color: #64748b; margin-top: 2px; }
-
-    /* Cards & Section */
     .section-container { width: 100%; max-width: 480px; }
-    .section-tag { font-size: 12px; font-weight: 700; color: #38bdf8; text-transform: uppercase; letter-spacing: 1px; }
-    .section-title { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; margin-top: 2px; }
-    .section-desc { font-size: 13px; color: #94a3b8; margin-bottom: 16px; }
+    .section-tag { font-size: 11px; color: #38bdf8; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 4px; }
+    .section-title { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; margin-bottom: 6px; }
+    .section-desc { color: #94a3b8; font-size: 13px; margin-bottom: 20px; }
 
-    .apps-list { display: flex; flex-direction: column; gap: 14px; }
-    .app-card {
-      background: #0f172a;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 18px;
-      padding: 16px;
-      text-decoration: none;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      transition: border-color 0.2s ease, transform 0.2s ease;
+    .apps-list { display: flex; flex-direction: column; gap: 16px; }
+    .app-card { 
+      background: #111827; 
+      border: 1px solid rgba(255, 255, 255, 0.08); 
+      border-radius: 20px; 
+      padding: 20px; 
+      text-decoration: none; 
+      color: inherit; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 14px; 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3); 
+      cursor: pointer; 
+      transition: transform 0.2s ease, border-color 0.2s ease; 
     }
-    .app-card:active { transform: scale(0.98); }
-    .app-card-top { display: flex; gap: 14px; align-items: center; }
-    .app-icon { width: 52px; height: 52px; border-radius: 14px; object-fit: cover; border: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; }
-    .app-info h3 { font-size: 15px; font-weight: 700; line-height: 1.2; margin-bottom: 4px; color: #f8fafc; }
-    .app-info p { font-size: 11px; color: #94a3b8; line-height: 1.4; }
-
-    .live-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 10px;
-      font-weight: 700;
-      color: #10b981;
-      background: rgba(16, 185, 129, 0.1);
-      padding: 4px 10px;
-      border-radius: 20px;
-      width: fit-content;
-    }
-    .live-dot { width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 6px #10b981; }
+    .app-card:active { transform: scale(0.98); border-color: rgba(6, 182, 212, 0.4); }
+    
+    .app-card-top { display: flex; align-items: flex-start; gap: 16px; width: 100%; }
+    .app-icon { width: 60px; height: 60px; border-radius: 14px; object-fit: cover; border: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; background: #1f2937; }
+    .app-info { flex: 1; min-width: 0; }
+    .app-info h3 { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: #ffffff; margin-bottom: 4px; word-break: break-word; }
+    .app-info p { font-size: 13px; color: #94a3b8; line-height: 1.4; }
+    .live-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; font-size: 11px; font-weight: 600; padding: 6px 14px; border-radius: 20px; align-self: flex-start; }
+    .live-dot { width: 6px; height: 6px; background-color: #34d399; border-radius: 50%; box-shadow: 0 0 8px #34d399; }
   </style>
 </head>
 
@@ -330,7 +336,7 @@
 
     <div class="stats-bar">
       <div class="stat-item"><div class="num">1000+</div><div class="label">Batches</div></div>
-      <div class="stat-item"><div class="num">36</div><div class="label">Platforms</div></div>
+      <div class="stat-item"><div class="num">30</div><div class="label">Platforms</div></div>
       <div class="stat-item"><div class="num">₹0</div><div class="label">Cost</div></div>
       <div class="stat-item"><div class="num">24/7</div><div class="label">Access</div></div>
     </div>
@@ -342,22 +348,10 @@
 
       <div class="apps-list">
 
-        <!-- YES OFFICER -->
-        <a href="https://marcoxjrni01.netlify.app/dashboard.html" target="_blank" class="app-card" onclick="vibratePhone(35)">
-          <div class="app-card-top">
-            <img src="https://ibb.co/99zPXkBb" alt="YES OFFICER" class="app-icon">
-            <div class="app-info">
-              <h3>YES OFFICER</h3>
-              <p>Prepare for banking and government exams with top educators and courses.</p>
-            </div>
-          </div>
-          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
-        </a>
-
-        <!-- Physics Wallah -->
+        <!-- 1st Position: Physics Wallah -->
         <a href="https://pwthor.live/study/batches" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
-            <img src="https://i.ibb.co/8LJLjzD4/Physics-Wallah-Logo.jpg" alt="Physics Wallah" class="app-icon">
+            <img src="https://i.ibb.co/8LJLjzD4/Physics-Wallah-Logo.jpg" alt="Physics-Wallah-Logo" class="app-icon">
             <div class="app-info">
               <h3>Physics Wallah</h3>
               <p>Master Physics concepts with high-quality free lectures and notes.</p>
@@ -366,7 +360,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- PW 2 -->
+        <!-- 2nd Position: PW 2 -->
         <a href="Https://eduzex-pw.pages.dev/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/8LJLjzD4/Physics-Wallah-Logo.jpg" alt="PW 2" class="app-icon">
@@ -378,7 +372,6 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- Next Toppers -->
         <a href="https://nexttopperpro.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/xS2ksMk5/Next-Toppers-Logo.jpg" alt="Next Toppers" class="app-icon">
@@ -390,7 +383,6 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- Khan Global Studies -->
         <a href="https://sahukgs.vercel.app/batches" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/n8VR15xG/Screenshot-20260815-104329-2.jpg" alt="Khan Global Studies" class="app-icon">
@@ -402,7 +394,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
         
-          <a href="https://code-x-studys.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+                <a href="https://code-x-studys.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/nNkyYLHM/Chat-GPT-Image-Aug-12-2026-08-08-06-AM.png" alt="ALL STUDY PLATFORM IN ONE PLACE" class="app-icon">
             <div class="app-info">
@@ -435,6 +427,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
+        <!-- Original RWA -->
         <a href="https://rwa.sumit.qzz.io/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/wh5CY8Ds/Screenshot-20260811-183211-2.jpg" alt="Rwa" class="app-icon">
@@ -446,6 +439,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
+        <!-- RWA 2 -->
         <a href="https://learnbyakp.site/rwa/batch" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/wh5CY8Ds/Screenshot-20260811-183211-2.jpg" alt="RWA 2" class="app-icon">
@@ -489,8 +483,8 @@
           </div>
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
-
-            <a href="https://cds.streamfiles.eu.org/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+        
+                <a href="https://cds.streamfiles.eu.org/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/qLTDWYWj/Screenshot-20260815-111326-2.jpg" alt="CDS Journey" class="app-icon">
             <div class="app-info">
@@ -567,6 +561,7 @@
           <div class="live-badge"><span class="live-dot"></span> E-BOOKS AVAILABLE</div>
         </a>
 
+        <!-- UPDATED TESTBOOK LINK BELOW -->
         <a href="https://ankitprep.silentpreparationhub.workers.dev/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/jvD2XxD3/Testbook-com-India-s-No-1-Govt-Exam-Preparation-Site.jpg" alt="Testbook" class="app-icon">
@@ -588,8 +583,8 @@
           </div>
           <div class="live-badge"><span class="live-dot"></span> AVAILABLE NOW</div>
         </a>
-
-        <a href="https://studybeepro.site/tb/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+        
+                <a href="https://studybeepro.site/tb/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/prPX5s0n/Target-Board-Logo.jpg" alt="TARGET BOARD" class="app-icon">
             <div class="app-info">
@@ -655,6 +650,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
+        <!-- EDUTERIA LINK -->
         <a href="https://eduteriaa.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/CKftCD74/EDUTERIA.jpg" alt="EDUTERIA" class="app-icon">
@@ -677,109 +673,113 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-          <a href="https://officers-academy.pages.dev/batch/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+        <!-- ENGLISH BY NEETU SINGH 78 FOUNDATION BATCH -->
+        <a href="https://yappy-violet-akhjn9fk.edgeone.dev/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
-            <img src="https://i.ibb.co/3yxXbZbf/THE-OFFICERS-ACADEMY.jpg" alt="THE OFFICERS ACADEMY" class="app-icon">
+            <img src="https://i.ibb.co/k6DVYC0t/image.png" alt="ENGLISH BY NEETU SINGH 78 FOUNDATION BATCH" class="app-icon">
             <div class="app-info">
-              <h3>THE OFFICERS ACADEMY</h3>
-              <p>Specialized courses and batches for teacher recruitment and competitive exams.</p>
+              <h3>ENGLISH BY NEETU SINGH 78 FOUNDATION BATCH</h3>
+              <p>Master English grammar, vocabulary, and comprehension for competitive exams.</p>
             </div>
           </div>
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <a href="https://nexttopperpro.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+        <!-- ALLEN AND MORE OTHER BACHES PLATFORM -->
+        <a href="https://preppronetwork.vercel.app/apps" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
-            <img src="https://i.ibb.co/xS2ksMk5/Next-Toppers-Logo.jpg" alt="Next Toppers 2" class="app-icon">
+            <img src="https://i.ibb.co/7xm5w42r/image.png" alt="ALLEN AND MORE OTHER BACHES PLATFORM" class="app-icon">
             <div class="app-info">
-              <h3>Next Toppers 2</h3>
-              <p>Secondary portal for high-quality free video lectures, test series, and notes.</p>
+              <h3>ALLEN AND MORE OTHER BACHES PLATFORM</h3>
+              <p>Access premier ALLEN batches along with multiple elite coaching platform courses.</p>
             </div>
           </div>
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <a href="https://khangs.streamfiles.eu.org/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+        <!-- ALL COMPETITION CLASS BACHES ALL PLATFORM -->
+        <a href="https://www.allcompetitionclasses.com/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
-            <img src="https://i.ibb.co/n8VR15xG/Screenshot-20260815-104329-2.jpg" alt="Khan Global Studies 2" class="app-icon">
+            <img src="https://i.ibb.co/nNkyYLHM/Chat-GPT-Image-Aug-12-2026-08-08-06-AM.png" alt="ALL COMPETITION CLASS BACHES ALL PLATFORM" class="app-icon">
             <div class="app-info">
-              <h3>Khan Global Studies 2</h3>
-              <p>Secondary stream portal for Khan Sir UPSC, State PSC and GS courses.</p>
+              <h3>ALL COMPETITION CLASS BACHES ALL PLATFORM</h3>
+              <p>Access batches and courses across all major competition preparation platforms.</p>
             </div>
           </div>
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <a href="https://science-magnet.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+        <!-- PARMAR BACHES AND MORE OTHER BACHES -->
+        <a href="https://tgdoraemon.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
-            <img src="https://i.ibb.co/C31MvS18/SCIENCE-MAGNET.jpg" alt="SCIENCE MAGNET" class="app-icon">
+            <img src="https://i.ibb.co/nMpJckgQ/image.png" alt="PARMAR BACHES AND MORE OTHER BACHES" class="app-icon">
             <div class="app-info">
-              <h3>SCIENCE MAGNET</h3>
-              <p>Master Science and Railway exam preparations with Neeraj Sir lectures.</p>
+              <h3>PARMAR BACHES AND MORE OTHER BACHES</h3>
+              <p>Access specialized Parmar courses along with other top competitive batches.</p>
             </div>
           </div>
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- APNA COLLEGE -->
+        <a href="https://studyapkmod-apnacollege.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/zWgGFd2g/image.png" alt="APNA COLLEGE" class="app-icon">
+            <div class="app-info">
+              <h3>APNA COLLEGE</h3>
+              <p>Master coding, web development, DSA and tech courses with expert guidance.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- YOUTUBE MASTERCLASS -->
+        <a href="https://drive.google.com/drive/folders/11foeRsMRUa_y_sGmaUPzjhNek6Tp9pJu" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/hR9Tznx3/image.png" alt="Youtube Masterclass" class="app-icon">
+            <div class="app-info">
+              <h3>Youtube Masterclass - Complete A To Z Creator Guide</h3>
+              <p>A to Z guide about YouTube ideation, scripting, recording, editing, and uploading to build a successful channel.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> COURSE AVAILABLE</div>
         </a>
 
       </div>
     </div>
 
-    <!-- Telegram & Community Section -->
-    <div style="width: 100%; max-width: 480px; margin-top: 30px; background: #0f172a; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 20px; text-align: center;">
-      <h2 style="font-family: 'Syne', sans-serif; font-size: 18px; margin-bottom: 8px;">Join Our Active Learning Community</h2>
-      <p style="font-size: 12px; color: #94a3b8; line-height: 1.5; margin-bottom: 16px;">Get instant updates, daily quiz material, PDF notes, and direct links to newly unlocked batches on our Telegram channel.</p>
-      <a href="https://t.me/+g0wmAK8VCGEwMTJl" target="_blank" class="btn btn-telegram" onclick="vibratePhone(50)">
-        ✈️ Join Official Telegram Channel
-      </a>
-    </div>
-
-    <!-- Request Course Section -->
-    <div style="width: 100%; max-width: 480px; margin-top: 14px; background: #0f172a; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 20px; text-align: center;">
-      <h2 style="font-family: 'Syne', sans-serif; font-size: 18px; margin-bottom: 8px;">Can't Find Your Course?</h2>
-      <p style="font-size: 12px; color: #94a3b8; line-height: 1.5; margin-bottom: 16px;">Request any missing batch or report a broken link directly to our support team.</p>
-      <a href="https://t.me/rajnish_support_bot" target="_blank" class="btn btn-primary" onclick="vibratePhone(40)">
-        📩 Request Course / Support
-      </a>
-    </div>
-
-    <footer style="margin-top: 40px; margin-bottom: 20px; text-align: center; color: #64748b; font-size: 12px;">
-      <p>© 2026 RAJNISH PRIME. All Rights Reserved.</p>
-      <p style="margin-top: 6px;">Designed for Students • 100% Free Educational Access</p>
-    </footer>
-
   </div>
 
   <script>
-    // Vibrate function for haptic feedback
+    // Reveal Text & Button Exactly 1 Second After Logo Display
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const content = document.getElementById('landing-content');
+        if (content) {
+          content.classList.add('show');
+        }
+      }, 1000);
+    });
+
+    // Open Main Dashboard Screen
+    function openDashboard() {
+      vibratePhone(50);
+      const landing = document.getElementById('landing-page');
+      landing.style.opacity = '0';
+      
+      setTimeout(() => {
+        landing.style.display = 'none';
+        document.getElementById('main-content').style.display = 'flex';
+      }, 500);
+    }
+
+    // Phone Vibration Trigger Function
     function vibratePhone(ms) {
       if ("vibrate" in navigator) {
         navigator.vibrate(ms);
       }
     }
-
-    // Ensure content visibility on DOM Load
-    window.addEventListener('DOMContentLoaded', () => {
-      const content = document.getElementById('landing-content');
-      if (content) {
-        content.style.opacity = '1';
-        content.style.visibility = 'visible';
-      }
-    });
-
-    // Landing Page Open Dashboard Action
-    function openDashboard() {
-      vibratePhone(50);
-      const landing = document.getElementById('landing-page');
-      const mainContent = document.getElementById('main-content');
-      
-      if (landing) {
-        landing.style.display = 'none';
-      }
-      if (mainContent) {
-        mainContent.style.display = 'flex';
-        window.scrollTo(0, 0);
-      }
-    }
   </script>
+
 </body>
 </html>
