@@ -1,749 +1,835 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Rajnish Prime - All Premium Batches</title>
-    <!-- Google Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Rajnish Prime</title>
+  
+  <meta name="apple-mobile-web-app-title" content="Rajnish Prime">
+  <meta name="application-name" content="Rajnish Prime">
+  <meta name="description" content="Rajnish Prime - Access 100% free premium batches and courses from top educational platforms.">
+  <meta name="theme-color" content="#080c14">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    body {
+      background-color: #080c14;
+      color: #ffffff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Landing / Splash Page Styling */
+    #landing-page {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #080c14;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 24px;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    .landing-logo {
+      width: 140px;
+      height: 140px;
+      border-radius: 28px;
+      object-fit: cover;
+      border: 3.5px solid #00d2ff;
+      box-shadow: 0 0 45px rgba(0, 210, 255, 0.65), inset 0 0 15px rgba(0, 210, 255, 0.4);
+      margin-bottom: 24px;
+      animation: pulseGlow 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(0.98); box-shadow: 0 0 30px rgba(0, 210, 255, 0.5); }
+      50% { transform: scale(1.03); box-shadow: 0 0 55px rgba(0, 210, 255, 0.85); }
+      100% { transform: scale(0.98); box-shadow: 0 0 30px rgba(0, 210, 255, 0.5); }
+    }
     
-    <style>
-        :root {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --card-bg: #1e293b;
-            --accent-color: #3b82f6;
-            --accent-hover: #2563eb;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --border-color: #334155;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            --radius: 12px;
-        }
+        .landing-content {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      visibility: hidden;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
+    .landing-content.show {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+    }
 
-        body {
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            min-height: 100vh;
-            padding-bottom: 80px;
-            overflow-x: hidden;
-        }
+    .landing-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 38px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+      color: #ffffff;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
 
-        /* App Header */
-        .app-header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 16px 20px;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+    .btn-open-now {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      color: #ffffff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 16px 44px;
+      border-radius: 16px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
 
-        .brand-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+    .btn-open-now:active {
+      transform: scale(0.95);
+    }
 
-        .brand-logo {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--accent-color);
-        }
+    /* Main Content Container */
+    #main-content {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px;
+      width: 100%;
+    }
 
-        .brand-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #60a5fa, #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    .navbar { 
+      width: 100%; 
+      max-width: 480px; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      padding: 10px 0; 
+      margin-bottom: 20px; 
+    }
+    .nav-brand { 
+      display: flex; 
+      align-items: center; 
+      gap: 10px; 
+      text-decoration: none; 
+      color: #fff; 
+    }
+    .nav-logo-img { 
+      width: 40px; 
+      height: 40px; 
+      border-radius: 12px; 
+      object-fit: cover; 
+      border: 2px solid #06b6d4; 
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.5); 
+    }
+    .nav-title { 
+      font-family: 'Syne', sans-serif; 
+      font-size: 19px; 
+      font-weight: 800; 
+      letter-spacing: 0.8px; 
+      background: linear-gradient(135deg, #ffffff 30%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+    }
+    .menu-btn { 
+      background: #111827; 
+      border: 1px solid rgba(255,255,255,0.1); 
+      border-radius: 12px; 
+      width: 40px; 
+      height: 40px; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      align-items: center; 
+      gap: 5px; 
+      cursor: pointer; 
+    }
+    .menu-btn span { 
+      display: block; 
+      width: 18px; 
+      height: 2px; 
+      background: #38bdf8; 
+      border-radius: 2px; 
+      box-shadow: 0 0 8px #38bdf8; 
+    }
+    
+    .hero { 
+      width: 100%; 
+      max-width: 480px; 
+      text-align: center; 
+      margin-bottom: 24px; 
+    }
+    .pill-badge { 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 8px; 
+      background: rgba(6, 182, 212, 0.1); 
+      border: 1px solid rgba(6, 182, 212, 0.3); 
+      color: #38bdf8; 
+      font-size: 12px; 
+      font-weight: 600; 
+      padding: 6px 16px; 
+      border-radius: 30px; 
+      margin-bottom: 14px; 
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.15); 
+    }
+    .dot { 
+      width: 6px; 
+      height: 6px; 
+      background: #06b6d4; 
+      border-radius: 50%; 
+      box-shadow: 0 0 8px #06b6d4; 
+    }
+    .hero h1 { 
+      font-family: 'Syne', sans-serif; 
+      font-size: 36px; 
+      font-weight: 800; 
+      line-height: 1.1; 
+      margin-bottom: 12px; 
+      letter-spacing: -1px; 
+    }
+    .hero h1 span { 
+      background: linear-gradient(135deg, #38bdf8 0%, #fbbf24 100%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
+    .hero p { 
+      color: #94a3b8; 
+      font-size: 13px; 
+      line-height: 1.5; 
+      margin-bottom: 18px; 
+      padding: 0 10px; 
+    }
 
-        /* Search Bar */
-        .search-box {
-            margin: 16px 20px;
-            position: relative;
-        }
+    .btn-group { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 12px; 
+      margin-bottom: 30px; 
+    }
+    .btn { 
+      width: 100%; 
+      padding: 14px; 
+      border-radius: 14px; 
+      font-family: 'Plus Jakarta Sans', sans-serif; 
+      font-size: 15px; 
+      font-weight: 700; 
+      text-decoration: none; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 10px; 
+      transition: all 0.3s ease; 
+    }
+    .btn-primary { 
+      background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #6366f1 100%); 
+      color: #ffffff; 
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 6px 25px rgba(6, 182, 212, 0.45); 
+    }
+    .btn-telegram { background: #0f172a; color: #38bdf8; border: 1.5px solid #38bdf8; box-shadow: 0 4px 15px rgba(56, 189, 248, 0.15); }
+    .btn-whatsapp { background: #0f172a; color: #22c55e; border: 1.5px solid #22c55e; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.15); }
+    .btn-youtube { background: #0f172a; color: #ef4444; border: 1.5px solid #ef4444; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.15); }
 
-        .search-input {
-            width: 100%;
-            padding: 12px 16px 12px 45px;
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            color: var(--text-primary);
-            font-size: 0.9rem;
-            outline: none;
-            transition: all 0.3s ease;
-        }
+    .stats-bar { 
+      width: 100%; 
+      max-width: 480px; 
+      display: grid; 
+      grid-template-columns: repeat(4, 1fr); 
+      text-align: center; 
+      padding: 14px 0; 
+      border-top: 1px solid rgba(255, 255, 255, 0.08); 
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
+      margin-bottom: 30px; 
+      background: rgba(17, 24, 39, 0.4); 
+      border-radius: 16px; 
+    }
+    .stat-item .num { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: #38bdf8; margin-bottom: 2px; }
+    .stat-item .label { font-size: 10px; color: #64748b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
 
-        .search-input:focus {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-        }
+    .section-container { width: 100%; max-width: 480px; }
+    .section-tag { font-size: 11px; color: #38bdf8; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 4px; }
+    .section-title { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; margin-bottom: 6px; }
+    .section-desc { color: #94a3b8; font-size: 13px; margin-bottom: 20px; }
 
-        .search-icon {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-secondary);
-        }
-
-        .container {
-            padding: 0 20px;
-        }
-
-        .section-title {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin: 24px 0 12px 0;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* Platform Card Grid Layout */
-        .platform-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
-            gap: 14px;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            padding: 12px 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:active {
-            transform: scale(0.95);
-        }
-
-        .card:hover {
-            border-color: var(--accent-color);
-        }
-
-        .card-img-wrapper {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 8px;
-        }
-
-        .card-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .card-title {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            line-height: 1.2;
-            word-break: break-word;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .badge-new {
-            position: absolute;
-            top: 6px;
-            right: 6px;
-            background: #ef4444;
-            color: #ffffff;
-            font-size: 0.55rem;
-            font-weight: 700;
-            padding: 2px 5px;
-            border-radius: 4px;
-            text-transform: uppercase;
-        }
-
-        /* Bottom Bar */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 65px;
-            background: rgba(15, 23, 42, 0.98);
-            backdrop-filter: blur(12px);
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            z-index: 100;
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            color: var(--text-secondary);
-            font-size: 0.7rem;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .nav-item.active {
-            color: var(--accent-color);
-        }
-
-        .nav-item i {
-            font-size: 1.2rem;
-        }
-
-        /* Modal Screen */
-        #webviewModal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            z-index: 1000;
-            flex-direction: column;
-        }
-    </style>
+    .apps-list { display: flex; flex-direction: column; gap: 16px; }
+    .app-card { 
+      background: #111827; 
+      border: 1px solid rgba(255, 255, 255, 0.08); 
+      border-radius: 20px; 
+      padding: 20px; 
+      text-decoration: none; 
+      color: inherit; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 14px; 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3); 
+      cursor: pointer; 
+      transition: transform 0.2s ease, border-color 0.2s ease; 
+    }
+    .app-card:active { transform: scale(0.98); border-color: rgba(6, 182, 212, 0.4); }
+    
+    .app-card-top { display: flex; align-items: flex-start; gap: 16px; width: 100%; }
+    .app-icon { width: 60px; height: 60px; border-radius: 14px; object-fit: cover; border: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; background: #1f2937; }
+    .app-info { flex: 1; min-width: 0; }
+    .app-info h3 { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: #ffffff; margin-bottom: 4px; word-break: break-word; }
+    .app-info p { font-size: 13px; color: #94a3b8; line-height: 1.4; }
+    .live-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; font-size: 11px; font-weight: 600; padding: 6px 14px; border-radius: 20px; align-self: flex-start; }
+    .live-dot { width: 6px; height: 6px; background-color: #34d399; border-radius: 50%; box-shadow: 0 0 8px #34d399; }
+  </style>
 </head>
 
 <body>
 
-    <!-- Application Header -->
-    <header class="app-header">
-        <div class="brand-container">
-            <img src="https://i.ibb.co/MxKgrYny/Careerwill.jpg" alt="Rajnish Prime Logo" class="brand-logo">
-            <div class="brand-title">RAJNISH PRIME</div>
-        </div>
-        <div class="header-actions">
-            <i class="fa-solid fa-bell" style="font-size: 1.1rem; color: var(--text-secondary); cursor: pointer;" onclick="vibratePhone(); alert('No new notifications!');"></i>
-        </div>
-    </header>
-
-    <!-- Interactive Search Bar -->
-    <div class="search-box">
-        <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        <input type="text" id="searchInput" class="search-input" placeholder="Search platforms, batches..." onkeyup="filterPlatforms()">
-    </div>
-
-    <!-- Main Dynamic Content Container -->
-    <div class="container" id="mainContent">
-        <!-- Physics Wallah (PW) Section -->
-        <div class="section-title">
-            <i class="fa-solid fa-graduation-cap" style="color: #3b82f6;"></i> Physics Wallah (PW)
-        </div>
-        <div class="platform-grid" id="pwSection"></div>
-
-        <!-- Khan Global Studies (KGS) Section -->
-        <div class="section-title">
-            <i class="fa-solid fa-book-bookmark" style="color: #10b981;"></i> Khan Global Studies (KGS)
-        </div>
-        <div class="platform-grid" id="kgsSection"></div>
-
-        <!-- Schooling & State Boards Section -->
-        <div class="section-title">
-            <i class="fa-solid fa-school" style="color: #f59e0b;"></i> Schooling & State Boards
-        </div>
-        <div class="platform-grid" id="schoolSection"></div>
-
-        <!-- Competitive Exams & Individual Faculty Section -->
-        <div class="section-title">
-            <i class="fa-solid fa-award" style="color: #ec4899;"></i> Competitive Exams
-        </div>
-        <div class="platform-grid" id="compSection"></div>
-    </div>
+  <!-- Landing Screen -->
+  <div id="landing-page">
+    <img src="https://i.ibb.co/nNkyYLHM/Chat-GPT-Image-Aug-12-2026-08-08-06-AM.png" alt="Rajnish Prime Logo" class="landing-logo">
     
-        <!-- Bottom Navigation Bar -->
-    <nav class="bottom-nav">
-        <a class="nav-item active" onclick="vibratePhone(); scrollToTop();">
-            <i class="fa-solid fa-house"></i>
-            <span>Home</span>
-        </a>
-        <a class="nav-item" onclick="vibratePhone(); filterCategory('all');">
-            <i class="fa-solid fa-layer-group"></i>
-            <span>All Modules</span>
-        </a>
-        <a class="nav-item" onclick="vibratePhone(); openTelegramChannel();">
-            <i class="fa-brands fa-telegram"></i>
-            <span>Telegram</span>
-        </a>
-        <a class="nav-item" onclick="vibratePhone(); alert('Rajnish Prime v3.0\nCreated for seamless premium learning platform access.');">
-            <i class="fa-solid fa-circle-info"></i>
-            <span>About</span>
-        </a>
+    <div class="landing-content" id="landing-content">
+      <h1 class="landing-title">RAJNISH<br>PRIME</h1>
+      <button class="btn-open-now" onclick="openDashboard()">🔥 Open Now 🔥</button>
+    </div>
+  </div>
+
+  <!-- Main Content Dashboard -->
+  <div id="main-content">
+
+    <nav class="navbar">
+      <a href="#" class="nav-brand">
+        <img src="https://i.ibb.co/nNkyYLHM/Chat-GPT-Image-Aug-12-2026-08-08-06-AM.png" alt="Rajnish Prime Logo" class="nav-logo-img">
+        <span class="nav-title">RAJNISH PRIME</span>
+      </a>
+      <div class="menu-btn" onclick="vibratePhone(30)">
+        <span></span><span></span><span></span>
+      </div>
     </nav>
 
-    <!-- Fullscreen WebView Modal Container -->
-    <div id="webviewModal">
-        <div style="height: 50px; background: var(--bg-secondary); border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; padding: 0 16px;">
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <i class="fa-solid fa-arrow-left" style="font-size: 1.2rem; cursor: pointer; color: var(--text-primary);" onclick="vibratePhone(); closeWebView();"></i>
-                <span id="modalTitle" style="font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">Loading...</span>
-            </div>
-            <div style="display: flex; gap: 16px;">
-                <i class="fa-solid fa-rotate-right" style="font-size: 1.1rem; cursor: pointer; color: var(--text-secondary);" onclick="vibratePhone(); reloadWebView();"></i>
-                <i class="fa-solid fa-xmark" style="font-size: 1.3rem; cursor: pointer; color: var(--text-secondary);" onclick="vibratePhone(); closeWebView();"></i>
-            </div>
-        </div>
-        <iframe id="platformIFrame" style="width: 100%; height: calc(100% - 50px); border: none; background: #ffffff;" src="about:blank"></iframe>
+    <header class="hero">
+      <div class="pill-badge">
+        <span class="dot"></span> 100% Free • Premium Courses Unlocked
+      </div>
+      <h1>Study Smarter. Pay <span>Nothing.</span></h1>
+      <p>Access premium paid courses from India's top ed-tech platforms — completely free. All your favourite educators, one place.</p>
+      
+      <div class="btn-group">
+        <a href="#apps" class="btn btn-primary" onclick="vibratePhone(40)">🚀 Explore Apps</a>
+        <a href="https://t.me/+g0wmAK8VCGEwMTJl" class="btn btn-telegram" onclick="vibratePhone(40)">✈️ Join Telegram Channel</a>
+        <a href="https://whatsapp.com/channel/0029VbDI4yFK5cDHjEHcNk16" class="btn btn-whatsapp" onclick="vibratePhone(40)">📢 Join WhatsApp Channel</a>
+        <a href="https://youtube.com/@rajnishstudyshorts?si=mPxFar33SZb9pHjA" class="btn btn-youtube" onclick="vibratePhone(40)">📺 Subscribe YouTube</a>
+      </div>
+    </header>
+
+    <div class="stats-bar">
+      <div class="stat-item"><div class="num">1000+</div><div class="label">Batches</div></div>
+      <div class="stat-item"><div class="num">30</div><div class="label">Platforms</div></div>
+      <div class="stat-item"><div class="num">₹0</div><div class="label">Cost</div></div>
+      <div class="stat-item"><div class="num">24/7</div><div class="label">Access</div></div>
     </div>
 
-    <!-- Central JavaScript Data Registry (Part 1: PW & KGS) -->
-    <script>
-        const platformsData = [
-            // --- PHYSICS WALLAH (PW) ---
-            {
-                id: "pw_books",
-                name: "PW ALL BOOKS LIBRARY",
-                section: "pw",
-                priority: 1, // Priority #1 Top Position
-                logo: "https://i.ibb.co/LzdSdt9R/PW.jpg",
-                link: "https://pwxbooks.pages.dev/",
-                badge: "LIBRARY"
-            },
-            {
-                id: "pw_1",
-                name: "PW 1",
-                section: "pw",
-                priority: 2,
-                logo: "https://i.ibb.co/LzdSdt9R/PW.jpg",
-                link: "https://rajnishkumars3721-cmyk.github.io/PW-FREE-ONLINE-PREMIUM-STUDY/",
-                badge: ""
-            },
-            {
-                id: "pw_2",
-                name: "PW 2",
-                section: "pw",
-                priority: 3,
-                logo: "https://i.ibb.co/LzdSdt9R/PW.jpg",
-                link: "https://rajnishkumars3721-cmyk.github.io/PW-MODULE-2/",
-                badge: ""
-            },
-            {
-                id: "pw_3",
-                name: "PW 3",
-                section: "pw",
-                priority: 4,
-                logo: "https://i.ibb.co/LzdSdt9R/PW.jpg",
-                link: "https://learnex.vercel.app/PW",
-                badge: "BATCHES"
-            },
-            {
-                id: "pw_4",
-                name: "PW 4",
-                section: "pw",
-                priority: 5,
-                logo: "https://i.ibb.co/LzdSdt9R/PW.jpg",
-                link: "https://xyro-pw.ai.studio/",
-                badge: "NEW"
-            },
+    <div class="section-container" id="apps">
+      <p class="section-tag">Official Platforms</p>
+      <h2 class="section-title">Explore Our Apps</h2>
+      <p class="section-desc">Pick your platform and get instant free access to all premium batches.</p>
 
-            // --- KHAN GLOBAL STUDIES (KGS) ---
-            {
-                id: "kgs_1",
-                name: "KGS 1",
-                section: "kgs",
-                priority: 1,
-                logo: "https://i.ibb.co/d04KzC9Q/Kgs.jpg",
-                link: "https://rajnishkumars3721-cmyk.github.io/KGS-FREE-ONLINE-STUDY-RAJNISH-PRIME/",
-                badge: ""
-            },
-            {
-                id: "kgs_2",
-                name: "KGS 2",
-                section: "kgs",
-                priority: 2,
-                logo: "https://i.ibb.co/d04KzC9Q/Kgs.jpg",
-                link: "https://studyapkmodkgs.vercel.app/course",
-                badge: "COURSES"
-            },
-            {
-                id: "kgs_3",
-                name: "KGS 3",
-                section: "kgs",
-                priority: 3,
-                logo: "https://i.ibb.co/d04KzC9Q/Kgs.jpg",
-                link: "https://www.study-mate.in/batches",
-                badge: "BATCHES"
-            },
-            {
-                id: "kgs_test",
-                name: "KGS Test Series",
-                section: "kgs",
-                priority: 4,
-                logo: "https://i.ibb.co/d04KzC9Q/Kgs.jpg",
-                link: "https://www.study-mate.in/test-series",
-                badge: "TESTS"
-            }
-        ];
-    </script>
-    
-        <script>
-        // Central JavaScript Data Registry (Part 2: Schooling & Competitive Exams)
-        const additionalPlatforms = [
-            // --- SCHOOLING & STATE BOARDS ---
-            {
-                id: "padhle_1",
-                name: "PADHLE AKSHAY",
-                section: "school",
-                priority: 1,
-                logo: "https://i.ibb.co/fzsWrX6p/padhle.jpg",
-                link: "https://trms-akshay.nextmate.site/home",
-                badge: "CLASS 9-10"
-            },
-            {
-                id: "padhle_2",
-                name: "PADHLE AKSHAY 2",
-                section: "school",
-                priority: 2,
-                logo: "https://i.ibb.co/fzsWrX6p/padhle.jpg",
-                link: "https://deltastudy.fun/padhle",
-                badge: "VIP"
-            },
-            {
-                id: "target_board",
-                name: "TARGET BOARD",
-                section: "school",
-                priority: 3,
-                logo: "https://i.ibb.co/Q3BkWjXN/Target-board.jpg",
-                link: "https://studyapkmod-targetboard.vercel.app/",
-                badge: "BIHAR BOARD"
-            },
-            {
-                id: "vidyakul_1",
-                name: "VIDYAKUL",
-                section: "school",
-                priority: 4,
-                logo: "https://i.ibb.co/bgp130K/vidyakul.jpg",
-                link: "https://vidyakul.nextmate.site/",
-                badge: "STATE BOARD"
-            },
-            {
-                id: "vidyakul_2",
-                name: "VIDYAKUL 2",
-                section: "school",
-                priority: 5,
-                logo: "https://i.ibb.co/bgp130K/vidyakul.jpg",
-                link: "https://trmsvidyakul.nextmate.site/batches",
-                badge: "BATCHES"
-            },
+      <div class="apps-list">
 
-            // --- COMPETITIVE EXAMS & OTHER PLATFORMS ---
-            {
-                id: "nt_1",
-                name: "NEXT Toppers 1",
-                section: "comp",
-                priority: 1,
-                logo: "https://i.ibb.co/93233cSp/Next-toppers.jpg",
-                link: "https://rajnishkumars3721-cmyk.github.io/NEXT-TOPPERS-RAJNISH-PRIME/",
-                badge: ""
-            },
-            {
-                id: "nt_2",
-                name: "NEXT Toppers 2",
-                section: "comp",
-                priority: 2,
-                logo: "https://i.ibb.co/93233cSp/Next-toppers.jpg",
-                link: "https://learnex.vercel.app/NT",
-                badge: "LIVE"
-            },
-            {
-                id: "sw_1",
-                name: "SELECTION WAY 1",
-                section: "comp",
-                priority: 3,
-                logo: "https://i.ibb.co/kV970kP8/selection-way.jpg",
-                link: "https://rajnishkumars3721-cmyk.github.io/SELECTION-WAY-RAJNISH-PRIME/",
-                badge: ""
-            },
-            {
-                id: "sw_2",
-                name: "SELECTION WAY 2",
-                section: "comp",
-                priority: 4,
-                logo: "https://i.ibb.co/kV970kP8/selection-way.jpg",
-                link: "https://learnex.vercel.app/SW",
-                badge: "SSC"
-            },
-            {
-                id: "sw_3",
-                name: "SELECTION WAY 3",
-                section: "comp",
-                priority: 5,
-                logo: "https://i.ibb.co/kV970kP8/selection-way.jpg",
-                link: "https://deltastudy.fun/sway",
-                badge: "NEW"
-            },
-            {
-                id: "munil",
-                name: "MUNIL SIR",
-                section: "comp",
-                priority: 6,
-                logo: "https://i.ibb.co/YTJwS9Zs/image.jpg",
-                link: "https://deltastudy.fun/munilsir",
-                badge: "SPECIAL"
-            },
-            {
-                id: "md",
-                name: "MD CLASSES",
-                section: "comp",
-                priority: 7,
-                logo: "https://i.ibb.co/gZxRJDkG/image.jpg",
-                link: "https://mdclassesx.vercel.app/",
-                badge: "GOVT"
-            },
-            {
-                id: "cw_1",
-                name: "CARRIER WILL 1",
-                section: "comp",
-                priority: 8,
-                logo: "https://i.ibb.co/MxKgrYny/Careerwill.jpg",
-                link: "https://rajnishkumars3721-cmyk.github.io/CARRIERWILL-ONLINE-FREE-BATCHES-RAJNISH-PRIME/",
-                badge: ""
-            },
-            {
-                id: "cw_2",
-                name: "CARRIER WILL 2",
-                section: "comp",
-                priority: 9,
-                logo: "https://i.ibb.co/MxKgrYny/Careerwill.jpg",
-                link: "https://runtkyp.xo.je/?i=1",
-                badge: "VIP"
-            },
-            {
-                id: "rg",
-                name: "RG Vikramjeet",
-                section: "comp",
-                priority: 10,
-                logo: "https://i.ibb.co/YFZ5L53y/image.jpg",
-                link: "https://learnbyakp.site/vikaram",
-                badge: "MATHS"
-            },
-            {
-                id: "cds",
-                name: "CDS journey",
-                section: "comp",
-                priority: 11,
-                logo: "https://i.ibb.co/YFZ5L53y/image.jpg",
-                link: "https://spidyuniversecds.vercel.app/",
-                badge: "DEFENCE"
-            }
-        ];
+        <!-- PW DIGITAL LIBRARY -->
+        <a href="https://pwxbooks.pages.dev/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/8LJLjzD4/Physics-Wallah-Logo.jpg" alt="PW Digital Library Logo" class="app-icon">
+            <div class="app-info">
+              <h3>PW DIGITAL LIBRARY</h3>
+              <p>Access free PW books, notes, digital library resources, and study material.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> BOOKS & NOTES AVAILABLE</div>
+        </a>
 
-        // Merge all platforms into master array
-        platformsData.push(...additionalPlatforms);
-    </script>
-    
-        <script>
-        // Sort Platforms by Priority Order
-        function getSortedPlatformsBySection(sectionName) {
-            return platformsData
-                .filter(item => item.section === sectionName)
-                .sort((a, b) => a.priority - b.priority);
+        <!-- 1st Position: Physics Wallah -->
+        <a href="https://pwthor.live/study/batches" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/8LJLjzD4/Physics-Wallah-Logo.jpg" alt="Physics-Wallah-Logo" class="app-icon">
+            <div class="app-info">
+              <h3>Physics Wallah</h3>
+              <p>Master Physics concepts with high-quality free lectures and notes.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- PRASHANT SOLANKI TOPPERS WISDOM -->
+        <a href="https://thoughtful-jade-lv6nivio.edgeone.dev/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/vCcJ6ssY/image.jpg" alt="PRASHANT SOLANKI TOPPERS WISDOM" class="app-icon">
+            <div class="app-info">
+              <h3>PRASHANT SOLANKI TOPPERS WISDOM 🔥</h3>
+              <p>Access high-yield topper strategies, premium lectures, and guidance modules.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- 2nd Position: PW 2 -->
+        <a href="Https://eduzex-pw.pages.dev/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/8LJLjzD4/Physics-Wallah-Logo.jpg" alt="PW 2" class="app-icon">
+            <div class="app-info">
+              <h3>PW 2</h3>
+              <p>Access backup and secondary Physics Wallah live batches, lectures and notes.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- NEXT TOPPERS -->
+        <a href="https://nexthope.pages.dev/nt/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/xS2ksMk5/Next-Toppers-Logo.jpg" alt="Next Toppers" class="app-icon">
+            <div class="app-info">
+              <h3>Next Toppers</h3>
+              <p>Crack competitive exams with high-quality free video lectures and notes.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- Khan Global Studies -->
+        <a href="https://sahukgs.vercel.app/batches" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/n8VR15xG/Screenshot-20260815-104329-2.jpg" alt="Khan Global Studies" class="app-icon">
+            <div class="app-info">
+              <h3>Khan Global Studies</h3>
+              <p>Access high-quality UPSC, State PSC, and competitive exam courses.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- NEW PLATFORM: KGS 2 (Placed Just Below KGS) -->
+        <a href="https://studyapkmodkgs.vercel.app/home" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/n8VR15xG/Screenshot-20260815-104329-2.jpg" alt="KGS 2" class="app-icon">
+            <div class="app-info">
+              <h3>KGS 2</h3>
+              <p>Secondary portal for Khan Global Studies courses, lectures and exam guidance.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+        
+                <a href="https://code-x-studys.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/nNkyYLHM/Chat-GPT-Image-Aug-12-2026-08-08-06-AM.png" alt="ALL STUDY PLATFORM IN ONE PLACE" class="app-icon">
+            <div class="app-info">
+              <h3>ALL STUDY PLATFORM IN ONE PLACE</h3>
+              <p>Access comprehensive study materials, notes, solutions, and sample papers for all classes.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> MATERIAL AVAILABLE</div>
+        </a>
+
+        <!-- SCIENCE AND FUN -->
+        <a href="https://deltastudy.fun/scienceandfun" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/BKt6B0MF/image.jpg" alt="SCIENCE AND FUN" class="app-icon">
+            <div class="app-info">
+              <h3>SCIENCE AND FUN</h3>
+              <p>Learn science and concepts with interactive live lectures, experiments, and courses.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <a href="https://nexthope.pages.dev/mj/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/G4kQkcTh/Screenshot-20260811-183043-2.jpg" alt="Mission JEET" class="app-icon">
+            <div class="app-info">
+              <h3>Mission JEET</h3>
+              <p>Ace JEE exams with expert strategy, practice and detailed solutions.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <a href="https://nexthope.site/unacademy/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/NdK48RqM/Screenshot-20260811-183136-2.jpg" alt="Unacademy" class="app-icon">
+            <div class="app-info">
+              <h3>Unacademy</h3>
+              <p>Learn from India's top educators across different subjects and exams.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- Original RWA -->
+        <a href="https://rwa.sumit.qzz.io/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/wh5CY8Ds/Screenshot-20260811-183211-2.jpg" alt="Rwa" class="app-icon">
+            <div class="app-info">
+              <h3>Rwa</h3>
+              <p>Your companion for govt. job preparation and exam guidance.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- RWA 2 -->
+        <a href="https://learnbyakp.site/rwa/batch" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/wh5CY8Ds/Screenshot-20260811-183211-2.jpg" alt="RWA 2" class="app-icon">
+            <div class="app-info">
+              <h3>RWA 2</h3>
+              <p>Secondary portal for govt. job preparation, additional batches and exam guidance.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <a href="https://nexthope.pages.dev/sw/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/nMk354fp/logo.png" alt="Selection Way" class="app-icon">
+            <div class="app-info">
+              <h3>Selection Way</h3>
+              <p>Smart way to prepare for competitive exams with clear concepts.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <a href="https://testrankingfree.vercel.app" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/zTJ5rK7B/Screenshot-20260815-105406-2.jpg" alt="Selection Way Test" class="app-icon">
+            <div class="app-info">
+              <h3>Selection Way Test</h3>
+              <p>Take free tests and check your rank and performance level.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE TESTS AVAILABLE</div>
+        </a>
+
+        <a href="https://studyiqq.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/xtbYS0QW/Screenshot-20260815-111056-2.jpg" alt="StudyIQ" class="app-icon">
+            <div class="app-info">
+              <h3>StudyIQ</h3>
+              <p>Comprehensive preparation resources and courses for civil services and exams.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+        
+                <a href="https://cds.streamfiles.eu.org/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/qLTDWYWj/Screenshot-20260815-111326-2.jpg" alt="CDS Journey" class="app-icon">
+            <div class="app-info">
+              <h3>CDS Journey</h3>
+              <p>Dedicated defense exam preparation resources, strategy and batches.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <a href="https://nexthope.pages.dev/vb/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/TxLzfXYM/Screenshot-20260816-204055-2.jpg" alt="Vibrant Academy" class="app-icon">
+            <div class="app-info">
+              <h3>Vibrant Academy</h3>
+              <p>Access high-quality IIT-JEE & NEET prep material and courses.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <a href="https://nexthope.pages.dev/uncoffline/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/NdK48RqM/Screenshot-20260811-183136-2.jpg" alt="UNCOFFLINE" class="app-icon">
+            <div class="app-info">
+              <h3>UNCOFFLINE</h3>
+              <p>Offline style structured study material and recorded courses.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <a href="https://nexthope.pages.dev/gsvision/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/YF3vNsnh/Screenshot-20260815-171317-2.jpg" alt="GS Vision" class="app-icon">
+            <div class="app-info">
+              <h3>GS Vision | NextHope</h3>
+              <p>Complete General Studies lectures, notes, and exam prep modules.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <a href="https://nexthope.pages.dev/tw/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/F4GJ92dp/Screenshot-20260815-171405-2.jpg" alt="Toppers Wisdom" class="app-icon">
+            <div class="app-info">
+              <h3>Toppers' Wisdom | Premium Batches</h3>
+              <p>High-yield premium batch lectures and topper strategies.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <a href="https://nexthope.pages.dev/futurekul/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/N2DYywGW/Screenshot-20260815-171520-2.jpg" alt="FutureKul Courses" class="app-icon">
+            <div class="app-info">
+              <h3>FutureKul Courses</h3>
+              <p>Specialized online courses for science, competitive and foundation exams.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <a href="https://nexthope.pages.dev/pinnacle/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/jPgCZGMR/Screenshot-20260815-171712-2.jpg" alt="Pinnacle Ebooks" class="app-icon">
+            <div class="app-info">
+              <h3>Pinnacle Ebooks</h3>
+              <p>Access free e-books, Pinnacle study materials, and premium reference content.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> E-BOOKS AVAILABLE</div>
+        </a>
+
+        <!-- TESTBOOK -->
+        <a href="https://ankitprep.silentpreparationhub.workers.dev/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/jvD2XxD3/Testbook-com-India-s-No-1-Govt-Exam-Preparation-Site.jpg" alt="Testbook" class="app-icon">
+            <div class="app-info">
+              <h3>Testbook</h3>
+              <p>Attempt free test series, mock tests & exam preparation materials.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> MOCK TESTS AVAILABLE</div>
+        </a>
+
+        <a href="https://studyapkmod-vidyagramx.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/wZR1fzs1/Screenshot-20260818-114322-2.jpg" alt="VIDYAGRAM" class="app-icon">
+            <div class="app-info">
+              <h3>VIDYAGRAM</h3>
+              <p>Access educational resources and study content.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> AVAILABLE NOW</div>
+        </a>
+        
+                <a href="https://studybeepro.site/tb/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/prPX5s0n/Target-Board-Logo.jpg" alt="TARGET BOARD" class="app-icon">
+            <div class="app-info">
+              <h3>TARGET BOARD</h3>
+              <p>Prepare for board exams with structured courses and comprehensive guidance.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <a href="https://studyhelp.freesite.online/batches/cw.html?i=1" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/MxKgrYny/Careerwill.jpg" alt="CARRIER WILL" class="app-icon">
+            <div class="app-info">
+              <h3>CARRIER WILL</h3>
+              <p>Prepare for SSC, Banking, Teaching & Govt. Exams with expert faculty.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <a href="https://mastersahab.studybeepro.site/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/WpBksF4v/image.jpg" alt="Master Sahab Batches" class="app-icon">
+            <div class="app-info">
+              <h3>Master Sahab Batches</h3>
+              <p>Access high-quality structured courses and premium study material.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <a href="https://vidyakool.streamfiles.eu.org" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/fVNq6xS0/VIDYAKUL.jpg" alt="VIDYAKUL CLASSES" class="app-icon">
+            <div class="app-info">
+              <h3>VIDYAKUL CLASSES</h3>
+              <p>Access high-quality state board & competitive exam courses.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <a href="https://t.me/c/4461346099/111/3330" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/jjwdrj2/Screenshot-20260826-092215.jpg" alt="SAMYAK IAS" class="app-icon">
+            <div class="app-info">
+              <h3>SAMYAK IAS</h3>
+              <p>Comprehensive Civil Services & State PSC examination preparation courses.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <a href="https://t.me/c/4461346099/111/3329" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/b5DDpzwY/Screenshot-20260826-091531.jpg" alt="GYAN BINDU" class="app-icon">
+            <div class="app-info">
+              <h3>GYAN BINDU</h3>
+              <p>Comprehensive competitive exam preparation, test series, and study materials.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- EDUTERIA LINK -->
+        <a href="https://eduteriaa.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/CKftCD74/EDUTERIA.jpg" alt="EDUTERIA" class="app-icon">
+            <div class="app-info">
+              <h3>EDUTERIA</h3>
+              <p>Comprehensive competitive exam preparation, GS material, and test series.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <a href="https://sachinacademy.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/8DhBt9vW/SACHIN-ACADEMY.jpg" alt="SACHIN ACADEMY" class="app-icon">
+            <div class="app-info">
+              <h3>SACHIN ACADEMY</h3>
+              <p>Comprehensive teaching exam preparation, CTET, TET and pedagogy batches.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- ENGLISH BY NEETU SINGH 78 FOUNDATION BATCH -->
+        <a href="https://yappy-violet-akhjn9fk.edgeone.dev/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/k6DVYC0t/image.png" alt="ENGLISH BY NEETU SINGH 78 FOUNDATION BATCH" class="app-icon">
+            <div class="app-info">
+              <h3>ENGLISH BY NEETU SINGH 78 FOUNDATION BATCH</h3>
+              <p>Master English grammar, vocabulary, and comprehension for competitive exams.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- ALLEN AND MORE OTHER BACHES PLATFORM -->
+        <a href="https://preppronetwork.vercel.app/apps" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/7xm5w42r/image.png" alt="ALLEN AND MORE OTHER BACHES PLATFORM" class="app-icon">
+            <div class="app-info">
+              <h3>ALLEN AND MORE OTHER BACHES PLATFORM</h3>
+              <p>Access premier ALLEN batches along with multiple elite coaching platform courses.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- ALL COMPETITION CLASS BACHES ALL PLATFORM -->
+        <a href="https://www.allcompetitionclasses.com/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/nNkyYLHM/Chat-GPT-Image-Aug-12-2026-08-08-06-AM.png" alt="ALL COMPETITION CLASS BACHES ALL PLATFORM" class="app-icon">
+            <div class="app-info">
+              <h3>ALL COMPETITION CLASS BACHES ALL PLATFORM</h3>
+              <p>Access batches and courses across all major competition preparation platforms.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- PARMAR BACHES AND MORE OTHER BACHES -->
+        <a href="https://tgdoraemon.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/nMpJckgQ/image.png" alt="PARMAR BACHES AND MORE OTHER BACHES" class="app-icon">
+            <div class="app-info">
+              <h3>PARMAR BACHES AND MORE OTHER BACHES</h3>
+              <p>Access specialized Parmar courses along with other top competitive batches.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- APNA COLLEGE -->
+        <a href="https://studyapkmod-apnacollege.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/zWgGFd2g/image.png" alt="APNA COLLEGE" class="app-icon">
+            <div class="app-info">
+              <h3>APNA COLLEGE</h3>
+              <p>Master coding, web development, DSA and tech courses with expert guidance.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- YOUTUBE MASTERCLASS -->
+        <a href="https://drive.google.com/drive/folders/11foeRsMRUa_y_sGmaUPzjhNek6Tp9pJu" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/hR9Tznx3/image.png" alt="Youtube Masterclass" class="app-icon">
+            <div class="app-info">
+              <h3>Youtube Masterclass - Complete A To Z Creator Guide</h3>
+              <p>A to Z guide about YouTube ideation, scripting, recording, editing, and uploading to build a successful channel.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> COURSE AVAILABLE</div>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Reveal Text & Button Exactly 1 Second After Logo Display
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const content = document.getElementById('landing-content');
+        if (content) {
+          content.classList.add('show');
         }
+      }, 1000);
+    });
 
-        // HTML Generator for Platform Cards
-        function createCardHTML(platform) {
-            return `
-                <div class="card" onclick="openPlatform('${platform.link}', '${platform.name}')">
-                    ${platform.badge ? `<span class="badge-new">${platform.badge}</span>` : ''}
-                    <div class="card-img-wrapper">
-                        <img src="${platform.logo}" alt="${platform.name}" class="card-img" onerror="this.src='https://i.ibb.co/MxKgrYny/Careerwill.jpg'">
-                    </div>
-                    <div class="card-title">${platform.name}</div>
-                </div>
-            `;
-        }
+    // Open Main Dashboard Screen
+    function openDashboard() {
+      vibratePhone(50);
+      const landing = document.getElementById('landing-page');
+      landing.style.opacity = '0';
+      
+      setTimeout(() => {
+        landing.style.display = 'none';
+        document.getElementById('main-content').style.display = 'flex';
+      }, 500);
+    }
 
-        // Render Cards into Respective Grids
-        function renderAllSections() {
-            const pwContainer = document.getElementById('pwSection');
-            const kgsContainer = document.getElementById('kgsSection');
-            const schoolContainer = document.getElementById('schoolSection');
-            const compContainer = document.getElementById('compSection');
+    // Phone Vibration Trigger Function
+    function vibratePhone(ms) {
+      if ("vibrate" in navigator) {
+        navigator.vibrate(ms);
+      }
+    }
+  </script>
 
-            if (pwContainer) {
-                pwContainer.innerHTML = getSortedPlatformsBySection('pw')
-                    .map(createCardHTML)
-                    .join('');
-            }
-
-            if (kgsContainer) {
-                kgsContainer.innerHTML = getSortedPlatformsBySection('kgs')
-                    .map(createCardHTML)
-                    .join('');
-            }
-
-            if (schoolContainer) {
-                schoolContainer.innerHTML = getSortedPlatformsBySection('school')
-                    .map(createCardHTML)
-                    .join('');
-            }
-
-            if (compContainer) {
-                compContainer.innerHTML = getSortedPlatformsBySection('comp')
-                    .map(createCardHTML)
-                    .join('');
-            }
-        }
-    </script>
-    
-        <script>
-        // Haptic Feedback Trigger
-        function vibratePhone() {
-            if (navigator.vibrate) {
-                navigator.vibrate(40);
-            }
-        }
-
-        // Scroll to Top Smoothly
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // External Link Handlers
-        function openTelegramChannel() {
-            window.open('https://t.me/satyaallpremiumbaches', '_blank');
-        }
-
-        // WebView Modal Operations
-        function openPlatform(url, title) {
-            vibratePhone();
-            const modal = document.getElementById('webviewModal');
-            const iframe = document.getElementById('platformIFrame');
-            const modalTitle = document.getElementById('modalTitle');
-
-            if (modal && iframe && modalTitle) {
-                modalTitle.innerText = title || "Loading...";
-                iframe.src = url;
-                modal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeWebView() {
-            const modal = document.getElementById('webviewModal');
-            const iframe = document.getElementById('platformIFrame');
-
-            if (modal) {
-                modal.style.display = 'none';
-            }
-            if (iframe) {
-                iframe.src = 'about:blank';
-            }
-            document.body.style.overflow = 'auto';
-        }
-
-        function reloadWebView() {
-            const iframe = document.getElementById('platformIFrame');
-            if (iframe && iframe.src !== 'about:blank') {
-                iframe.src = iframe.src;
-            }
-        }
-
-        // Search & Filter System
-        function filterPlatforms() {
-            const query = document.getElementById('searchInput').value.toLowerCase().trim();
-            const allCards = document.querySelectorAll('.card');
-
-            allCards.forEach(card => {
-                const titleText = card.querySelector('.card-title').innerText.toLowerCase();
-                const badgeElement = card.querySelector('.badge-new');
-                const badgeText = badgeElement ? badgeElement.innerText.toLowerCase() : '';
-
-                if (titleText.includes(query) || badgeText.includes(query)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // Category Section Filter
-        function filterCategory(category) {
-            const sections = [
-                { id: 'pwSection', key: 'pw' },
-                { id: 'kgsSection', key: 'kgs' },
-                { id: 'schoolSection', key: 'school' },
-                { id: 'compSection', key: 'comp' }
-            ];
-
-            sections.forEach(sec => {
-                const grid = document.getElementById(sec.id);
-                const titleHeader = grid ? grid.previousElementSibling : null;
-
-                if (category === 'all' || sec.key === category) {
-                    if (grid) grid.style.display = 'grid';
-                    if (titleHeader && titleHeader.classList.contains('section-title')) {
-                        titleHeader.style.display = 'flex';
-                    }
-                } else {
-                    if (grid) grid.style.display = 'none';
-                    if (titleHeader && titleHeader.classList.contains('section-title')) {
-                        titleHeader.style.display = 'none';
-                    }
-                }
-            });
-        }
-    </script>
-    
-        <script>
-        // DOM Readiness Initialization
-        document.addEventListener('DOMContentLoaded', function() {
-            // Render all platform cards dynamically
-            renderAllSections();
-        });
-
-        // Hardware Back Button Handler for Mobile WebView Containers
-        window.addEventListener('popstate', function(event) {
-            const modal = document.getElementById('webviewModal');
-            if (modal && modal.style.display === 'flex') {
-                closeWebView();
-                // Prevent exiting the app when closing modal
-                history.pushState(null, null, window.location.href);
-            }
-        });
-
-        // Push initial state to trap back button for modal closing
-        history.pushState(null, null, window.location.href);
-    </script>
 </body>
 </html>
