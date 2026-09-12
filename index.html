@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rajnish Prime - All Premium Batches</title>
-    <!-- Google Fonts & FontAwesome Icons -->
+    <!-- Google Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -104,34 +104,13 @@
             transform: translateY(-50%);
             color: var(--text-secondary);
         }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header class="app-header">
-        <div class="brand-container">
-            <img src="https://i.ibb.co/MxKgrYny/Careerwill.jpg" alt="Logo" class="brand-logo">
-            <div class="brand-title">RAJNISH PRIME</div>
-        </div>
-        <div class="header-actions">
-            <i class="fa-solid fa-bell" onclick="vibratePhone(); alert('No new notifications!');"></i>
-        </div>
-    </header>
 
-    <!-- Search Section -->
-    <div class="search-box">
-        <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        <input type="text" id="searchInput" class="search-input" placeholder="Search platforms, batches..." onkeyup="filterPlatforms()">
-    </div>
-    
-        <style>
-        /* Main Container & Section Layout */
         .container {
             padding: 0 20px;
         }
 
         .section-title {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--text-secondary);
             margin: 24px 0 12px 0;
@@ -142,14 +121,13 @@
             gap: 8px;
         }
 
-        /* Platform Grid Layout */
+        /* Platform Card Grid Layout */
         .platform-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
             gap: 14px;
         }
 
-        /* Individual Platform Cards */
         .card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -161,7 +139,7 @@
             justify-content: center;
             text-align: center;
             cursor: pointer;
-            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.2s ease, border-color 0.2s ease;
             position: relative;
             overflow: hidden;
         }
@@ -172,7 +150,6 @@
 
         .card:hover {
             border-color: var(--accent-color);
-            box-shadow: var(--shadow);
         }
 
         .card-img-wrapper {
@@ -184,7 +161,6 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 8px;
-            padding: 2px;
         }
 
         .card-img {
@@ -219,7 +195,7 @@
             text-transform: uppercase;
         }
 
-        /* Navigation Bottom Bar */
+        /* Bottom Bar */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -253,56 +229,66 @@
         .nav-item i {
             font-size: 1.2rem;
         }
+
+        /* Modal Screen */
+        #webviewModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 1000;
+            flex-direction: column;
+        }
     </style>
-    
-        <!-- Main Platform Grid Container -->
+</head>
+
+<body>
+
+    <!-- Application Header -->
+    <header class="app-header">
+        <div class="brand-container">
+            <img src="https://i.ibb.co/MxKgrYny/Careerwill.jpg" alt="Rajnish Prime Logo" class="brand-logo">
+            <div class="brand-title">RAJNISH PRIME</div>
+        </div>
+        <div class="header-actions">
+            <i class="fa-solid fa-bell" style="font-size: 1.1rem; color: var(--text-secondary); cursor: pointer;" onclick="vibratePhone(); alert('No new notifications!');"></i>
+        </div>
+    </header>
+
+    <!-- Interactive Search Bar -->
+    <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search platforms, batches..." onkeyup="filterPlatforms()">
+    </div>
+
+    <!-- Main Dynamic Content Container -->
     <div class="container" id="mainContent">
-
-        <!-- Announcement Banner -->
-        <div style="background: linear-gradient(135deg, #1e1b4b, #312e81); border: 1px solid #4338ca; border-radius: var(--radius); padding: 14px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">
-            <i class="fa-solid fa-bullhorn" style="font-size: 1.5rem; color: #818cf8;"></i>
-            <div>
-                <div style="font-size: 0.85rem; font-weight: 600; color: #e0e7ff;">Welcome to Rajnish Prime</div>
-                <div style="font-size: 0.72rem; color: #c7d2fe;">Select any platform module below to open batches & materials directly.</div>
-            </div>
-        </div>
-
-        <!-- Section 1: Physics Wallah Modules -->
+        <!-- Physics Wallah (PW) Section -->
         <div class="section-title">
-            <i class="fa-solid fa-graduation-cap" style="color: #3b82f6;"></i>
-            <span>Physics Wallah (PW) Modules</span>
+            <i class="fa-solid fa-graduation-cap" style="color: #3b82f6;"></i> Physics Wallah (PW)
         </div>
-        <div class="platform-grid" id="pwSection">
-            <!-- PW Cards will load here -->
-        </div>
+        <div class="platform-grid" id="pwSection"></div>
 
-        <!-- Section 2: Khan Global Studies (KGS) Modules -->
+        <!-- Khan Global Studies (KGS) Section -->
         <div class="section-title">
-            <i class="fa-solid fa-book-bookmark" style="color: #10b981;"></i>
-            <span>Khan Global Studies (KGS)</span>
+            <i class="fa-solid fa-book-bookmark" style="color: #10b981;"></i> Khan Global Studies (KGS)
         </div>
-        <div class="platform-grid" id="kgsSection">
-            <!-- KGS Cards will load here -->
-        </div>
+        <div class="platform-grid" id="kgsSection"></div>
 
-        <!-- Section 3: State Board & Schooling Modules -->
+        <!-- Schooling & State Boards Section -->
         <div class="section-title">
-            <i class="fa-solid fa-school" style="color: #f59e0b;"></i>
-            <span>State Boards & Schooling</span>
+            <i class="fa-solid fa-school" style="color: #f59e0b;"></i> Schooling & State Boards
         </div>
-        <div class="platform-grid" id="schoolSection">
-            <!-- Schooling Cards will load here -->
-        </div>
+        <div class="platform-grid" id="schoolSection"></div>
 
-        <!-- Section 4: General Competitive Exam Modules -->
+        <!-- Competitive Exams & Individual Faculty Section -->
         <div class="section-title">
-            <i class="fa-solid fa-award" style="color: #ec4899;"></i>
-            <span>Competitive Exam Modules</span>
+            <i class="fa-solid fa-award" style="color: #ec4899;"></i> Competitive Exams
         </div>
-        <div class="platform-grid" id="compSection">
-            <!-- Competitive Exam Cards will load here -->
-        </div>
-
+        <div class="platform-grid" id="compSection"></div>
     </div>
     
         <!-- Bottom Navigation Bar -->
@@ -319,18 +305,18 @@
             <i class="fa-brands fa-telegram"></i>
             <span>Telegram</span>
         </a>
-        <a class="nav-item" onclick="vibratePhone(); showAppInfo();">
+        <a class="nav-item" onclick="vibratePhone(); alert('Rajnish Prime v3.0\nCreated for seamless premium learning platform access.');">
             <i class="fa-solid fa-circle-info"></i>
             <span>About</span>
         </a>
     </nav>
 
     <!-- Fullscreen WebView Modal Container -->
-    <div id="webviewModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 1000; flex-direction: column;">
+    <div id="webviewModal">
         <div style="height: 50px; background: var(--bg-secondary); border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; padding: 0 16px;">
             <div style="display: flex; align-items: center; gap: 10px;">
                 <i class="fa-solid fa-arrow-left" style="font-size: 1.2rem; cursor: pointer; color: var(--text-primary);" onclick="vibratePhone(); closeWebView();"></i>
-                <span id="modalTitle" style="font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">Loading Platform...</span>
+                <span id="modalTitle" style="font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">Loading...</span>
             </div>
             <div style="display: flex; gap: 16px;">
                 <i class="fa-solid fa-rotate-right" style="font-size: 1.1rem; cursor: pointer; color: var(--text-secondary);" onclick="vibratePhone(); reloadWebView();"></i>
@@ -340,47 +326,43 @@
         <iframe id="platformIFrame" style="width: 100%; height: calc(100% - 50px); border: none; background: #ffffff;" src="about:blank"></iframe>
     </div>
 
-    <!-- Core JavaScript Module Initialization -->
+    <!-- Central JavaScript Data Registry (Part 1: PW & KGS) -->
     <script>
-        // Haptic Feedback Helper
-        function vibratePhone() {
-            if (navigator.vibrate) {
-                navigator.vibrate(40);
-            }
-        }
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function openTelegramChannel() {
-            window.open('https://t.me/satyaallpremiumbaches', '_blank');
-        }
-
-        function showAppInfo() {
-            alert("Rajnish Prime Mobile Dashboard v3.0\nCreated for seamless premium learning platform access.");
-        }
-    </script>
-    
-        <script>
-        // Centralized Platform Data Registry
         const platformsData = [
-            // --- PHYSICS WALLAH (PW) MODULES ---
+            // --- PHYSICS WALLAH (PW) ---
             {
                 id: "pw_books",
                 name: "PW ALL BOOKS LIBRARY",
                 section: "pw",
-                priority: 1, // Mandatory Top Position in PW Section
-                logo: "https://i.ibb.co/MxKgrYny/Careerwill.jpg",
+                priority: 1, // Priority #1 Top Position
+                logo: "https://i.ibb.co/LzdSdt9R/PW.jpg",
                 link: "https://pwxbooks.pages.dev/",
                 badge: "LIBRARY"
+            },
+            {
+                id: "pw_1",
+                name: "PW 1",
+                section: "pw",
+                priority: 2,
+                logo: "https://i.ibb.co/LzdSdt9R/PW.jpg",
+                link: "https://rajnishkumars3721-cmyk.github.io/PW-FREE-ONLINE-PREMIUM-STUDY/",
+                badge: ""
+            },
+            {
+                id: "pw_2",
+                name: "PW 2",
+                section: "pw",
+                priority: 3,
+                logo: "https://i.ibb.co/LzdSdt9R/PW.jpg",
+                link: "https://rajnishkumars3721-cmyk.github.io/PW-MODULE-2/",
+                badge: ""
             },
             {
                 id: "pw_3",
                 name: "PW 3",
                 section: "pw",
-                priority: 2,
-                logo: "https://i.ibb.co/MxKgrYny/Careerwill.jpg",
+                priority: 4,
+                logo: "https://i.ibb.co/LzdSdt9R/PW.jpg",
                 link: "https://learnex.vercel.app/PW",
                 badge: "BATCHES"
             },
@@ -388,19 +370,28 @@
                 id: "pw_4",
                 name: "PW 4",
                 section: "pw",
-                priority: 3,
-                logo: "https://i.ibb.co/MxKgrYny/Careerwill.jpg",
+                priority: 5,
+                logo: "https://i.ibb.co/LzdSdt9R/PW.jpg",
                 link: "https://xyro-pw.ai.studio/",
                 badge: "NEW"
             },
 
-            // --- KHAN GLOBAL STUDIES (KGS) MODULES ---
+            // --- KHAN GLOBAL STUDIES (KGS) ---
+            {
+                id: "kgs_1",
+                name: "KGS 1",
+                section: "kgs",
+                priority: 1,
+                logo: "https://i.ibb.co/d04KzC9Q/Kgs.jpg",
+                link: "https://rajnishkumars3721-cmyk.github.io/KGS-FREE-ONLINE-STUDY-RAJNISH-PRIME/",
+                badge: ""
+            },
             {
                 id: "kgs_2",
                 name: "KGS 2",
                 section: "kgs",
-                priority: 1,
-                logo: "https://i.ibb.co/MxKgrYny/Careerwill.jpg",
+                priority: 2,
+                logo: "https://i.ibb.co/d04KzC9Q/Kgs.jpg",
                 link: "https://studyapkmodkgs.vercel.app/course",
                 badge: "COURSES"
             },
@@ -408,17 +399,17 @@
                 id: "kgs_3",
                 name: "KGS 3",
                 section: "kgs",
-                priority: 2,
-                logo: "https://i.ibb.co/MxKgrYny/Careerwill.jpg",
+                priority: 3,
+                logo: "https://i.ibb.co/d04KzC9Q/Kgs.jpg",
                 link: "https://www.study-mate.in/batches",
                 badge: "BATCHES"
             },
             {
-                id: "kgs_test_series",
+                id: "kgs_test",
                 name: "KGS Test Series",
                 section: "kgs",
-                priority: 3,
-                logo: "https://i.ibb.co/MxKgrYny/Careerwill.jpg",
+                priority: 4,
+                logo: "https://i.ibb.co/d04KzC9Q/Kgs.jpg",
                 link: "https://www.study-mate.in/test-series",
                 badge: "TESTS"
             }
@@ -426,10 +417,11 @@
     </script>
     
         <script>
-        // Extending Registry: Schooling & State Board Platforms
-        const schoolPlatforms = [
+        // Central JavaScript Data Registry (Part 2: Schooling & Competitive Exams)
+        const additionalPlatforms = [
+            // --- SCHOOLING & STATE BOARDS ---
             {
-                id: "padhle_akshay_1",
+                id: "padhle_1",
                 name: "PADHLE AKSHAY",
                 section: "school",
                 priority: 1,
@@ -438,7 +430,7 @@
                 badge: "CLASS 9-10"
             },
             {
-                id: "padhle_akshay_2",
+                id: "padhle_2",
                 name: "PADHLE AKSHAY 2",
                 section: "school",
                 priority: 2,
@@ -451,7 +443,7 @@
                 name: "TARGET BOARD",
                 section: "school",
                 priority: 3,
-                logo: "https://i.ibb.co/MxKgrYny/Careerwill.jpg",
+                logo: "https://i.ibb.co/Q3BkWjXN/Target-board.jpg",
                 link: "https://studyapkmod-targetboard.vercel.app/",
                 badge: "BIHAR BOARD"
             },
@@ -460,7 +452,7 @@
                 name: "VIDYAKUL",
                 section: "school",
                 priority: 4,
-                logo: "https://i.ibb.co/MxKgrYny/Careerwill.jpg",
+                logo: "https://i.ibb.co/bgp130K/vidyakul.jpg",
                 link: "https://vidyakul.nextmate.site/",
                 badge: "STATE BOARD"
             },
@@ -469,106 +461,126 @@
                 name: "VIDYAKUL 2",
                 section: "school",
                 priority: 5,
-                logo: "https://i.ibb.co/MxKgrYny/Careerwill.jpg",
+                logo: "https://i.ibb.co/bgp130K/vidyakul.jpg",
                 link: "https://trmsvidyakul.nextmate.site/batches",
                 badge: "BATCHES"
-            }
-        ];
+            },
 
-        // Append to central registry
-        platformsData.push(...schoolPlatforms);
-    </script>
-    
-        <script>
-        // Extending Registry: Competitive Exam & Individual Faculty Platforms
-        const compPlatforms = [
+            // --- COMPETITIVE EXAMS & OTHER PLATFORMS ---
             {
-                id: "next_toppers_2",
-                name: "NEXT Toppers 2",
+                id: "nt_1",
+                name: "NEXT Toppers 1",
                 section: "comp",
                 priority: 1,
-                logo: "https://i.ibb.co/MxKgrYny/Careerwill.jpg",
+                logo: "https://i.ibb.co/93233cSp/Next-toppers.jpg",
+                link: "https://rajnishkumars3721-cmyk.github.io/NEXT-TOPPERS-RAJNISH-PRIME/",
+                badge: ""
+            },
+            {
+                id: "nt_2",
+                name: "NEXT Toppers 2",
+                section: "comp",
+                priority: 2,
+                logo: "https://i.ibb.co/93233cSp/Next-toppers.jpg",
                 link: "https://learnex.vercel.app/NT",
                 badge: "LIVE"
             },
             {
-                id: "selection_way_2",
-                name: "SELECTION WAY 2",
-                section: "comp",
-                priority: 2,
-                logo: "https://i.ibb.co/MxKgrYny/Careerwill.jpg",
-                link: "https://learnex.vercel.app/SW",
-                badge: "SSC/RAILWAY"
-            },
-            {
-                id: "selection_way_3",
-                name: "SELECTION WAY 3",
+                id: "sw_1",
+                name: "SELECTION WAY 1",
                 section: "comp",
                 priority: 3,
-                logo: "https://i.ibb.co/MxKgrYny/Careerwill.jpg",
+                logo: "https://i.ibb.co/kV970kP8/selection-way.jpg",
+                link: "https://rajnishkumars3721-cmyk.github.io/SELECTION-WAY-RAJNISH-PRIME/",
+                badge: ""
+            },
+            {
+                id: "sw_2",
+                name: "SELECTION WAY 2",
+                section: "comp",
+                priority: 4,
+                logo: "https://i.ibb.co/kV970kP8/selection-way.jpg",
+                link: "https://learnex.vercel.app/SW",
+                badge: "SSC"
+            },
+            {
+                id: "sw_3",
+                name: "SELECTION WAY 3",
+                section: "comp",
+                priority: 5,
+                logo: "https://i.ibb.co/kV970kP8/selection-way.jpg",
                 link: "https://deltastudy.fun/sway",
                 badge: "NEW"
             },
             {
-                id: "munil_sir",
+                id: "munil",
                 name: "MUNIL SIR",
                 section: "comp",
-                priority: 4,
+                priority: 6,
                 logo: "https://i.ibb.co/YTJwS9Zs/image.jpg",
                 link: "https://deltastudy.fun/munilsir",
                 badge: "SPECIAL"
             },
             {
-                id: "md_classes",
+                id: "md",
                 name: "MD CLASSES",
                 section: "comp",
-                priority: 5,
+                priority: 7,
                 logo: "https://i.ibb.co/gZxRJDkG/image.jpg",
                 link: "https://mdclassesx.vercel.app/",
-                badge: "GOVT EXAMS"
+                badge: "GOVT"
             },
             {
-                id: "carrier_will_2",
+                id: "cw_1",
+                name: "CARRIER WILL 1",
+                section: "comp",
+                priority: 8,
+                logo: "https://i.ibb.co/MxKgrYny/Careerwill.jpg",
+                link: "https://rajnishkumars3721-cmyk.github.io/CARRIERWILL-ONLINE-FREE-BATCHES-RAJNISH-PRIME/",
+                badge: ""
+            },
+            {
+                id: "cw_2",
                 name: "CARRIER WILL 2",
                 section: "comp",
-                priority: 6,
+                priority: 9,
                 logo: "https://i.ibb.co/MxKgrYny/Careerwill.jpg",
                 link: "https://runtkyp.xo.je/?i=1",
                 badge: "VIP"
             },
             {
-                id: "rg_vikramjeet",
+                id: "rg",
                 name: "RG Vikramjeet",
                 section: "comp",
-                priority: 7,
-                logo: "https://share.google/zhHFii97GOlycLSBf",
+                priority: 10,
+                logo: "https://i.ibb.co/YFZ5L53y/image.jpg",
                 link: "https://learnbyakp.site/vikaram",
-                badge: "MATHS/REASONING"
+                badge: "MATHS"
             },
             {
-                id: "cds_journey",
+                id: "cds",
                 name: "CDS journey",
                 section: "comp",
-                priority: 8,
+                priority: 11,
                 logo: "https://i.ibb.co/YFZ5L53y/image.jpg",
                 link: "https://spidyuniversecds.vercel.app/",
                 badge: "DEFENCE"
             }
         ];
 
-        // Append to central registry
-        platformsData.push(...compPlatforms);
+        // Merge all platforms into master array
+        platformsData.push(...additionalPlatforms);
     </script>
     
         <script>
-        // Sorting Logic: Sorts platforms within each section by priority
+        // Sort Platforms by Priority Order
         function getSortedPlatformsBySection(sectionName) {
             return platformsData
                 .filter(item => item.section === sectionName)
                 .sort((a, b) => a.priority - b.priority);
         }
 
-        // HTML Generator for Individual Platform Cards
+        // HTML Generator for Platform Cards
         function createCardHTML(platform) {
             return `
                 <div class="card" onclick="openPlatform('${platform.link}', '${platform.name}')">
@@ -581,7 +593,7 @@
             `;
         }
 
-        // Core Rendering Engine: Populate grids dynamically
+        // Render Cards into Respective Grids
         function renderAllSections() {
             const pwContainer = document.getElementById('pwSection');
             const kgsContainer = document.getElementById('kgsSection');
@@ -615,26 +627,38 @@
     </script>
     
         <script>
-        // Open Platform in Modal Viewer or External Tab
+        // Haptic Feedback Trigger
+        function vibratePhone() {
+            if (navigator.vibrate) {
+                navigator.vibrate(40);
+            }
+        }
+
+        // Scroll to Top Smoothly
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // External Link Handlers
+        function openTelegramChannel() {
+            window.open('https://t.me/satyaallpremiumbaches', '_blank');
+        }
+
+        // WebView Modal Operations
         function openPlatform(url, title) {
             vibratePhone();
-            
             const modal = document.getElementById('webviewModal');
             const iframe = document.getElementById('platformIFrame');
             const modalTitle = document.getElementById('modalTitle');
 
-            if (!modal || !iframe) return;
-
-            // Set Title & Source URL
-            modalTitle.innerText = title || "Loading...";
-            iframe.src = url;
-
-            // Display Modal with Flex Layout
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Lock background scroll
+            if (modal && iframe && modalTitle) {
+                modalTitle.innerText = title || "Loading...";
+                iframe.src = url;
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
         }
 
-        // Close WebView Modal
         function closeWebView() {
             const modal = document.getElementById('webviewModal');
             const iframe = document.getElementById('platformIFrame');
@@ -643,30 +667,27 @@
                 modal.style.display = 'none';
             }
             if (iframe) {
-                iframe.src = 'about:blank'; // Clear memory/state
+                iframe.src = 'about:blank';
             }
-
-            document.body.style.overflow = 'auto'; // Restore background scroll
+            document.body.style.overflow = 'auto';
         }
 
-        // Reload current active WebView
         function reloadWebView() {
             const iframe = document.getElementById('platformIFrame');
             if (iframe && iframe.src !== 'about:blank') {
                 iframe.src = iframe.src;
             }
         }
-    </script>
-    
-        <script>
-        // Real-time Search Engine Across All Sections
+
+        // Search & Filter System
         function filterPlatforms() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             const allCards = document.querySelectorAll('.card');
 
             allCards.forEach(card => {
                 const titleText = card.querySelector('.card-title').innerText.toLowerCase();
-                const badgeText = card.querySelector('.badge-new') ? card.querySelector('.badge-new').innerText.toLowerCase() : '';
+                const badgeElement = card.querySelector('.badge-new');
+                const badgeText = badgeElement ? badgeElement.innerText.toLowerCase() : '';
 
                 if (titleText.includes(query) || badgeText.includes(query)) {
                     card.style.display = 'flex';
@@ -674,44 +695,22 @@
                     card.style.display = 'none';
                 }
             });
-
-            // Auto-hide Section Headers if no visible cards remain in that section
-            const sections = ['pwSection', 'kgsSection', 'schoolSection', 'compSection'];
-            sections.forEach(secId => {
-                const secGrid = document.getElementById(secId);
-                if (secGrid) {
-                    const visibleCards = secGrid.querySelectorAll('.card[style*="display: flex"]');
-                    const titleHeader = secGrid.previousElementSibling;
-                    
-                    if (query !== "" && visibleCards.length === 0) {
-                        if (titleHeader && titleHeader.classList.contains('section-title')) {
-                            titleHeader.style.display = 'none';
-                        }
-                    } else {
-                        if (titleHeader && titleHeader.classList.contains('section-title')) {
-                            titleHeader.style.display = 'flex';
-                        }
-                    }
-                }
-            });
         }
-    </script>
-    
-        <script>
-        // Category Filter Functionality for Bottom Navigation / Quick Toggles
+
+        // Category Section Filter
         function filterCategory(category) {
             const sections = [
-                { id: 'pwSection', cat: 'pw' },
-                { id: 'kgsSection', cat: 'kgs' },
-                { id: 'schoolSection', cat: 'school' },
-                { id: 'compSection', cat: 'comp' }
+                { id: 'pwSection', key: 'pw' },
+                { id: 'kgsSection', key: 'kgs' },
+                { id: 'schoolSection', key: 'school' },
+                { id: 'compSection', key: 'comp' }
             ];
 
             sections.forEach(sec => {
                 const grid = document.getElementById(sec.id);
                 const titleHeader = grid ? grid.previousElementSibling : null;
 
-                if (category === 'all' || sec.cat === category) {
+                if (category === 'all' || sec.key === category) {
                     if (grid) grid.style.display = 'grid';
                     if (titleHeader && titleHeader.classList.contains('section-title')) {
                         titleHeader.style.display = 'flex';
@@ -723,143 +722,28 @@
                     }
                 }
             });
-
-            // Reset Search Input on category switch
-            const searchInput = document.getElementById('searchInput');
-            if (searchInput) {
-                searchInput.value = '';
-                filterPlatforms();
-            }
         }
     </script>
     
         <script>
-        // Native Android Integration Bridge
-        const AndroidBridge = {
-            // Check if App is running inside Android WebView Container
-            isNativeApp: function() {
-                return (typeof Android !== "undefined" && window.Android);
-            },
-
-            // Trigger Device Vibration via Native Bridge or Web API
-            vibrate: function(milliseconds) {
-                if (this.isNativeApp() && typeof Android.vibrate === "function") {
-                    Android.vibrate(milliseconds || 40);
-                } else if (navigator.vibrate) {
-                    navigator.vibrate(milliseconds || 40);
-                }
-            },
-
-            // Send custom event logging to Android native code
-            logEvent: function(eventName, payload) {
-                if (this.isNativeApp() && typeof Android.logEvent === "function") {
-                    Android.logEvent(eventName, JSON.stringify(payload || {}));
-                }
-            },
-
-            // Request Native Android Toast Notification
-            showToast: function(message) {
-                if (this.isNativeApp() && typeof Android.showToast === "function") {
-                    Android.showToast(message);
-                } else {
-                    alert(message);
-                }
-            }
-        };
-
-        // Override default vibration with unified bridge function
-        function vibratePhone() {
-            AndroidBridge.vibrate(40);
-        }
-    </script>
-    
-        <script>
-        // Network Status Management & Offline Handling
-        function initNetworkMonitor() {
-            window.addEventListener('online', updateOnlineStatus);
-            window.addEventListener('offline', updateOnlineStatus);
-        }
-
-        function updateOnlineStatus() {
-            const isOnline = navigator.onLine;
-            let offlineBanner = document.getElementById('offlineBanner');
-
-            if (!isOnline) {
-                if (!offlineBanner) {
-                    offlineBanner = document.createElement('div');
-                    offlineBanner.id = 'offlineBanner';
-                    offlineBanner.style.cssText = `
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        background: #ef4444;
-                        color: #ffffff;
-                        text-align: center;
-                        padding: 8px 12px;
-                        font-size: 0.8rem;
-                        font-weight: 600;
-                        z-index: 2000;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        gap: 8px;
-                    `;
-                    offlineBanner.innerHTML = `<i class="fa-solid fa-wifi"></i> No Internet Connection. Check network!`;
-                    document.body.prepend(offlineBanner);
-                }
-            } else {
-                if (offlineBanner) {
-                    offlineBanner.remove();
-                }
-            }
-        }
-
-        // Image Load Error Handler
-        function handleImageError(imgElement) {
-            imgElement.onerror = null;
-            imgElement.src = 'https://i.ibb.co/MxKgrYny/Careerwill.jpg';
-        }
-    </script>
-    
-        <script>
-        // DOM Initialization & Bootstrapper Sequence
+        // DOM Readiness Initialization
         document.addEventListener('DOMContentLoaded', function() {
-            // 1. Render all registered platform cards dynamically
+            // Render all platform cards dynamically
             renderAllSections();
-
-            // 2. Initialize Network Monitoring Engine
-            initNetworkMonitor();
-
-            // 3. Log Application Startup
-            AndroidBridge.logEvent('app_launched', { timestamp: Date.now() });
         });
 
-        // Hardware Back Button Handling for Android WebViews
+        // Hardware Back Button Handler for Mobile WebView Containers
         window.addEventListener('popstate', function(event) {
             const modal = document.getElementById('webviewModal');
             if (modal && modal.style.display === 'flex') {
                 closeWebView();
-                // Prevent navigating back out of the page if modal was open
+                // Prevent exiting the app when closing modal
                 history.pushState(null, null, window.location.href);
             }
         });
 
-        // Initialize history state on load for back-button capturing
+        // Push initial state to trap back button for modal closing
         history.pushState(null, null, window.location.href);
-    </script>
-    
-        <!-- Global Script Cleanup & Closing -->
-    <script>
-        // Final Execution Check & Fallback Trigger
-        (function verifyInitialization() {
-            // Verify if cards are populated, fallback to re-render if needed
-            const renderedCards = document.querySelectorAll('.card');
-            if (renderedCards.length === 0) {
-                console.warn('Re-executing platform render sequence...');
-                renderAllSections();
-            }
-        })();
     </script>
 </body>
 </html>
