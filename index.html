@@ -1060,24 +1060,45 @@
       document.getElementById('searchInput').focus();
     }
 
-    // Real-time Search Filter Function (Shows matching platforms first, and keeps all platforms visible below)
+    // Updated Real-time Search Filter Function (Shows matching platforms first, and keeps all other platforms below)
     function filterApps() {
       let input = document.getElementById('searchInput').value.toLowerCase().trim();
       let appsList = document.getElementById('appsList');
-      let cards = appsList.getElementsByClassName('app-card');
+      let cards = Array.from(appsList.getElementsByClassName('app-card'));
 
-      for (let i = 0; i < cards.length; i++) {
-        let title = cards[i].getElementsByTagName('h3')[0];
-        let desc = cards[i].getElementsByTagName('p')[0];
+      if (input === "") {
+        cards.forEach(card => card.style.display = "");
+        return;
+      }
+
+      let matchingCards = [];
+      let otherCards = [];
+
+      cards.forEach(card => {
+        let title = card.getElementsByTagName('h3')[0];
+        let desc = card.getElementsByTagName('p')[0];
         if (title || desc) {
           let textValue = (title.textContent || title.innerText) + " " + (desc.textContent || desc.innerText);
-          if (input === "" || textValue.toLowerCase().indexOf(input) > -1) {
-            cards[i].style.display = "";
+          if (textValue.toLowerCase().indexOf(input) > -1) {
+            matchingCards.push(card);
           } else {
-            cards[i].style.display = "none";
+            otherCards.push(card);
           }
         }
-      }
+      });
+
+      // Clear list and rearrange: matching cards first, followed by all other platforms below
+      appsList.innerHTML = "";
+      
+      matchingCards.forEach(card => {
+        card.style.display = "";
+        appsList.appendChild(card);
+      });
+
+      otherCards.forEach(card => {
+        card.style.display = "";
+        appsList.appendChild(card);
+      });
     }
 
     // Phone Vibration Trigger Function
