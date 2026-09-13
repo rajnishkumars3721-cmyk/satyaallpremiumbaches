@@ -169,7 +169,7 @@
       box-shadow: 0 0 8px #38bdf8; 
     }
     
-        /* Search Bar Styling (Placed right above platform cards inside apps section) */
+        /* Search Bar Styling */
     .search-wrapper {
       width: 100%;
       margin-bottom: 20px;
@@ -381,13 +381,13 @@
       <div class="stat-item"><div class="num">24/7</div><div class="label">Access</div></div>
     </div>
 
-    <!-- Apps Section Container (Search bar is now correctly placed here right above the platform list) -->
+    <!-- Apps Section Container -->
     <div class="section-container" id="apps">
       <p class="section-tag">Official Platforms</p>
       <h2 class="section-title">Explore Our Apps</h2>
       <p class="section-desc">Pick your platform and get instant free access to all premium batches.</p>
 
-      <!-- Search Bar (Appears right above platforms when Explore Apps is clicked) -->
+      <!-- Search Bar -->
       <div class="search-wrapper" id="searchWrapper">
         <span class="search-icon">🔍</span>
         <input type="text" id="searchInput" class="search-input" placeholder="Search batches, platforms or courses..." onkeyup="filterApps()">
@@ -1060,9 +1060,9 @@
       document.getElementById('searchInput').focus();
     }
 
-    // Real-time Search Filter Function for all available platforms
+    // Real-time Search Filter Function (Shows matching platforms first, and keeps all platforms visible below)
     function filterApps() {
-      let input = document.getElementById('searchInput').value.toLowerCase();
+      let input = document.getElementById('searchInput').value.toLowerCase().trim();
       let appsList = document.getElementById('appsList');
       let cards = appsList.getElementsByClassName('app-card');
 
@@ -1071,7 +1071,7 @@
         let desc = cards[i].getElementsByTagName('p')[0];
         if (title || desc) {
           let textValue = (title.textContent || title.innerText) + " " + (desc.textContent || desc.innerText);
-          if (textValue.toLowerCase().indexOf(input) > -1) {
+          if (input === "" || textValue.toLowerCase().indexOf(input) > -1) {
             cards[i].style.display = "";
           } else {
             cards[i].style.display = "none";
