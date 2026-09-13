@@ -168,12 +168,18 @@
       box-shadow: 0 0 8px #38bdf8; 
     }
 
-    /* Search Bar Styling */
+    /* Search Bar Styling (Hidden Initially, appears after Explore click) */
     .search-wrapper {
       width: 100%;
       max-width: 480px;
       margin-bottom: 24px;
       position: relative;
+      display: none;
+      animation: fadeInSearch 0.4s ease forwards;
+    }
+    @keyframes fadeInSearch {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .search-input {
       width: 100%;
@@ -353,8 +359,8 @@
       </div>
     </nav>
 
-    <!-- Search Bar (Appears after clicking Explore/Open Now) -->
-    <div class="search-wrapper">
+    <!-- Search Bar (Appears only after clicking Explore Apps) -->
+    <div class="search-wrapper" id="searchWrapper">
       <span class="search-icon">🔍</span>
       <input type="text" id="searchInput" class="search-input" placeholder="Search batches, platforms or courses..." onkeyup="filterApps()">
     </div>
@@ -367,7 +373,7 @@
       <p>Access premium paid courses from India's top ed-tech platforms — completely free. All your favourite educators, one place.</p>
       
       <div class="btn-group">
-        <a href="#apps" class="btn btn-primary" onclick="vibratePhone(40)">🚀 Explore Apps</a>
+        <a href="#apps" class="btn btn-primary" onclick="showSearchBar(); vibratePhone(40);">🚀 Explore Apps</a>
         <a href="https://t.me/+g0wmAK8VCGEwMTJl" class="btn btn-telegram" onclick="vibratePhone(40)">✈️ Join Telegram Channel</a>
         <a href="https://whatsapp.com/channel/0029VbDI4yFK5cDHjEHcNk16" class="btn btn-whatsapp" onclick="vibratePhone(40)">📢 Join WhatsApp Channel</a>
         <a href="https://youtube.com/@rajnishstudyshorts?si=mPxFar33SZb9pHjA" class="btn btn-youtube" onclick="vibratePhone(40)">📺 Subscribe YouTube</a>
@@ -1045,7 +1051,14 @@
       }, 500);
     }
 
-    // Real-time Search Filter Function
+    // Show Search Bar when Explore Apps button is clicked
+    function showSearchBar() {
+      const searchWrapper = document.getElementById('searchWrapper');
+      searchWrapper.style.display = 'block';
+      document.getElementById('searchInput').focus();
+    }
+
+    // Real-time Search Filter Function for all available platforms
     function filterApps() {
       let input = document.getElementById('searchInput').value.toLowerCase();
       let appsList = document.getElementById('appsList');
