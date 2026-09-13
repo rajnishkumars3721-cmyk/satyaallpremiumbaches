@@ -21,6 +21,7 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
     /* Landing / Splash Page Styling */
@@ -167,12 +168,11 @@
       border-radius: 2px; 
       box-shadow: 0 0 8px #38bdf8; 
     }
-
-    /* Search Bar Styling (Hidden Initially, appears after Explore click) */
+    
+        /* Search Bar Styling (Placed right above platform cards inside apps section) */
     .search-wrapper {
       width: 100%;
-      max-width: 480px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       position: relative;
       display: none;
       animation: fadeInSearch 0.4s ease forwards;
@@ -184,7 +184,7 @@
     .search-input {
       width: 100%;
       background: #111827;
-      border: 1.5px solid rgba(6, 182, 212, 0.3);
+      border: 1.5px solid rgba(6, 182, 212, 0.4);
       border-radius: 16px;
       padding: 14px 18px 14px 46px;
       color: #ffffff;
@@ -196,7 +196,7 @@
     }
     .search-input:focus {
       border-color: #06b6d4;
-      box-shadow: 0 0 20px rgba(6, 182, 212, 0.25);
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
     }
     .search-icon {
       position: absolute;
@@ -207,8 +207,8 @@
       color: #38bdf8;
       pointer-events: none;
     }
-    
-        .hero { 
+
+    .hero { 
       width: 100%; 
       max-width: 480px; 
       text-align: center; 
@@ -359,12 +359,6 @@
       </div>
     </nav>
 
-    <!-- Search Bar (Appears only after clicking Explore Apps) -->
-    <div class="search-wrapper" id="searchWrapper">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="searchInput" class="search-input" placeholder="Search batches, platforms or courses..." onkeyup="filterApps()">
-    </div>
-
     <header class="hero">
       <div class="pill-badge">
         <span class="dot"></span> 100% Free • Premium Courses Unlocked
@@ -373,7 +367,7 @@
       <p>Access premium paid courses from India's top ed-tech platforms — completely free. All your favourite educators, one place.</p>
       
       <div class="btn-group">
-        <a href="#apps" class="btn btn-primary" onclick="showSearchBar(); vibratePhone(40);">🚀 Explore Apps</a>
+        <button class="btn btn-primary" onclick="showSearchBar(); vibratePhone(40);">🚀 Explore Apps</button>
         <a href="https://t.me/+g0wmAK8VCGEwMTJl" class="btn btn-telegram" onclick="vibratePhone(40)">✈️ Join Telegram Channel</a>
         <a href="https://whatsapp.com/channel/0029VbDI4yFK5cDHjEHcNk16" class="btn btn-whatsapp" onclick="vibratePhone(40)">📢 Join WhatsApp Channel</a>
         <a href="https://youtube.com/@rajnishstudyshorts?si=mPxFar33SZb9pHjA" class="btn btn-youtube" onclick="vibratePhone(40)">📺 Subscribe YouTube</a>
@@ -387,10 +381,17 @@
       <div class="stat-item"><div class="num">24/7</div><div class="label">Access</div></div>
     </div>
 
+    <!-- Apps Section Container (Search bar is now correctly placed here right above the platform list) -->
     <div class="section-container" id="apps">
       <p class="section-tag">Official Platforms</p>
       <h2 class="section-title">Explore Our Apps</h2>
       <p class="section-desc">Pick your platform and get instant free access to all premium batches.</p>
+
+      <!-- Search Bar (Appears right above platforms when Explore Apps is clicked) -->
+      <div class="search-wrapper" id="searchWrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search batches, platforms or courses..." onkeyup="filterApps()">
+      </div>
 
       <div class="apps-list" id="appsList">
 
@@ -1051,10 +1052,11 @@
       }, 500);
     }
 
-    // Show Search Bar when Explore Apps button is clicked
+    // Show Search Bar and Scroll smoothly directly to Apps Section
     function showSearchBar() {
       const searchWrapper = document.getElementById('searchWrapper');
       searchWrapper.style.display = 'block';
+      document.getElementById('apps').scrollIntoView({ behavior: 'smooth' });
       document.getElementById('searchInput').focus();
     }
 
