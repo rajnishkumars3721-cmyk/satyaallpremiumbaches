@@ -8,12 +8,16 @@
   <meta name="theme-color" content="#080c14">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    
     body {
       background-color: #080c14;
+      background-image: 
+        radial-gradient(at 20% 20%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
+        radial-gradient(at 80% 80%, rgba(139, 92, 246, 0.08) 0px, transparent 50%);
       color: #ffffff;
       font-family: 'Plus Jakarta Sans', sans-serif;
       min-height: 100vh;
@@ -22,30 +26,30 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 20px 16px;
+      padding: 12px 16px;
       overflow-y: auto;
     }
 
     .landing-logo {
-      width: 90px;
-      height: 90px;
-      border-radius: 20px;
+      width: 85px;
+      height: 85px;
+      border-radius: 22px;
       object-fit: cover;
-      border: 3.5px solid #00d2ff;
-      box-shadow: 0 0 35px rgba(0, 210, 255, 0.65);
-      margin-bottom: 12px;
-      animation: pulseGlow 2s infinite ease-in-out;
+      border: 3px solid #00d2ff;
+      box-shadow: 0 0 30px rgba(0, 210, 255, 0.6);
+      margin-bottom: 8px;
+      animation: pulseGlow 2.5s infinite ease-in-out;
     }
 
     @keyframes pulseGlow {
-      0% { transform: scale(0.98); box-shadow: 0 0 25px rgba(0, 210, 255, 0.5); }
-      50% { transform: scale(1.03); box-shadow: 0 0 45px rgba(0, 210, 255, 0.85); }
-      100% { transform: scale(0.98); box-shadow: 0 0 25px rgba(0, 210, 255, 0.5); }
+      0% { transform: scale(0.98); box-shadow: 0 0 20px rgba(0, 210, 255, 0.4); }
+      50% { transform: scale(1.03); box-shadow: 0 0 40px rgba(0, 210, 255, 0.8); }
+      100% { transform: scale(0.98); box-shadow: 0 0 20px rgba(0, 210, 255, 0.4); }
     }
 
     .landing-content {
       width: 100%;
-      max-width: 400px;
+      max-width: 390px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -53,79 +57,121 @@
 
     .landing-title {
       font-family: 'Syne', sans-serif;
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: 2px;
-      margin-bottom: 16px;
-      color: #ffffff;
+      line-height: 1.1;
+      letter-spacing: 2.5px;
+      margin-bottom: 14px;
+      background: linear-gradient(180deg, #FFFFFF 0%, #CBD5E1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .task-locker-card {
-      background: #111827;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 18px 16px;
+      background: rgba(17, 24, 39, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      padding: 16px 14px;
       width: 100%;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-      margin-bottom: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      margin-bottom: 10px;
     }
 
     .task-locker-title {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 4px;
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 2px;
       color: #38bdf8;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;
+      letter-spacing: 0.5px;
     }
 
     .task-locker-desc {
       font-size: 11px;
       color: #94a3b8;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
+      font-weight: 500;
     }
 
+    /* Attractive Task Buttons */
     .task-btn {
       width: 100%;
-      padding: 12px 14px;
-      border-radius: 12px;
-      font-size: 13px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-size: 13.5px;
       font-weight: 700;
-      color: #fff;
-      border: none;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 10px;
       text-decoration: none;
-      transition: all 0.3s ease;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
     }
 
-    .task-btn-yt { background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); }
-    .task-btn-wa { background: linear-gradient(135deg, #22c55e 0%, #15803d 100%); }
-    .task-btn-tg { background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); }
-    .task-btn-ig { background: linear-gradient(135deg, #e1306c 0%, #c13584 100%); }
+    .task-btn:active {
+      transform: scale(0.97);
+    }
+
+    /* Vibrant Gradient Themes */
+    .task-btn-yt { 
+      background: linear-gradient(135deg, #FF0000 0%, #990000 100%);
+      box-shadow: 0 4px 18px rgba(255, 0, 0, 0.35);
+    }
+    .task-btn-wa { 
+      background: linear-gradient(135deg, #25D366 0%, #075E54 100%);
+      box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35);
+    }
+    .task-btn-tg { 
+      background: linear-gradient(135deg, #0088CC 0%, #004466 100%);
+      box-shadow: 0 4px 18px rgba(0, 136, 204, 0.35);
+    }
+    .task-btn-ig { 
+      background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      box-shadow: 0 4px 18px rgba(225, 48, 108, 0.35);
+    }
 
     .task-btn.completed {
-      background: #1f2937 !important;
-      color: #34d399 !important;
-      border: 1px solid #34d399;
+      background: rgba(16, 185, 129, 0.12) !important;
+      color: #10B981 !important;
+      border: 1.5px solid #10B981;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
       pointer-events: none;
     }
 
-    .status-msg {
-      font-size: 12px;
-      margin-top: 10px;
-      font-weight: 700;
-      padding: 10px;
+    .status-badge {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
       border-radius: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(4px);
+    }
+
+    .completed .status-badge {
+      background: #10B981;
+      color: #ffffff;
+    }
+
+    .status-msg {
+      font-size: 11.5px;
+      margin-top: 6px;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 10px;
       display: none;
       color: #34d399;
-      background: rgba(52, 211, 153, 0.15);
+      background: rgba(52, 211, 153, 0.12);
+      border: 1px solid rgba(52, 211, 153, 0.3);
     }
 
     .reset-link {
@@ -133,30 +179,37 @@
       color: #64748b;
       text-decoration: underline;
       cursor: pointer;
-      margin-top: 12px;
+      margin-top: 8px;
       display: inline-block;
+      transition: color 0.2s;
     }
 
+    .reset-link:hover {
+      color: #94a3b8;
+    }
+
+    /* Open Your Batch Now - Positioned Higher & Ultra-Attractive */
     .btn-open-now {
-      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      background: linear-gradient(135deg, #6366F1 0%, #A855F7 50%, #EC4899 100%);
       color: #ffffff;
-      font-size: 16px;
+      font-size: 15.5px;
       font-weight: 800;
-      padding: 15px 30px;
+      padding: 14px 20px;
       border-radius: 16px;
-      border: none;
+      border: 1px solid rgba(255, 255, 255, 0.3);
       cursor: pointer;
-      box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
+      box-shadow: 0 8px 30px rgba(168, 85, 247, 0.55);
       width: 100%;
       display: none;
-      animation: pulseGlowBtn 1.5s infinite ease-in-out;
+      animation: batchPulse 1.8s infinite cubic-bezier(0.4, 0, 0.6, 1);
       text-decoration: none;
+      letter-spacing: 0.5px;
     }
 
-    @keyframes pulseGlowBtn {
-      0% { transform: scale(1); box-shadow: 0 0 20px rgba(139, 92, 246, 0.5); }
-      50% { transform: scale(1.03); box-shadow: 0 0 35px rgba(139, 92, 246, 0.8); }
-      100% { transform: scale(1); box-shadow: 0 0 20px rgba(139, 92, 246, 0.5); }
+    @keyframes batchPulse {
+      0% { transform: translateY(0) scale(1); box-shadow: 0 8px 25px rgba(168, 85, 247, 0.5); }
+      50% { transform: translateY(-2px) scale(1.02); box-shadow: 0 12px 35px rgba(236, 72, 153, 0.75); }
+      100% { transform: translateY(0) scale(1); box-shadow: 0 8px 25px rgba(168, 85, 247, 0.5); }
     }
   </style>
 </head>
@@ -173,49 +226,47 @@
 
       <a href="https://www.youtube.com/@Rajnishstudyshorts" target="_blank" id="btn-yt" class="task-btn task-btn-yt" onclick="completeTask('yt')">
         <span>📺 Subscribe YouTube</span>
-        <span id="status-yt">➔</span>
+        <span class="status-badge" id="status-yt">➔</span>
       </a>
 
       <a href="https://whatsapp.com/channel/0029VbDI4yFK5cDHjEHcNk16" target="_blank" id="btn-wa" class="task-btn task-btn-wa" onclick="completeTask('wa')">
         <span>📢 Join WhatsApp Channel</span>
-        <span id="status-wa">➔</span>
+        <span class="status-badge" id="status-wa">➔</span>
       </a>
 
       <a href="https://t.me/+cL3-XYVYH6VkYmNl" target="_blank" id="btn-tg" class="task-btn task-btn-tg" onclick="completeTask('tg')">
         <span>✈️ Join Telegram Channel</span>
-        <span id="status-tg">➔</span>
+        <span class="status-badge" id="status-tg">➔</span>
       </a>
 
       <a href="https://www.instagram.com/all_cousre_1?stkn=MTk0djQwbWtibGFm" target="_blank" id="btn-ig" class="task-btn task-btn-ig" onclick="completeTask('ig')">
         <span>📸 Follow on Instagram</span>
-        <span id="status-ig">➔</span>
+        <span class="status-badge" id="status-ig">➔</span>
       </a>
 
-      <div class="status-msg" id="statusMsg">🎉 All tasks completed! You can open your batch now.</div>
+      <div class="status-msg" id="statusMsg">🎉 All tasks verified! Unlocking...</div>
 
       <div>
         <span class="reset-link" onclick="resetTaskProgress()">Reset Progress</span>
       </div>
     </div>
 
-    <!-- Final Destination Button (Only opens main.html when clicked) -->
+    <!-- Final Open Button Shifted Higher -->
     <a href="./main.html" class="btn-open-now" id="btn-open-now" onclick="openBatch(event)">🔥 Open Your Batch Now 🔥</a>
   </div>
 
   <script>
     const tasks = ['yt', 'wa', 'tg', 'ig'];
 
-    // Check status when page loads
     checkTaskStatus();
 
     function completeTask(taskType) {
       vibratePhone(40);
       localStorage.setItem(`task_${taskType}`, 'done');
       
-      // Give a tiny delay so the external app opens smoothly
       setTimeout(() => {
         checkTaskStatus();
-      }, 500);
+      }, 400);
     }
 
     function checkTaskStatus() {
@@ -236,7 +287,6 @@
       const openBtn = document.getElementById('btn-open-now');
       const statusMsg = document.getElementById('statusMsg');
 
-      // Unlocks ONLY when all 4 tasks are verified
       if (completedCount === tasks.length) {
         localStorage.setItem('all_tasks_completed', 'true');
         if (openBtn) openBtn.style.display = 'block';
@@ -252,7 +302,7 @@
       vibratePhone(50);
       if (localStorage.getItem('all_tasks_completed') !== 'true') {
         e.preventDefault();
-        alert('Please complete all 4 social media tasks first!');
+        alert('Please complete all 4 tasks first!');
       }
     }
 
