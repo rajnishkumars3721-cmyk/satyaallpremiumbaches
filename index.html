@@ -102,6 +102,7 @@
       justify-content: space-between;
       margin-bottom: 10px;
       text-decoration: none;
+      transition: all 0.3s ease;
     }
 
     .task-btn-yt { background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); }
@@ -116,31 +117,15 @@
       pointer-events: none;
     }
 
-    .btn-check-status {
-      width: 100%;
-      padding: 12px;
-      border-radius: 12px;
-      font-size: 13px;
-      font-weight: 700;
-      background: #1e293b;
-      color: #38bdf8;
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      cursor: pointer;
-      margin-top: 4px;
-      margin-bottom: 6px;
-    }
-
-    .btn-check-status:active { transform: scale(0.96); }
-
     .status-msg {
       font-size: 12px;
-      margin-top: 8px;
+      margin-top: 10px;
       font-weight: 700;
-      color: #34d399;
-      padding: 8px;
+      padding: 10px;
       border-radius: 8px;
-      background: rgba(52, 211, 153, 0.15);
       display: none;
+      color: #34d399;
+      background: rgba(52, 211, 153, 0.15);
     }
 
     .reset-link {
@@ -148,7 +133,7 @@
       color: #64748b;
       text-decoration: underline;
       cursor: pointer;
-      margin-top: 10px;
+      margin-top: 12px;
       display: inline-block;
     }
 
@@ -206,33 +191,36 @@
         <span id="status-ig">➔</span>
       </a>
 
-      <!-- Status Check Button -->
-      <button class="btn-check-status" onclick="checkUnlockStatus()">🔍 Check Status & Unlock</button>
-      <div class="status-msg" id="statusMsg"></div>
+      <div class="status-msg" id="statusMsg">🎉 All tasks completed! You can open your batch now.</div>
 
       <div>
         <span class="reset-link" onclick="resetTaskProgress()">Reset Progress</span>
       </div>
     </div>
 
-    <!-- Main Destination Redirect Button -->
-    <a href="./main.html" class="btn-open-now" id="btn-open-now" onclick="goToMainPage(event)">🔥 Open Your Batch Now 🔥</a>
+    <!-- Final Destination Button (Only opens main.html when clicked) -->
+    <a href="./main.html" class="btn-open-now" id="btn-open-now" onclick="openBatch(event)">🔥 Open Your Batch Now 🔥</a>
   </div>
 
   <script>
     const tasks = ['yt', 'wa', 'tg', 'ig'];
 
-    // Page Load Check
+    // Check status when page loads
     checkTaskStatus();
 
     function completeTask(taskType) {
       vibratePhone(40);
       localStorage.setItem(`task_${taskType}`, 'done');
-      checkTaskStatus();
+      
+      // Give a tiny delay so the external app opens smoothly
+      setTimeout(() => {
+        checkTaskStatus();
+      }, 500);
     }
 
     function checkTaskStatus() {
       let completedCount = 0;
+      
       tasks.forEach(task => {
         if (localStorage.getItem(`task_${task}`) === 'done') {
           const btn = document.getElementById(`btn-${task}`);
@@ -248,50 +236,24 @@
       const openBtn = document.getElementById('btn-open-now');
       const statusMsg = document.getElementById('statusMsg');
 
+      // Unlocks ONLY when all 4 tasks are verified
       if (completedCount === tasks.length) {
+        localStorage.setItem('all_tasks_completed', 'true');
         if (openBtn) openBtn.style.display = 'block';
-        if (statusMsg) {
-          statusMsg.style.display = 'block';
-          statusMsg.innerText = '🎉 All tasks completed! You can open your batch now.';
-        }
+        if (statusMsg) statusMsg.style.display = 'block';
+      } else {
+        localStorage.setItem('all_tasks_completed', 'false');
+        if (openBtn) openBtn.style.display = 'none';
+        if (statusMsg) statusMsg.style.display = 'none';
       }
     }
 
-    function checkUnlockStatus() {
-      vibratePhone(40);
-
-      // Force Unlock all tasks
-      tasks.forEach(task => {
-        localStorage.setItem(`task_${task}`, 'done');
-        const btn = document.getElementById(`btn-${task}`);
-        const statusSpan = document.getElementById(`status-${task}`);
-        if (btn && statusSpan) {
-          btn.classList.add('completed');
-          statusSpan.innerText = 'Verified ✅';
-        }
-      });
-
-      const statusMsg = document.getElementById('statusMsg');
-      if (statusMsg) {
-        statusMsg.style.display = 'block';
-        statusMsg.innerText = '🎉 Unlocked Successfully! Redirecting...';
-      }
-
-      const openBtn = document.getElementById('btn-open-now');
-      if (openBtn) {
-        openBtn.style.display = 'block';
-      }
-
-      // Redirect directly to main.html
-      setTimeout(() => {
-        window.location.href = "./main.html";
-      }, 500);
-    }
-
-    function goToMainPage(e) {
-      if (e) e.preventDefault();
+    function openBatch(e) {
       vibratePhone(50);
-      window.location.href = "./main.html"; 
+      if (localStorage.getItem('all_tasks_completed') !== 'true') {
+        e.preventDefault();
+        alert('Please complete all 4 social media tasks first!');
+      }
     }
 
     function resetTaskProgress() {
@@ -305,9 +267,9 @@
           statusSpan.innerText = '➔';
         }
       });
+      localStorage.setItem('all_tasks_completed', 'false');
       document.getElementById('btn-open-now').style.display = 'none';
-      const statusMsg = document.getElementById('statusMsg');
-      if (statusMsg) statusMsg.style.display = 'none';
+      document.getElementById('statusMsg').style.display = 'none';
     }
 
     function vibratePhone(ms) {
