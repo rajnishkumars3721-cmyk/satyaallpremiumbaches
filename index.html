@@ -39,16 +39,17 @@
       padding: 24px;
       z-index: 9999;
       transition: opacity 0.5s ease;
+      overflow-y: auto;
     }
 
     .landing-logo {
-      width: 140px;
-      height: 140px;
-      border-radius: 28px;
+      width: 110px;
+      height: 110px;
+      border-radius: 24px;
       object-fit: cover;
       border: 3.5px solid #00d2ff;
       box-shadow: 0 0 45px rgba(0, 210, 255, 0.65), inset 0 0 15px rgba(0, 210, 255, 0.4);
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       animation: pulseGlow 2s infinite ease-in-out;
     }
 
@@ -66,6 +67,8 @@
       flex-direction: column;
       align-items: center;
       visibility: hidden;
+      width: 100%;
+      max-width: 400px;
     }
 
     .landing-content.show {
@@ -76,13 +79,79 @@
 
     .landing-title {
       font-family: 'Syne', sans-serif;
-      font-size: 38px;
+      font-size: 32px;
       font-weight: 800;
       line-height: 1.15;
       letter-spacing: 2px;
-      margin-bottom: 30px;
+      margin-bottom: 16px;
       color: #ffffff;
       text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Task Locker Styles */
+    .task-locker-card {
+      background: #111827;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 20px;
+      width: 100%;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
+    }
+
+    .task-locker-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .task-locker-desc {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-bottom: 18px;
+    }
+
+    .task-btn {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .task-btn-yt { background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); }
+    .task-btn-wa { background: linear-gradient(135deg, #22c55e 0%, #15803d 100%); }
+    .task-btn-tg { background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); }
+    .task-btn-ig { background: linear-gradient(135deg, #e1306c 0%, #c13584 100%); }
+
+    .task-btn.completed {
+      background: #1f2937 !important;
+      color: #34d399 !important;
+      border: 1px solid #34d399;
+      pointer-events: none;
+    }
+
+    .reset-link {
+      font-size: 11px;
+      color: #64748b;
+      text-decoration: underline;
+      cursor: pointer;
+      margin-top: 8px;
+      display: inline-block;
     }
 
     .btn-open-now {
@@ -96,7 +165,20 @@
       border: none;
       cursor: pointer;
       box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.3s ease;
+      width: 100%;
+      display: none;
+    }
+
+    .btn-open-now.active {
+      display: block;
+      animation: pulseGlowBtn 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulseGlowBtn {
+      0% { transform: scale(1); box-shadow: 0 0 20px rgba(139, 92, 246, 0.5); }
+      50% { transform: scale(1.03); box-shadow: 0 0 35px rgba(139, 92, 246, 0.8); }
+      100% { transform: scale(1); box-shadow: 0 0 20px rgba(139, 92, 246, 0.5); }
     }
 
     .btn-open-now:active { transform: scale(0.95); }
@@ -211,13 +293,45 @@
 
 <body>
 
-  <!-- Landing Screen -->
+  <!-- Landing Screen with Task Locker -->
   <div id="landing-page">
     <img src="https://i.ibb.co/nNkyYLHM/Chat-GPT-Image-Aug-12-2026-08-08-06-AM.png" alt="Rajnish Prime Logo" class="landing-logo">
     
     <div class="landing-content" id="landing-content">
       <h1 class="landing-title">RAJNISH<br>PRIME</h1>
-      <button class="btn-open-now" onclick="openDashboard()">🔥 Open Now 🔥</button>
+
+      <div class="task-locker-card">
+        <div class="task-locker-title">🔒 Link Locked</div>
+        <p class="task-locker-desc">Complete all steps below to unlock destination link.</p>
+
+        <!-- YouTube Task -->
+        <a href="https://www.youtube.com/@Rajnishstudyshorts" target="_blank" id="btn-yt" class="task-btn task-btn-yt" onclick="startVerification('yt')">
+          <span>📺 Subscribe YouTube</span>
+          <span id="status-yt">➔</span>
+        </a>
+
+        <!-- WhatsApp Task -->
+        <a href="https://whatsapp.com/channel/0029VbDI4yFK5cDHjEHcNk16" target="_blank" id="btn-wa" class="task-btn task-btn-wa" onclick="startVerification('wa')">
+          <span>📢 Join WhatsApp Channel</span>
+          <span id="status-wa">➔</span>
+        </a>
+
+        <!-- Telegram Task -->
+        <a href="https://t.me/+cL3-XYVYH6VkYmNl" target="_blank" id="btn-tg" class="task-btn task-btn-tg" onclick="startVerification('tg')">
+          <span>✈️ Join Telegram Channel</span>
+          <span id="status-tg">➔</span>
+        </a>
+
+        <!-- Instagram Task -->
+        <a href="https://www.instagram.com/all_cousre_1?stkn=MTk0djQwbWtibGFm" target="_blank" id="btn-ig" class="task-btn task-btn-ig" onclick="startVerification('ig')">
+          <span>📸 Follow on Instagram</span>
+          <span id="status-ig">➔</span>
+        </a>
+
+        <span class="reset-link" onclick="resetTaskProgress()">Reset Progress</span>
+      </div>
+
+      <button class="btn-open-now" id="btn-open-now" onclick="openDashboard()">🔥 Open Now 🔥</button>
     </div>
   </div>
 
@@ -869,7 +983,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- 50.1 AASH OFFICIAL (SK JHA SIR) [NEWLY ADDED] -->
+        <!-- 50.1 AASH OFFICIAL (SK JHA SIR) -->
         <a href="https://studyapkmod-aash.vercel.app/home" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://ibb.co/20knzRVR" alt="AASH OFFICIAL (SK JHA SIR)" class="app-icon">
@@ -1115,14 +1229,73 @@
   </div>
 
   <script>
+    const tasks = ['yt', 'wa', 'tg', 'ig'];
+
     window.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         const content = document.getElementById('landing-content');
-        if (content) {
-          content.classList.add('show');
+        if (content) content.classList.add('show');
+      }, 500);
+
+      checkTaskStatus();
+    });
+
+    function startVerification(taskType) {
+      vibratePhone(40);
+      const statusSpan = document.getElementById(`status-${taskType}`);
+      const btn = document.getElementById(`btn-${taskType}`);
+
+      if (btn.classList.contains('completed')) return;
+
+      let timeLeft = 10;
+      statusSpan.innerText = `⏳ ${timeLeft}s`;
+
+      const timer = setInterval(() => {
+        timeLeft--;
+        if (timeLeft > 0) {
+          statusSpan.innerText = `⏳ ${timeLeft}s`;
+        } else {
+          clearInterval(timer);
+          statusSpan.innerText = 'Verified ✅';
+          btn.classList.add('completed');
+          localStorage.setItem(`task_${taskType}`, 'done');
+          checkTaskStatus();
         }
       }, 1000);
-    });
+    }
+
+    function checkTaskStatus() {
+      let completedCount = 0;
+      tasks.forEach(task => {
+        if (localStorage.getItem(`task_${task}`) === 'done') {
+          const btn = document.getElementById(`btn-${task}`);
+          const statusSpan = document.getElementById(`status-${task}`);
+          if (btn && statusSpan) {
+            btn.classList.add('completed');
+            statusSpan.innerText = 'Verified ✅';
+          }
+          completedCount++;
+        }
+      });
+
+      if (completedCount === tasks.length) {
+        document.getElementById('btn-open-now').classList.add('active');
+      }
+    }
+
+    function resetTaskProgress() {
+      vibratePhone(30);
+      tasks.forEach(task => {
+        localStorage.removeItem(`task_${task}`);
+        const btn = document.getElementById(`btn-${task}`);
+        const statusSpan = document.getElementById(`status-${task}`);
+        if (btn && statusSpan) {
+          btn.classList.remove('completed');
+          statusSpan.innerText = '➔';
+        }
+      });
+      document.getElementById('btn-open-now').classList.remove('active');
+    }
 
     function openDashboard() {
       vibratePhone(50);
@@ -1130,63 +1303,4 @@
       landing.style.opacity = '0';
       
       setTimeout(() => {
-        landing.style.display = 'none';
-        document.getElementById('main-content').style.display = 'flex';
-      }, 500);
-    }
-
-    function showSearchBar() {
-      const searchWrapper = document.getElementById('searchWrapper');
-      searchWrapper.style.display = 'block';
-      document.getElementById('apps').scrollIntoView({ behavior: 'smooth' });
-      document.getElementById('searchInput').focus();
-    }
-
-    function filterApps() {
-      let input = document.getElementById('searchInput').value.toLowerCase().trim();
-      let appsList = document.getElementById('appsList');
-      let cards = Array.from(appsList.getElementsByClassName('app-card'));
-
-      if (input === "") {
-        cards.forEach(card => card.style.display = "");
-        return;
-      }
-
-      let matchingCards = [];
-      let otherCards = [];
-
-      cards.forEach(card => {
-        let title = card.getElementsByTagName('h3')[0];
-        let desc = card.getElementsByTagName('p')[0];
-        if (title || desc) {
-          let textValue = (title.textContent || title.innerText) + " " + (desc.textContent || desc.innerText);
-          if (textValue.toLowerCase().indexOf(input) > -1) {
-            matchingCards.push(card);
-          } else {
-            otherCards.push(card);
-          }
-        }
-      });
-
-      appsList.innerHTML = "";
       
-      matchingCards.forEach(card => {
-        card.style.display = "";
-        appsList.appendChild(card);
-      });
-
-      otherCards.forEach(card => {
-        card.style.display = "";
-        appsList.appendChild(card);
-      });
-    }
-
-    function vibratePhone(ms) {
-      if ("vibrate" in navigator) {
-        navigator.vibrate(ms);
-      }
-    }
-  </script>
-
-</body>
-</html>
