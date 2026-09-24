@@ -33,22 +33,24 @@
       background-color: #080c14;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       text-align: center;
-      padding: 20px;
+      padding: 20px 16px 40px 16px;
       z-index: 9999;
       transition: opacity 0.5s ease;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .landing-logo {
-      width: 95px;
-      height: 95px;
+      width: 85px;
+      height: 85px;
       border-radius: 20px;
       object-fit: cover;
       border: 3.5px solid #00d2ff;
       box-shadow: 0 0 35px rgba(0, 210, 255, 0.65), inset 0 0 15px rgba(0, 210, 255, 0.4);
+      margin-top: 10px;
       margin-bottom: 10px;
       animation: pulseGlow 2s infinite ease-in-out;
       flex-shrink: 0;
@@ -72,7 +74,7 @@
 
     .landing-title {
       font-family: 'Syne', sans-serif;
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 800;
       line-height: 1.15;
       letter-spacing: 2px;
@@ -140,27 +142,30 @@
 
     .btn-check-status {
       width: 100%;
-      padding: 11px;
+      padding: 12px;
       border-radius: 12px;
       font-size: 13px;
       font-weight: 700;
       background: #1e293b;
       color: #38bdf8;
-      border: 1px solid rgba(56, 189, 248, 0.3);
+      border: 1px solid rgba(56, 189, 248, 0.4);
       cursor: pointer;
       margin-top: 4px;
       margin-bottom: 6px;
       transition: all 0.2s ease;
     }
 
-    .btn-check-status:active { transform: scale(0.97); }
+    .btn-check-status:active { transform: scale(0.96); background: #334155; }
 
     .status-msg {
-      font-size: 11px;
-      margin-top: 6px;
-      font-weight: 600;
+      font-size: 12px;
+      margin-top: 8px;
+      font-weight: 700;
       color: #f59e0b;
-      min-height: 16px;
+      padding: 6px;
+      border-radius: 8px;
+      background: rgba(245, 158, 11, 0.1);
+      display: none;
     }
 
     .reset-link {
@@ -168,7 +173,7 @@
       color: #64748b;
       text-decoration: underline;
       cursor: pointer;
-      margin-top: 8px;
+      margin-top: 10px;
       display: inline-block;
     }
 
@@ -177,14 +182,15 @@
       color: #ffffff;
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 16px;
-      font-weight: 700;
-      padding: 14px 36px;
+      font-weight: 800;
+      padding: 15px 36px;
       border-radius: 16px;
       border: none;
       cursor: pointer;
-      box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       width: 100%;
+      margin-bottom: 20px;
       display: none;
     }
 
@@ -1254,32 +1260,13 @@
 
   <script>
     const tasks = ['yt', 'wa', 'tg', 'ig'];
-    let activeTask = null;
 
-    // Check status immediately
+    // Run status check on load
     checkTaskStatus();
-
-    // Auto-verify when user returns to this page/tab
-    window.addEventListener('focus', () => {
-      if (activeTask) {
-        completeTask(activeTask);
-        activeTask = null;
-      }
-    });
 
     function startVerification(taskType) {
       vibratePhone(40);
-      activeTask = taskType;
-
-      const statusSpan = document.getElementById(`status-${taskType}`);
-      if (statusSpan) {
-        statusSpan.innerText = '⏳ Verifying...';
-      }
-
-      // Auto-mark completed after 5 seconds backup timer
-      setTimeout(() => {
-        completeTask(taskType);
-      }, 5000);
+      completeTask(taskType);
     }
 
     function completeTask(taskType) {
@@ -1315,21 +1302,31 @@
       if (completedCount === tasks.length) {
         if (openBtn) openBtn.classList.add('active');
         if (statusMsg) {
+          statusMsg.style.display = 'block';
           statusMsg.style.color = '#34d399';
+          statusMsg.style.background = 'rgba(52, 211, 153, 0.1)';
           statusMsg.innerText = '🎉 All tasks completed! You can now open your batch.';
         }
-      } else {
-        if (openBtn) openBtn.classList.remove('active');
       }
     }
 
     function checkUnlockStatus() {
-      vibratePhone(30);
-      let completedCount = 0;
+      vibratePhone(40);
+
+      // Force mark all tasks as completed
       tasks.forEach(task => {
-        if (localStorage.getItem(`task_${task}`) === 'done') {
-          completedCount++;
+        localStorage.setItem(`task_${task}`, 'done');
+        const btn = document.getElementById(`btn-${task}`);
+        const statusSpan = document.getElementById(`status-${task}`);
+        if (btn && statusSpan) {
+          btn.classList.add('completed');
+          statusSpan.innerText = 'Verified ✅';
         }
       });
 
-      const st
+      // Display Status Message Below Button
+      const statusMsg = document.getElementById('statusMsg');
+      if (statusMsg) {
+        statusMsg.style.display = 'block';
+        statusMsg.style.color = '#34d399';
+        statusMsg.style.background = 'rgba(
