@@ -189,7 +189,7 @@
     }
 
     .btn-open-now.active {
-      display: block;
+      display: block !important;
       animation: pulseGlowBtn 1.5s infinite ease-in-out;
     }
 
@@ -1254,32 +1254,45 @@
 
   <script>
     const tasks = ['yt', 'wa', 'tg', 'ig'];
+    let activeTask = null;
 
-    // Direct check when script loads
+    // Check status immediately
     checkTaskStatus();
+
+    // Auto-verify when user returns to this page/tab
+    window.addEventListener('focus', () => {
+      if (activeTask) {
+        completeTask(activeTask);
+        activeTask = null;
+      }
+    });
 
     function startVerification(taskType) {
       vibratePhone(40);
+      activeTask = taskType;
+
       const statusSpan = document.getElementById(`status-${taskType}`);
+      if (statusSpan) {
+        statusSpan.innerText = '⏳ Verifying...';
+      }
+
+      // Auto-mark completed after 5 seconds backup timer
+      setTimeout(() => {
+        completeTask(taskType);
+      }, 5000);
+    }
+
+    function completeTask(taskType) {
       const btn = document.getElementById(`btn-${taskType}`);
+      const statusSpan = document.getElementById(`status-${taskType}`);
 
-      if (btn.classList.contains('completed')) return;
+      if (btn && statusSpan) {
+        btn.classList.add('completed');
+        statusSpan.innerText = 'Verified ✅';
+      }
 
-      let timeLeft = 10;
-      statusSpan.innerText = `⏳ ${timeLeft}s`;
-
-      const timer = setInterval(() => {
-        timeLeft--;
-        if (timeLeft > 0) {
-          statusSpan.innerText = `⏳ ${timeLeft}s`;
-        } else {
-          clearInterval(timer);
-          statusSpan.innerText = 'Verified ✅';
-          btn.classList.add('completed');
-          localStorage.setItem(`task_${taskType}`, 'done');
-          checkTaskStatus();
-        }
-      }, 1000);
+      localStorage.setItem(`task_${taskType}`, 'done');
+      checkTaskStatus();
     }
 
     function checkTaskStatus() {
@@ -1319,8 +1332,4 @@
         }
       });
 
-      const statusMsg = document.getElementById('statusMsg');
-      if (completedCount === tasks.length) {
-        statusMsg.style.color = '#34d399';
-        statusMsg.innerText = '🎉 All tasks completed! Click "Open Your Batch" below.';
-        document.getElementById('btn-open-n
+      const st
