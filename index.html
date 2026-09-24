@@ -36,20 +36,20 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 24px;
+      padding: 20px;
       z-index: 9999;
       transition: opacity 0.5s ease;
       overflow-y: auto;
     }
 
     .landing-logo {
-      width: 100px;
-      height: 100px;
+      width: 95px;
+      height: 95px;
       border-radius: 20px;
       object-fit: cover;
       border: 3.5px solid #00d2ff;
       box-shadow: 0 0 35px rgba(0, 210, 255, 0.65), inset 0 0 15px rgba(0, 210, 255, 0.4);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       animation: pulseGlow 2s infinite ease-in-out;
       flex-shrink: 0;
     }
@@ -72,11 +72,11 @@
 
     .landing-title {
       font-family: 'Syne', sans-serif;
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 800;
       line-height: 1.15;
       letter-spacing: 2px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       color: #ffffff;
       text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
     }
@@ -89,7 +89,7 @@
       padding: 16px;
       width: 100%;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .task-locker-title {
@@ -138,12 +138,37 @@
       pointer-events: none;
     }
 
+    .btn-check-status {
+      width: 100%;
+      padding: 11px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      background: #1e293b;
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      cursor: pointer;
+      margin-top: 4px;
+      margin-bottom: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-check-status:active { transform: scale(0.97); }
+
+    .status-msg {
+      font-size: 11px;
+      margin-top: 6px;
+      font-weight: 600;
+      color: #f59e0b;
+      min-height: 16px;
+    }
+
     .reset-link {
       font-size: 11px;
       color: #64748b;
       text-decoration: underline;
       cursor: pointer;
-      margin-top: 6px;
+      margin-top: 8px;
       display: inline-block;
     }
 
@@ -321,10 +346,16 @@
           <span id="status-ig">➔</span>
         </a>
 
-        <span class="reset-link" onclick="resetTaskProgress()">Reset Progress</span>
+        <!-- Status Checker Button -->
+        <button class="btn-check-status" onclick="checkUnlockStatus()">🔍 Check Status & Unlock</button>
+        <div class="status-msg" id="statusMsg"></div>
+
+        <div>
+          <span class="reset-link" onclick="resetTaskProgress()">Reset Progress</span>
+        </div>
       </div>
 
-      <button class="btn-open-now" id="btn-open-now" onclick="openDashboard()">🔥 Open Now 🔥</button>
+      <button class="btn-open-now" id="btn-open-now" onclick="openDashboard()">🔥 Open Your Batch Now 🔥</button>
     </div>
   </div>
 
@@ -1266,33 +1297,30 @@
       });
 
       const openBtn = document.getElementById('btn-open-now');
-      if (openBtn) {
-        if (completedCount === tasks.length) {
-          openBtn.classList.add('active');
-        } else {
-          openBtn.classList.remove('active');
+      const statusMsg = document.getElementById('statusMsg');
+
+      if (completedCount === tasks.length) {
+        if (openBtn) openBtn.classList.add('active');
+        if (statusMsg) {
+          statusMsg.style.color = '#34d399';
+          statusMsg.innerText = '🎉 All tasks completed! You can now open your batch.';
         }
+      } else {
+        if (openBtn) openBtn.classList.remove('active');
       }
     }
 
-    function resetTaskProgress() {
+    function checkUnlockStatus() {
       vibratePhone(30);
+      let completedCount = 0;
       tasks.forEach(task => {
-        localStorage.removeItem(`task_${task}`);
-        const btn = document.getElementById(`btn-${task}`);
-        const statusSpan = document.getElementById(`status-${task}`);
-        if (btn && statusSpan) {
-          btn.classList.remove('completed');
-          statusSpan.innerText = '➔';
+        if (localStorage.getItem(`task_${task}`) === 'done') {
+          completedCount++;
         }
       });
-      const openBtn = document.getElementById('btn-open-now');
-      if (openBtn) openBtn.classList.remove('active');
-    }
 
-    function openDashboard() {
-      vibratePhone(50);
-      const landing = document.getElementById('landing-page');
-      if (landing) {
-        landing.style.opacity = '0';
-        setTimeout(() => 
+      const statusMsg = document.getElementById('statusMsg');
+      if (completedCount === tasks.length) {
+        statusMsg.style.color = '#34d399';
+        statusMsg.innerText = '🎉 All tasks completed! Click "Open Your Batch" below.';
+        document.getElementById('btn-open-n
