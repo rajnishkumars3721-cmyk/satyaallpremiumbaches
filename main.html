@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Rajnish Prime</title>
+  <title>Rajnish Prime - All Platforms</title>
   
   <meta name="apple-mobile-web-app-title" content="Rajnish Prime">
   <meta name="application-name" content="Rajnish Prime">
@@ -24,89 +24,8 @@
       scroll-behavior: smooth;
     }
 
-    /* Landing / Splash Page Styling */
-    #landing-page {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: #080c14;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 24px;
-      z-index: 9999;
-      transition: opacity 0.5s ease;
-    }
-
-    .landing-logo {
-      width: 140px;
-      height: 140px;
-      border-radius: 28px;
-      object-fit: cover;
-      border: 3.5px solid #00d2ff;
-      box-shadow: 0 0 45px rgba(0, 210, 255, 0.65), inset 0 0 15px rgba(0, 210, 255, 0.4);
-      margin-bottom: 24px;
-      animation: pulseGlow 2s infinite ease-in-out;
-    }
-
-    @keyframes pulseGlow {
-      0% { transform: scale(0.98); box-shadow: 0 0 30px rgba(0, 210, 255, 0.5); }
-      50% { transform: scale(1.03); box-shadow: 0 0 55px rgba(0, 210, 255, 0.85); }
-      100% { transform: scale(0.98); box-shadow: 0 0 30px rgba(0, 210, 255, 0.5); }
-    }
-    
-        .landing-content {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      visibility: hidden;
-    }
-
-    .landing-content.show {
-      opacity: 1;
-      transform: translateY(0);
-      visibility: visible;
-    }
-
-    .landing-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 38px;
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: 2px;
-      margin-bottom: 30px;
-      color: #ffffff;
-      text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-    }
-
-    .btn-open-now {
-      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-      color: #ffffff;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 18px;
-      font-weight: 700;
-      padding: 16px 44px;
-      border-radius: 16px;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .btn-open-now:active {
-      transform: scale(0.95);
-    }
-
-    /* Main Content Container */
     #main-content {
-      display: none;
+      display: flex;
       flex-direction: column;
       align-items: center;
       padding: 16px;
@@ -122,21 +41,8 @@
       padding: 10px 0; 
       margin-bottom: 20px; 
     }
-    .nav-brand { 
-      display: flex; 
-      align-items: center; 
-      gap: 10px; 
-      text-decoration: none; 
-      color: #fff; 
-    }
-    .nav-logo-img { 
-      width: 40px; 
-      height: 40px; 
-      border-radius: 12px; 
-      object-fit: cover; 
-      border: 2px solid #06b6d4; 
-      box-shadow: 0 0 15px rgba(6, 182, 212, 0.5); 
-    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
+    .nav-logo-img { width: 40px; height: 40px; border-radius: 12px; object-fit: cover; border: 2px solid #06b6d4; box-shadow: 0 0 15px rgba(6, 182, 212, 0.5); }
     .nav-title { 
       font-family: 'Syne', sans-serif; 
       font-size: 19px; 
@@ -160,26 +66,36 @@
       gap: 5px; 
       cursor: pointer; 
     }
-    .menu-btn span { 
-      display: block; 
-      width: 18px; 
-      height: 2px; 
-      background: #38bdf8; 
-      border-radius: 2px; 
-      box-shadow: 0 0 8px #38bdf8; 
-    }
+    .menu-btn span { display: block; width: 18px; height: 2px; background: #38bdf8; border-radius: 2px; box-shadow: 0 0 8px #38bdf8; }
     
-        /* Search Bar Styling */
-    .search-wrapper {
+        .hero { width: 100%; max-width: 480px; text-align: center; margin-bottom: 24px; }
+    .pill-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); color: #38bdf8; font-size: 12px; font-weight: 600; padding: 6px 16px; border-radius: 30px; margin-bottom: 14px; box-shadow: 0 0 15px rgba(6, 182, 212, 0.15); }
+    .dot { width: 6px; height: 6px; background: #06b6d4; border-radius: 50%; box-shadow: 0 0 8px #06b6d4; }
+    .hero h1 { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; line-height: 1.1; margin-bottom: 12px; letter-spacing: -1px; }
+    .hero h1 span { background: linear-gradient(135deg, #38bdf8 0%, #fbbf24 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { color: #94a3b8; font-size: 13px; line-height: 1.5; margin-bottom: 18px; padding: 0 10px; }
+
+    .btn-group { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+    .btn { width: 100%; padding: 14px; border-radius: 14px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 700; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.3s ease; }
+    .btn-primary { background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #6366f1 100%); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.25); box-shadow: 0 6px 25px rgba(6, 182, 212, 0.45); }
+    .btn-telegram { background: #0f172a; color: #38bdf8; border: 1.5px solid #38bdf8; box-shadow: 0 4px 15px rgba(56, 189, 248, 0.15); }
+    .btn-whatsapp { background: #0f172a; color: #22c55e; border: 1.5px solid #22c55e; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.15); }
+    .btn-youtube { background: #0f172a; color: #ef4444; border: 1.5px solid #ef4444; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.15); }
+
+    .stats-bar { width: 100%; max-width: 480px; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; padding: 14px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); border-bottom: 1px solid rgba(255, 255, 255, 0.08); margin-bottom: 30px; background: rgba(17, 24, 39, 0.4); border-radius: 16px; }
+    .stat-item .num { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: #38bdf8; margin-bottom: 2px; }
+    .stat-item .label { font-size: 10px; color: #64748b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
+
+    .section-container { width: 100%; max-width: 480px; }
+    .section-tag { font-size: 11px; color: #38bdf8; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 4px; }
+    .section-title { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; margin-bottom: 6px; }
+    .section-desc { color: #94a3b8; font-size: 13px; margin-bottom: 20px; }
+    
+        .search-wrapper {
       width: 100%;
       margin-bottom: 20px;
       position: relative;
-      display: none;
-      animation: fadeInSearch 0.4s ease forwards;
-    }
-    @keyframes fadeInSearch {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
+      display: block;
     }
     .search-input {
       width: 100%;
@@ -194,134 +110,11 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
-    .search-input:focus {
-      border-color: #06b6d4;
-      box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
-    }
-    .search-icon {
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 16px;
-      color: #38bdf8;
-      pointer-events: none;
-    }
-
-    .hero { 
-      width: 100%; 
-      max-width: 480px; 
-      text-align: center; 
-      margin-bottom: 24px; 
-    }
-    .pill-badge { 
-      display: inline-flex; 
-      align-items: center; 
-      gap: 8px; 
-      background: rgba(6, 182, 212, 0.1); 
-      border: 1px solid rgba(6, 182, 212, 0.3); 
-      color: #38bdf8; 
-      font-size: 12px; 
-      font-weight: 600; 
-      padding: 6px 16px; 
-      border-radius: 30px; 
-      margin-bottom: 14px; 
-      box-shadow: 0 0 15px rgba(6, 182, 212, 0.15); 
-    }
-    .dot { 
-      width: 6px; 
-      height: 6px; 
-      background: #06b6d4; 
-      border-radius: 50%; 
-      box-shadow: 0 0 8px #06b6d4; 
-    }
-    .hero h1 { 
-      font-family: 'Syne', sans-serif; 
-      font-size: 36px; 
-      font-weight: 800; 
-      line-height: 1.1; 
-      margin-bottom: 12px; 
-      letter-spacing: -1px; 
-    }
-    .hero h1 span { 
-      background: linear-gradient(135deg, #38bdf8 0%, #fbbf24 100%); 
-      -webkit-background-clip: text; 
-      -webkit-text-fill-color: transparent; 
-    }
-    .hero p { 
-      color: #94a3b8; 
-      font-size: 13px; 
-      line-height: 1.5; 
-      margin-bottom: 18px; 
-      padding: 0 10px; 
-    }
-
-    .btn-group { 
-      display: flex; 
-      flex-direction: column; 
-      gap: 12px; 
-      margin-bottom: 30px; 
-    }
-    .btn { 
-      width: 100%; 
-      padding: 14px; 
-      border-radius: 14px; 
-      font-family: 'Plus Jakarta Sans', sans-serif; 
-      font-size: 15px; 
-      font-weight: 700; 
-      text-decoration: none; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      gap: 10px; 
-      transition: all 0.3s ease; 
-    }
-    .btn-primary { 
-      background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #6366f1 100%); 
-      color: #ffffff; 
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 6px 25px rgba(6, 182, 212, 0.45); 
-    }
-    .btn-telegram { background: #0f172a; color: #38bdf8; border: 1.5px solid #38bdf8; box-shadow: 0 4px 15px rgba(56, 189, 248, 0.15); }
-    .btn-whatsapp { background: #0f172a; color: #22c55e; border: 1.5px solid #22c55e; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.15); }
-    .btn-youtube { background: #0f172a; color: #ef4444; border: 1.5px solid #ef4444; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.15); }
-
-    .stats-bar { 
-      width: 100%; 
-      max-width: 480px; 
-      display: grid; 
-      grid-template-columns: repeat(4, 1fr); 
-      text-align: center; 
-      padding: 14px 0; 
-      border-top: 1px solid rgba(255, 255, 255, 0.08); 
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
-      margin-bottom: 30px; 
-      background: rgba(17, 24, 39, 0.4); 
-      border-radius: 16px; 
-    }
-    .stat-item .num { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: #38bdf8; margin-bottom: 2px; }
-    .stat-item .label { font-size: 10px; color: #64748b; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
-
-    .section-container { width: 100%; max-width: 480px; }
-    .section-tag { font-size: 11px; color: #38bdf8; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 4px; }
-    .section-title { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; margin-bottom: 6px; }
-    .section-desc { color: #94a3b8; font-size: 13px; margin-bottom: 20px; }
+    .search-input:focus { border-color: #06b6d4; box-shadow: 0 0 20px rgba(6, 182, 212, 0.3); }
+    .search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-size: 16px; color: #38bdf8; pointer-events: none; }
 
     .apps-list { display: flex; flex-direction: column; gap: 16px; }
-    .app-card { 
-      background: #111827; 
-      border: 1px solid rgba(255, 255, 255, 0.08); 
-      border-radius: 20px; 
-      padding: 20px; 
-      text-decoration: none; 
-      color: inherit; 
-      display: flex; 
-      flex-direction: column; 
-      gap: 14px; 
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3); 
-      cursor: pointer; 
-      transition: transform 0.2s ease, border-color 0.2s ease; 
-    }
+    .app-card { background: #111827; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 20px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); cursor: pointer; transition: transform 0.2s ease, border-color 0.2s ease; }
     .app-card:active { transform: scale(0.98); border-color: rgba(6, 182, 212, 0.4); }
     
     .app-card-top { display: flex; align-items: flex-start; gap: 16px; width: 100%; }
@@ -333,18 +126,7 @@
     .live-dot { width: 6px; height: 6px; background-color: #34d399; border-radius: 50%; box-shadow: 0 0 8px #34d399; }
   </style>
 </head>
-
 <body>
-
-  <!-- Landing Screen -->
-  <div id="landing-page">
-    <img src="https://i.ibb.co/nNkyYLHM/Chat-GPT-Image-Aug-12-2026-08-08-06-AM.png" alt="Rajnish Prime Logo" class="landing-logo">
-    
-    <div class="landing-content" id="landing-content">
-      <h1 class="landing-title">RAJNISH<br>PRIME</h1>
-      <button class="btn-open-now" onclick="openDashboard()">🔥 Open Now 🔥</button>
-    </div>
-  </div>
 
   <!-- Main Content Dashboard -->
   <div id="main-content">
@@ -367,7 +149,7 @@
       <p>Access premium paid courses from India's top ed-tech platforms — completely free. All your favourite educators, one place.</p>
       
       <div class="btn-group">
-        <button class="btn btn-primary" onclick="showSearchBar(); vibratePhone(40);">🚀 Explore Apps</button>
+        <button class="btn btn-primary" onclick="focusSearch(); vibratePhone(40);">🚀 Explore Apps</button>
         <a href="https://t.me/+g0wmAK8VCGEwMTJl" class="btn btn-telegram" onclick="vibratePhone(40)">✈️ Join Telegram Channel</a>
         <a href="https://whatsapp.com/channel/0029VbDI4yFK5cDHjEHcNk16" class="btn btn-whatsapp" onclick="vibratePhone(40)">📢 Join WhatsApp Channel</a>
         <a href="https://youtube.com/@rajnishstudyshorts?si=mPxFar33SZb9pHjA" class="btn btn-youtube" onclick="vibratePhone(40)">📺 Subscribe YouTube</a>
@@ -376,18 +158,17 @@
 
     <div class="stats-bar">
       <div class="stat-item"><div class="num">1000+</div><div class="label">Batches</div></div>
-      <div class="stat-item"><div class="num">30</div><div class="label">Platforms</div></div>
+      <div class="stat-item"><div class="num">30+</div><div class="label">Platforms</div></div>
       <div class="stat-item"><div class="num">₹0</div><div class="label">Cost</div></div>
       <div class="stat-item"><div class="num">24/7</div><div class="label">Access</div></div>
     </div>
-
+    
     <!-- Apps Section Container -->
     <div class="section-container" id="apps">
       <p class="section-tag">Official Platforms</p>
       <h2 class="section-title">Explore Our Apps</h2>
       <p class="section-desc">Pick your platform and get instant free access to all premium batches.</p>
 
-      <!-- Search Bar -->
       <div class="search-wrapper" id="searchWrapper">
         <span class="search-icon">🔍</span>
         <input type="text" id="searchInput" class="search-input" placeholder="Search batches, platforms or courses..." onkeyup="filterApps()">
@@ -395,7 +176,7 @@
 
       <div class="apps-list" id="appsList">
 
-        <!-- ALLEN 2 -->
+        <!-- 1. ALLEN 2 -->
         <a href="https://aliens-op.pages.dev/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/7xm5w42r/image.png" alt="ALLEN 2" class="app-icon">
@@ -407,7 +188,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- E-SARAL -->
+        <!-- 2. E-SARAL -->
         <a href="https://op-saral.pages.dev/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/wZnfJLH7/image.png" alt="E-SARAL" class="app-icon">
@@ -419,7 +200,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- E- BOOK LIBRARY -->
+        <!-- 3. E- BOOK LIBRARY -->
         <a href="https://apex-library.lovable.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/Y7rQffqY/image.png" alt="E- BOOK LIBRARY" class="app-icon">
@@ -431,7 +212,7 @@
           <div class="live-badge"><span class="live-dot"></span> E-BOOKS AVAILABLE</div>
         </a>
 
-        <!-- PW DIGITAL LIBRARY -->
+        <!-- 4. PW DIGITAL LIBRARY -->
         <a href="https://pwxbooks.pages.dev/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/8LJLjzD4/Physics-Wallah-Logo.jpg" alt="PW Digital Library Logo" class="app-icon">
@@ -443,10 +224,10 @@
           <div class="live-badge"><span class="live-dot"></span> BOOKS & NOTES AVAILABLE</div>
         </a>
 
-        <!-- 1st Position: Physics Wallah -->
+        <!-- 5. Physics Wallah -->
         <a href="https://pwthor.live/study/batches" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
-            <img src="https://i.ibb.co/8LJLjzD4/Physics-Wallah-Logo.jpg" alt="Physics-Wallah-Logo" class="app-icon">
+            <img src="https://i.ibb.co/8LJLjzD4/Physics-Wallah-Logo.jpg" alt="Physics Wallah" class="app-icon">
             <div class="app-info">
               <h3>Physics Wallah</h3>
               <p>Master Physics concepts with high-quality free lectures and notes.</p>
@@ -455,7 +236,19 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- PRASHANT SOLANKI TOPPERS WISDOM -->
+        <!-- 6. PI PRO -->
+        <a href="https://pipro.deltastudy.fun/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/8LJLjzD4/Physics-Wallah-Logo.jpg" alt="PI PRO" class="app-icon">
+            <div class="app-info">
+              <h3>PI PRO</h3>
+              <p>Access pro physics wallah batches, lectures, and premium study materials.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- 7. PRASHANT SOLANKI TOPPERS WISDOM -->
         <a href="https://thoughtful-jade-lv6nivio.edgeone.dev/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/vCcJ6ssY/image.jpg" alt="PRASHANT SOLANKI TOPPERS WISDOM" class="app-icon">
@@ -467,8 +260,8 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- 2nd Position: PW 2 -->
-        <a href="https://pi.pwmarco.info/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+        <!-- 8. PW 2 -->
+        <a href="https://pw.studybison.in/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/8LJLjzD4/Physics-Wallah-Logo.jpg" alt="PW 2" class="app-icon">
             <div class="app-info">
@@ -479,8 +272,20 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- NEXT TOPPERS -->
-        <a href="https://nexthope.pages.dev/nt/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+        <!-- 9. Watch Live TV Around The World -->
+        <a href="https://studyapkmod-tv.vercel.app/countries" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://ibb.co/Wvspk6Tb" alt="Watch Live TV Around The World" class="app-icon">
+            <div class="app-info">
+              <h3>Watch Live TV Around The World</h3>
+              <p>Stream live TV channels, news, and entertainment networks from around the globe.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE TV AVAILABLE</div>
+        </a>
+        
+        <!-- 10. NEXT TOPPERS -->
+        <a href="https://vidya-verse.ai.studio/next-toppers" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/xS2ksMk5/Next-Toppers-Logo.jpg" alt="Next Toppers" class="app-icon">
             <div class="app-info">
@@ -491,8 +296,8 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- NEXT TOPPERS 2 -->
-        <a href="https://vidiyaverse-nt.lovable.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+        <!-- 11. NEXT TOPPERS 2 -->
+        <a href="https://studyaura.online/study/nt" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/xS2ksMk5/Next-Toppers-Logo.jpg" alt="NEXT TOPPERS 2" class="app-icon">
             <div class="app-info">
@@ -503,7 +308,19 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- Khan Global Studies -->
+        <!-- 12. NEXTTOPPERS 3 -->
+        <a href="https://ntstudyhulk.ai.studio/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/xS2ksMk5/Next-Toppers-Logo.jpg" alt="NEXTTOPPERS 3" class="app-icon">
+            <div class="app-info">
+              <h3>NEXTTOPPERS 3</h3>
+              <p>Third portal for Next Toppers video lectures, batches, and competitive study materials.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- 13. Khan Global Studies -->
         <a href="https://sahukgs.vercel.app/batches" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/n8VR15xG/Screenshot-20260815-104329-2.jpg" alt="Khan Global Studies" class="app-icon">
@@ -515,7 +332,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- KGS 2 -->
+        <!-- 14. KGS 2 -->
         <a href="https://studyapkmodkgs.vercel.app/home" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/n8VR15xG/Screenshot-20260815-104329-2.jpg" alt="KGS 2" class="app-icon">
@@ -526,8 +343,8 @@
           </div>
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
-        
-                <!-- SCIENCE AND FUN -->
+
+        <!-- 15. SCIENCE AND FUN -->
         <a href="https://deltastudy.fun/scienceandfun" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/BKt6B0MF/image.jpg" alt="SCIENCE AND FUN" class="app-icon">
@@ -539,6 +356,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
+        <!-- 16. Mission JEET -->
         <a href="https://nexthope.pages.dev/mj/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/G4kQkcTh/Screenshot-20260811-183043-2.jpg" alt="Mission JEET" class="app-icon">
@@ -550,6 +368,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
+        <!-- 17. Unacademy -->
         <a href="https://nexthope.site/unacademy/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/NdK48RqM/Screenshot-20260811-183136-2.jpg" alt="Unacademy" class="app-icon">
@@ -561,7 +380,31 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- Rwa Link -->
+        <!-- 18. UNACADEMY 2 -->
+        <a href="https://studyuk.online/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/NdK48RqM/Screenshot-20260811-183136-2.jpg" alt="UNACADEMY 2" class="app-icon">
+            <div class="app-info">
+              <h3>UNACADEMY 2</h3>
+              <p>Secondary portal for Unacademy live batches, top educators, and competitive courses.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- 19. UNACADEMY 3 -->
+        <a href="https://uc-web.uc27.workers.dev/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/NdK48RqM/Screenshot-20260811-183136-2.jpg" alt="UNACADEMY 3" class="app-icon">
+            <div class="app-info">
+              <h3>UNACADEMY 3</h3>
+              <p>Third portal for Unacademy live courses, lectures, and competitive exam preparation.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- 20. Rwa -->
         <a href="https://learnbyakp.site/rwa/batch" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/wh5CY8Ds/Screenshot-20260811-183211-2.jpg" alt="Rwa" class="app-icon">
@@ -573,8 +416,8 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- RWA 2 Link -->
-        <a href="https://studyhelprwa.vercel.app/home" target="_blank" class="app-card" onclick="vibratePhone(35)">
+        <!-- 21. RWA 2 -->
+        <a href="https://rwa.streamfiles.eu.org/#course/QndUM0lHdTg4S3p0dU9YQmc4empQQT09/subject/UVN5SFJZbmVPdHdzMEV4VytGWjh1UT09" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/wh5CY8Ds/Screenshot-20260811-183211-2.jpg" alt="RWA 2" class="app-icon">
             <div class="app-info">
@@ -585,6 +428,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
+        <!-- 22. Selection Way -->
         <a href="https://nexthope.pages.dev/sw/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/nMk354fp/logo.png" alt="Selection Way" class="app-icon">
@@ -596,7 +440,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- SELECTION WAY 2 -->
+        <!-- 23. SELECTION WAY 2 -->
         <a href="https://studyapkmodsway.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/nMk354fp/logo.png" alt="SELECTION WAY 2" class="app-icon">
@@ -608,6 +452,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
+        <!-- 24. Selection Way Test -->
         <a href="https://testrankingfree.vercel.app" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/zTJ5rK7B/Screenshot-20260815-105406-2.jpg" alt="Selection Way Test" class="app-icon">
@@ -619,8 +464,20 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE TESTS AVAILABLE</div>
         </a>
 
-        <!-- STUDY IQ -->
-        <a href="https://studyiqq.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+        <!-- 25. Nirman Batch 2026 NEW -->
+        <a href="https://tgdoraemon.vercel.app/api/file?path=content%2F2.Nirman%20Science%20Magnet.html&token=dc210076f438551907dba1287d7c5f8ea2f2ad009fef1a6e1b7fd2b8fff8ac53&exp=1789566032781" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://ibb.co/Qv0HBGTd" alt="Nirman Batch 2026 NEW" class="app-icon">
+            <div class="app-info">
+              <h3>Nirman Batch 2026 NEW</h3>
+              <p>Access complete Nirman Batch Science Magnet foundation course, theory lectures, and practice modules.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+        
+        <!-- 26. StudyIQ -->
+        <a href="https://spidyiq.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/xtbYS0QW/Screenshot-20260815-111056-2.jpg" alt="StudyIQ" class="app-icon">
             <div class="app-info">
@@ -631,7 +488,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- STUDY IQ 2 -->
+        <!-- 27. STUDY IQ 2 -->
         <a href="https://studyiqspidy.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/xtbYS0QW/Screenshot-20260815-111056-2.jpg" alt="STUDY IQ 2" class="app-icon">
@@ -642,8 +499,9 @@
           </div>
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
-        
-                <a href="https://cds.streamfiles.eu.org/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+
+        <!-- 28. CDS Journey -->
+        <a href="https://cds.streamfiles.eu.org/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/qLTDWYWj/Screenshot-20260815-111326-2.jpg" alt="CDS Journey" class="app-icon">
             <div class="app-info">
@@ -654,6 +512,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
+        <!-- 29. Vibrant Academy -->
         <a href="https://nexthope.pages.dev/vb/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/TxLzfXYM/Screenshot-20260816-204055-2.jpg" alt="Vibrant Academy" class="app-icon">
@@ -665,6 +524,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
+        <!-- 30. UNCOFFLINE -->
         <a href="https://nexthope.pages.dev/uncoffline/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/NdK48RqM/Screenshot-20260811-183136-2.jpg" alt="UNCOFFLINE" class="app-icon">
@@ -676,6 +536,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
+        <!-- 31. GS Vision -->
         <a href="https://nexthope.pages.dev/gsvision/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/YF3vNsnh/Screenshot-20260815-171317-2.jpg" alt="GS Vision" class="app-icon">
@@ -687,6 +548,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
+        <!-- 32. Toppers' Wisdom -->
         <a href="https://nexthope.pages.dev/tw/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/F4GJ92dp/Screenshot-20260815-171405-2.jpg" alt="Toppers Wisdom" class="app-icon">
@@ -698,6 +560,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
+        <!-- 33. FutureKul Courses -->
         <a href="https://nexthope.pages.dev/futurekul/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/N2DYywGW/Screenshot-20260815-171520-2.jpg" alt="FutureKul Courses" class="app-icon">
@@ -709,7 +572,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- FUTUREKUL 2 -->
+        <!-- 34. FUTUREKUL 2 -->
         <a href="https://studyapkmod-futurekull.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/N2DYywGW/Screenshot-20260815-171520-2.jpg" alt="FUTUREKUL 2" class="app-icon">
@@ -721,6 +584,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
+        <!-- 35. Pinnacle Ebooks -->
         <a href="https://nexthope.pages.dev/pinnacle/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/jPgCZGMR/Screenshot-20260815-171712-2.jpg" alt="Pinnacle Ebooks" class="app-icon">
@@ -732,7 +596,7 @@
           <div class="live-badge"><span class="live-dot"></span> E-BOOKS AVAILABLE</div>
         </a>
 
-        <!-- TESTBOOK -->
+        <!-- 36. Testbook -->
         <a href="https://ankitprep.silentpreparationhub.workers.dev/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/jvD2XxD3/Testbook-com-India-s-No-1-Govt-Exam-Preparation-Site.jpg" alt="Testbook" class="app-icon">
@@ -744,7 +608,7 @@
           <div class="live-badge"><span class="live-dot"></span> MOCK TESTS AVAILABLE</div>
         </a>
 
-        <!-- VIDYAGRAM (Updated Link) -->
+        <!-- 37. VIDYAGRAM -->
         <a href="https://vidya.studybeepro.site/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/wZR1fzs1/Screenshot-20260818-114322-2.jpg" alt="VIDYAGRAM" class="app-icon">
@@ -755,8 +619,8 @@
           </div>
           <div class="live-badge"><span class="live-dot"></span> AVAILABLE NOW</div>
         </a>
-        
-                <!-- TARGET BOARD -->
+
+        <!-- 38. TARGET BOARD -->
         <a href="https://studyapkmod-targetboard.vercel.app/#courses-grid" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/prPX5s0n/Target-Board-Logo.jpg" alt="TARGET BOARD" class="app-icon">
@@ -768,6 +632,43 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
+        <!-- 39. TARGET BOARD 2 -->
+        <a href="https://tb.nexthope.site/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/prPX5s0n/Target-Board-Logo.jpg" alt="TARGET BOARD 2" class="app-icon">
+            <div class="app-info">
+              <h3>TARGET BOARD 2</h3>
+              <p>Secondary portal for Target Board courses, structured classes, and exam materials.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- 40. TARGET BOARD 3 -->
+        <a href="https://asmultiverse.com/?tab=home&app=694690cbe1df5128eacc5caa" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/prPX5s0n/Target-Board-Logo.jpg" alt="TARGET BOARD 3" class="app-icon">
+            <div class="app-info">
+              <h3>TARGET BOARD 3</h3>
+              <p>Third portal for Target Board courses, structured classes, and exam materials.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- 41. DISHA ONLINE CLASSES -->
+        <a href="https://t.me/c/4461346099/886/6460" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://ibb.co/BHr64j3s" alt="DISHA ONLINE CLASSES" class="app-icon">
+            <div class="app-info">
+              <h3>DISHA ONLINE CLASSES</h3>
+              <p>Access Disha Online Classes live batches, lectures and board exam study materials.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- 42. CARRIER WILL -->
         <a href="https://studyhelp.freesite.online/batches/cw.html?i=1" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/MxKgrYny/Careerwill.jpg" alt="CARRIER WILL" class="app-icon">
@@ -778,8 +679,8 @@
           </div>
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
-
-        <!-- CARRIER WILL 2 -->
+        
+        <!-- 43. CARRIER WILL 2 -->
         <a href="https://runtkyp.xo.je/?i=1" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/MxKgrYny/Careerwill.jpg" alt="CARRIER WILL 2" class="app-icon">
@@ -791,6 +692,31 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
+        <!-- 44. SSC Pratham 2026 Vod -->
+        <a href="https://tgdoraemon.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/k6q4PkH5/image.png" alt="SSC Pratham 2026 Vod" class="app-icon">
+            <div class="app-info">
+              <h3>SSC Pratham 2026 Vod</h3>
+              <p>Access complete SSC Pratham 2026 VOD batch lectures, study materials and exam preparation videos.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> VOD BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- 45. Books PDF Collection -->
+        <a href="https://tgdoraemon.vercel.app/api/file?path=content%2F3.Doraemon%20Library.html&token=94da42a72f8aefac78cd78937e9437e146b3df7afb86838f2afa6e0f39b1eb54&exp=1789566423358" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/Y7rQffqY/image.png" alt="Books PDF Collection" class="app-icon">
+            <div class="app-info">
+              <h3>Books PDF Collection</h3>
+              <p>Complete Competitive Exam Books · 2026 Edition</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> E-BOOKS AVAILABLE</div>
+        </a>
+
+        <!-- 46. Master Sahab Batches -->
         <a href="https://mastersahab.studybeepro.site/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/WpBksF4v/image.jpg" alt="Master Sahab Batches" class="app-icon">
@@ -802,6 +728,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
+        <!-- 47. VIDYAKUL CLASSES -->
         <a href="https://vidyakool.streamfiles.eu.org" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/fVNq6xS0/VIDYAKUL.jpg" alt="VIDYAKUL CLASSES" class="app-icon">
@@ -813,6 +740,19 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
+        <!-- 48. VIDYAKUL 2 -->
+        <a href="https://asmultiverse.com/?tab=home&app=5eb393ee95fab7468a79d2853" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/fVNq6xS0/VIDYAKUL.jpg" alt="VIDYAKUL 2" class="app-icon">
+            <div class="app-info">
+              <h3>VIDYAKUL 2</h3>
+              <p>Secondary portal for state board and competitive exam courses from Vidyakul.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- 49. SAMYAK IAS -->
         <a href="https://t.me/c/4461346099/111/3330" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/jjwdrj2/Screenshot-20260826-092215.jpg" alt="SAMYAK IAS" class="app-icon">
@@ -824,7 +764,8 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <a href="https://t.me/c/4461346099/886/5305" target="_blank" class="app-card" onclick="vibratePhone(35)">
+        <!-- 50. GYAN BINDU -->
+        <a href="https://t.me/c/4461346099/886/6461" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/b5DDpzwY/Screenshot-20260826-091531.jpg" alt="GYAN BINDU" class="app-icon">
             <div class="app-info">
@@ -835,8 +776,20 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- EDUTERIA LINK -->
-        <a href="https://eduteriaa.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+        <!-- 50.1 AASH OFFICIAL (SK JHA SIR) -->
+        <a href="https://studyapkmod-aash.vercel.app/home" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://ibb.co/20knzRVR" alt="AASH OFFICIAL (SK JHA SIR)" class="app-icon">
+            <div class="app-info">
+              <h3>AASH OFFICIAL (SK JHA SIR)</h3>
+              <p>Access high-quality science, railway, and competitive exam batches by SK Jha Sir.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- 51. EDUTERIA -->
+        <a href="https://all.codewithvivek.qzz.io/eduteria" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/CKftCD74/EDUTERIA.jpg" alt="EDUTERIA" class="app-icon">
             <div class="app-info">
@@ -847,6 +800,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
+        <!-- 52. SACHIN ACADEMY -->
         <a href="https://sachinacademy.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/8DhBt9vW/SACHIN-ACADEMY.jpg" alt="SACHIN ACADEMY" class="app-icon">
@@ -858,7 +812,19 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- ENGLISH BY NEETU SINGH 78 FOUNDATION BATCH -->
+        <!-- 53. SACHIN ACADEMY 2 -->
+        <a href="https://sachin.nexthope.site/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://i.ibb.co/8DhBt9vW/SACHIN-ACADEMY.jpg" alt="SACHIN ACADEMY 2" class="app-icon">
+            <div class="app-info">
+              <h3>SACHIN ACADEMY 2</h3>
+              <p>Secondary portal for teaching exam preparation, CTET, TET and pedagogy batches.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- 54. ENGLISH BY NEETU SINGH 78 FOUNDATION BATCH -->
         <a href="https://yappy-violet-akhjn9fk.edgeone.dev/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/k6DVYC0t/image.png" alt="ENGLISH BY NEETU SINGH 78 FOUNDATION BATCH" class="app-icon">
@@ -870,8 +836,20 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- ALLEN AND MORE OTHER BACHES PLATFORM -->
-        <a href="https://preppronetwork.vercel.app/apps" target="_blank" class="app-card" onclick="vibratePhone(35)">
+        <!-- 55. ENGLISH BY NEETU SINGH AND Achiever 8 COURSE -->
+        <a href="https://tgdoraemon.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://ibb.co/zhm6YPH0" alt="ENGLISH BY NEETU SINGH AND Achiever 8 COURSE" class="app-icon">
+            <div class="app-info">
+              <h3>ENGLISH BY NEETU SINGH AND Achiever 8 COURSE</h3>
+              <p>Access complete English by Neetu Singh & Achiever 8 course lectures, materials and exam preparation videos.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- 56. ALLEN AND MORE OTHER BACHES PLATFORM -->
+        <a href="https://preppronetwork.vercel.app/viewer" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/7xm5w42r/image.png" alt="ALLEN AND MORE OTHER BACHES PLATFORM" class="app-icon">
             <div class="app-info">
@@ -882,7 +860,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- ALL COMPETITION CLASS BACHES ALL PLATFORM -->
+        <!-- 57. ALL COMPETITION CLASS BACHES ALL PLATFORM -->
         <a href="https://www.allcompetitionclasses.com/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/nNkyYLHM/Chat-GPT-Image-Aug-12-2026-08-08-06-AM.png" alt="ALL COMPETITION CLASS BACHES ALL PLATFORM" class="app-icon">
@@ -894,7 +872,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- PARMAR BACHES AND MORE OTHER BACHES -->
+        <!-- 58. PARMAR BACHES AND MORE OTHER BACHES -->
         <a href="https://tgdoraemon.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/nMpJckgQ/image.png" alt="PARMAR BACHES AND MORE OTHER BACHES" class="app-icon">
@@ -906,7 +884,19 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- APNA COLLEGE -->
+        <!-- 59. Spartans 2026, Super100 2026... -->
+        <a href="https://tgdoraemon.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://ibb.co/fYMYZtzM" alt="Spartans 2026, Super100 2026, Maths Mania, Rakesh Sir 2026, Ultra Calculation, Aditya Ranjan Sir" class="app-icon">
+            <div class="app-info">
+              <h3>Spartans 2026, Super100 2026, Maths Mania, Rakesh Sir 2026, Ultra Calculation, Aditya Ranjan Sir</h3>
+              <p>Access top math batches, shortcuts, calculation speed tricks and complete 2026 course modules.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- 60. APNA COLLEGE -->
         <a href="https://studyapkmod-apnacollege.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/zWgGFd2g/image.png" alt="APNA COLLEGE" class="app-icon">
@@ -918,7 +908,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- APNA COLLEGE 2 -->
+        <!-- 61. APNA COLLEGE 2 -->
         <a href="https://coursaa-main.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/zWgGFd2g/image.png" alt="APNA COLLEGE 2" class="app-icon">
@@ -930,7 +920,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- MD CLASSES -->
+        <!-- 62. MD CLASSES -->
         <a href="https://mdclassesx.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/gZxRJDkG/image.png" alt="MD CLASSES" class="app-icon">
@@ -942,7 +932,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- NEET PULSE -->
+        <!-- 63. NEET PULSE -->
         <a href="https://www.neetpulse.online/?view=tests" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/s9btNJLy/image.png" alt="NEET PULSE" class="app-icon">
@@ -954,7 +944,7 @@
           <div class="live-badge"><span class="live-dot"></span> TESTS AVAILABLE</div>
         </a>
 
-        <!-- PREP JEE (Added below NEET Pulse) -->
+        <!-- 64. PREP JEE -->
         <a href="https://prepjeetest.vercel.app/#resources" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/q3rrnBVf/image.png" alt="PREP JEE" class="app-icon">
@@ -966,7 +956,7 @@
           <div class="live-badge"><span class="live-dot"></span> RESOURCES AVAILABLE</div>
         </a>
 
-        <!-- MUNIL SIR -->
+        <!-- 65. MUNIL SIR -->
         <a href="https://deltastudy.fun/munilsir/86?title=SPARK%201.0%20(2026-2027)%20FROM%201%20APRIL" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/FkMfyr7j/image.png" alt="MUNIL SIR" class="app-icon">
@@ -978,7 +968,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- ALL INSTITUTE TEST -->
+        <!-- 66. ALL INSTITUTE TEST -->
         <a href="https://testneet.com/tests/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/C3XnhH2X/image.png" alt="ALL INSTITUTE TEST" class="app-icon">
@@ -990,7 +980,31 @@
           <div class="live-badge"><span class="live-dot"></span> TESTS AVAILABLE</div>
         </a>
 
-        <!-- PADHLE AKSHAY -->
+        <!-- 67. RAKSHA ACADEMY -->
+        <a href="https://raksha.codewithvivek.qzz.io/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://ibb.co/Pzz3HrH3" alt="RAKSHA ACADEMY" class="app-icon">
+            <div class="app-info">
+              <h3>RAKSHA ACADEMY</h3>
+              <p>Access complete Raksha Academy lectures, courses, and exam prep resources.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- 68. YES OFFICER (NEW - LAST THIRD) -->
+        <a href="https://yesofficer.studybeepro.site/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+          <div class="app-card-top">
+            <img src="https://ibb.co/vCV2V5hn" alt="YES OFFICER" class="app-icon">
+            <div class="app-info">
+              <h3>YES OFFICER</h3>
+              <p>Access banking, insurance and premium officer level exam preparation courses.</p>
+            </div>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
+        </a>
+
+        <!-- 69. PADHLE AKSHAY -->
         <a href="https://trms-akshay.nextmate.site/home" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/p6X04bGP/p6X04bGP.png" alt="PADHLE AKSHAY" class="app-icon">
@@ -1002,7 +1016,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- PADHLE -->
+        <!-- 70. PADHLE -->
         <a href="https://deltastudy.fun/padhle" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/k25BXVxY/k25BXVxY.png" alt="PADHLE" class="app-icon">
@@ -1014,79 +1028,17 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- MAGNET BRAINS -->
-        <a href="https://www.magnetbrains.com/" target="_blank" class="app-card" onclick="vibratePhone(35)">
-          <div class="app-card-top">
-            <img src="https://i.ibb.co/VYpCNbkN/VYpCNbkN.png" alt="MAGNET BRAINS" class="app-icon">
-            <div class="app-info">
-              <h3>MAGNET BRAINS</h3>
-              <p>Access free high-quality video classes, school education resources, and courses.</p>
-            </div>
-          </div>
-          <div class="live-badge"><span class="live-dot"></span> COURSES AVAILABLE</div>
-        </a>
-
-        <!-- RG VIKRAMJEET -->
-        <a href="https://learnbyakp.site/vikaram" target="_blank" class="app-card" onclick="vibratePhone(35)">
-          <div class="app-card-top">
-            <img src="https://i.ibb.co/xSXZdyGs/xSXZdyGs.png" alt="RG VIKRAMJEET" class="app-icon">
-            <div class="app-info">
-              <h3>RG VIKRAMJEET</h3>
-              <p>Access comprehensive reasoning, mathematics, and competitive exam batches.</p>
-            </div>
-          </div>
-          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
-        </a>
-
-        <!-- YOUTUBE MASTERCLASS -->
-        <a href="https://drive.google.com/drive/folders/11foeRsMRUa_y_sGmaUPzjhNek6Tp9pJu" target="_blank" class="app-card" onclick="vibratePhone(35)">
-          <div class="app-card-top">
-            <img src="https://i.ibb.co/hR9Tznx3/image.png" alt="Youtube Masterclass" class="app-icon">
-            <div class="app-info">
-              <h3>Youtube Masterclass - Complete A To Z Creator Guide</h3>
-              <p>A to Z guide about YouTube ideation, scripting, recording, editing, and uploading to build a successful channel.</p>
-            </div>
-          </div>
-          <div class="live-badge"><span class="live-dot"></span> COURSE AVAILABLE</div>
-        </a>
-
       </div>
     </div>
 
   </div>
 
   <script>
-    // Reveal Text & Button Exactly 1 Second After Logo Display
-    window.addEventListener('DOMContentLoaded', () => {
-      setTimeout(() => {
-        const content = document.getElementById('landing-content');
-        if (content) {
-          content.classList.add('show');
-        }
-      }, 1000);
-    });
-
-    // Open Main Dashboard Screen
-    function openDashboard() {
-      vibratePhone(50);
-      const landing = document.getElementById('landing-page');
-      landing.style.opacity = '0';
-      
-      setTimeout(() => {
-        landing.style.display = 'none';
-        document.getElementById('main-content').style.display = 'flex';
-      }, 500);
-    }
-
-    // Show Search Bar and Scroll smoothly directly to Apps Section
-    function showSearchBar() {
-      const searchWrapper = document.getElementById('searchWrapper');
-      searchWrapper.style.display = 'block';
+    function focusSearch() {
       document.getElementById('apps').scrollIntoView({ behavior: 'smooth' });
       document.getElementById('searchInput').focus();
     }
 
-    // Real-time Search Filter Function (Shows matching platforms first, and keeps all other platforms below)
     function filterApps() {
       let input = document.getElementById('searchInput').value.toLowerCase().trim();
       let appsList = document.getElementById('appsList');
@@ -1113,7 +1065,6 @@
         }
       });
 
-      // Clear list and rearrange: matching cards first, followed by all other platforms below
       appsList.innerHTML = "";
       
       matchingCards.forEach(card => {
@@ -1127,7 +1078,6 @@
       });
     }
 
-    // Phone Vibration Trigger Function
     function vibratePhone(ms) {
       if ("vibrate" in navigator) {
         navigator.vibrate(ms);
