@@ -1,333 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Rajnish Prime - Link Locked</title>
-  
-  <meta name="theme-color" content="#080c14">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREE STUDY CAMPUS</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons / FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Task & Instruction Styling */
+        .task-instruction-box {
+            background: #fff3cd;
+            border: 2px dashed #ffc107;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+            color: #856404;
+            font-size: 14px;
+            text-align: center;
+        }
 
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-    
-    body {
-      background-color: #080c14;
-      background-image: 
-        radial-gradient(at 20% 20%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
-        radial-gradient(at 80% 80%, rgba(139, 92, 246, 0.08) 0px, transparent 50%);
-      color: #ffffff;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 12px 16px;
-      overflow-y: auto;
-    }
+        .task-instruction-box strong {
+            display: block;
+            font-size: 15px;
+            color: #000;
+            margin-top: 5px;
+        }
 
-    .landing-logo {
-      width: 85px;
-      height: 85px;
-      border-radius: 22px;
-      object-fit: cover;
-      border: 3px solid #00d2ff;
-      box-shadow: 0 0 30px rgba(0, 210, 255, 0.6);
-      margin-bottom: 8px;
-      animation: pulseGlow 2.5s infinite ease-in-out;
-    }
+        .social-task-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
 
-    @keyframes pulseGlow {
-      0% { transform: scale(0.98); box-shadow: 0 0 20px rgba(0, 210, 255, 0.4); }
-      50% { transform: scale(1.03); box-shadow: 0 0 40px rgba(0, 210, 255, 0.8); }
-      100% { transform: scale(0.98); box-shadow: 0 0 20px rgba(0, 210, 255, 0.4); }
-    }
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 14px;
+            border-radius: 6px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+            animation: pulse-animation 1.5s infinite;
+        }
 
-    .landing-content {
-      width: 100%;
-      max-width: 390px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+        .btn-tg { background-color: #0088cc; }
+        .btn-yt { background-color: #ff0000; }
+        .btn-insta { background-color: #e1306c; }
 
-    .landing-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 24px;
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: 2.5px;
-      margin-bottom: 14px;
-      background: linear-gradient(180deg, #FFFFFF 0%, #CBD5E1 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .task-locker-card {
-      background: rgba(17, 24, 39, 0.85);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 24px;
-      padding: 16px 14px;
-      width: 100%;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      margin-bottom: 10px;
-    }
-
-    .task-locker-title {
-      font-size: 15px;
-      font-weight: 800;
-      margin-bottom: 2px;
-      color: #38bdf8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      letter-spacing: 0.5px;
-    }
-
-    .task-locker-desc {
-      font-size: 11px;
-      color: #94a3b8;
-      margin-bottom: 12px;
-      font-weight: 500;
-    }
-
-    /* Attractive Task Buttons */
-    .task-btn {
-      width: 100%;
-      padding: 12px 16px;
-      border-radius: 14px;
-      font-size: 13.5px;
-      font-weight: 700;
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 10px;
-      text-decoration: none;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .task-btn:active {
-      transform: scale(0.97);
-    }
-
-    /* Vibrant Gradient Themes */
-    .task-btn-yt { 
-      background: linear-gradient(135deg, #FF0000 0%, #990000 100%);
-      box-shadow: 0 4px 18px rgba(255, 0, 0, 0.35);
-    }
-    .task-btn-wa { 
-      background: linear-gradient(135deg, #25D366 0%, #075E54 100%);
-      box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35);
-    }
-    .task-btn-tg { 
-      background: linear-gradient(135deg, #0088CC 0%, #004466 100%);
-      box-shadow: 0 4px 18px rgba(0, 136, 204, 0.35);
-    }
-    .task-btn-ig { 
-      background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-      box-shadow: 0 4px 18px rgba(225, 48, 108, 0.35);
-    }
-
-    .task-btn.completed {
-      background: rgba(16, 185, 129, 0.12) !important;
-      color: #10B981 !important;
-      border: 1.5px solid #10B981;
-      box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
-      pointer-events: none;
-    }
-
-    .status-badge {
-      font-size: 11px;
-      font-weight: 800;
-      padding: 3px 8px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(4px);
-    }
-
-    .completed .status-badge {
-      background: #10B981;
-      color: #ffffff;
-    }
-
-    .status-msg {
-      font-size: 11.5px;
-      margin-top: 6px;
-      font-weight: 700;
-      padding: 8px 12px;
-      border-radius: 10px;
-      display: none;
-      color: #34d399;
-      background: rgba(52, 211, 153, 0.12);
-      border: 1px solid rgba(52, 211, 153, 0.3);
-    }
-
-    .reset-link {
-      font-size: 11px;
-      color: #64748b;
-      text-decoration: underline;
-      cursor: pointer;
-      margin-top: 8px;
-      display: inline-block;
-      transition: color 0.2s;
-    }
-
-    .reset-link:hover {
-      color: #94a3b8;
-    }
-
-    /* Open Your Batch Now - Positioned Higher & Ultra-Attractive */
-    .btn-open-now {
-      background: linear-gradient(135deg, #6366F1 0%, #A855F7 50%, #EC4899 100%);
-      color: #ffffff;
-      font-size: 15.5px;
-      font-weight: 800;
-      padding: 14px 20px;
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      cursor: pointer;
-      box-shadow: 0 8px 30px rgba(168, 85, 247, 0.55);
-      width: 100%;
-      display: none;
-      animation: batchPulse 1.8s infinite cubic-bezier(0.4, 0, 0.6, 1);
-      text-decoration: none;
-      letter-spacing: 0.5px;
-    }
-
-    @keyframes batchPulse {
-      0% { transform: translateY(0) scale(1); box-shadow: 0 8px 25px rgba(168, 85, 247, 0.5); }
-      50% { transform: translateY(-2px) scale(1.02); box-shadow: 0 12px 35px rgba(236, 72, 153, 0.75); }
-      100% { transform: translateY(0) scale(1); box-shadow: 0 8px 25px rgba(168, 85, 247, 0.5); }
-    }
-  </style>
+        /* Finger point / Click animation effect */
+        @keyframes pulse-animation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
 </head>
 <body>
 
-  <img src="https://i.ibb.co/nNkyYLHM/Chat-GPT-Image-Aug-12-2026-08-08-06-AM.png" alt="Rajnish Prime Logo" class="landing-logo">
-  
-  <div class="landing-content">
-    <h1 class="landing-title">RAJNISH<br>PRIME</h1>
-
-    <div class="task-locker-card">
-      <div class="task-locker-title">🔒 Link Locked</div>
-      <p class="task-locker-desc">Complete all steps below to unlock destination link.</p>
-
-      <a href="https://www.youtube.com/@Rajnishstudyshorts" target="_blank" id="btn-yt" class="task-btn task-btn-yt" onclick="completeTask('yt')">
-        <span>📺 Subscribe YouTube</span>
-        <span class="status-badge" id="status-yt">➔</span>
-      </a>
-
-      <a href="https://whatsapp.com/channel/0029VbDI4yFK5cDHjEHcNk16" target="_blank" id="btn-wa" class="task-btn task-btn-wa" onclick="completeTask('wa')">
-        <span>📢 Join WhatsApp Channel</span>
-        <span class="status-badge" id="status-wa">➔</span>
-      </a>
-
-      <a href="https://t.me/+cL3-XYVYH6VkYmNl" target="_blank" id="btn-tg" class="task-btn task-btn-tg" onclick="completeTask('tg')">
-        <span>✈️ Join Telegram Channel</span>
-        <span class="status-badge" id="status-tg">➔</span>
-      </a>
-
-      <a href="https://www.instagram.com/all_cousre_1?stkn=MTk0djQwbWtibGFm" target="_blank" id="btn-ig" class="task-btn task-btn-ig" onclick="completeTask('ig')">
-        <span>📸 Follow on Instagram</span>
-        <span class="status-badge" id="status-ig">➔</span>
-      </a>
-
-      <div class="status-msg" id="statusMsg">🎉 All tasks verified! Unlocking...</div>
-
-      <div>
-        <span class="reset-link" onclick="resetTaskProgress()">Reset Progress</span>
-      </div>
+    <!-- 1. INTRO / SPLASH SCREEN -->
+    <div id="introScreen" class="overlay-screen">
+        <div class="intro-box">
+            <i class="fa-solid fa-graduation-cap logo-icon"></i>
+            <h1>FREE STUDY CAMPUS</h1>
+            <p>Empowering Quality Education For Every Student</p>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+        </div>
     </div>
 
-    <!-- Final Open Button Shifted Higher -->
-    <a href="./main.html" class="btn-open-now" id="btn-open-now" onclick="openBatch(event)">🔥 Open Your Batch Now 🔥</a>
-  </div>
+    <!-- 2. PIN LOCK SCREEN -->
+    <div id="lockScreen" class="overlay-screen hidden">
+        <div class="lock-card">
+            <div class="lock-icon"><i class="fa-solid fa-lock"></i></div>
+            <span class="security-badge"><i class="fa-solid fa-shield-halved"></i> CAMPUS SECURITY CHECK</span>
+            <h2>Student Access Lock</h2>
+            
+            <!-- BOLD INSTRUCTION BOX & ISHARA -->
+            <div class="task-instruction-box">
+                <i class="fa-solid fa-hand-point-down fa-bounce" style="font-size: 20px; color: #d9534f;"></i>
+                <strong>👉 Course ko unlock karne ke liye sabhi buttons pe ek-ek karke tap kijiye, aapka Batch open ho jayega. 👈</strong>
+            </div>
 
-  <script>
-    const tasks = ['yt', 'wa', 'tg', 'ig'];
+            <!-- SOCIAL MEDIA TASK BUTTONS -->
+            <div class="social-task-buttons">
+                <a href="https://t.me/your_telegram_link" target="_blank" class="social-btn btn-tg">
+                    <i class="fa-brands fa-telegram"></i> Telegram Join
+                </a>
+                <a href="https://youtube.com/your_channel" target="_blank" class="social-btn btn-yt">
+                    <i class="fa-brands fa-youtube"></i> YouTube Subscribe
+                </a>
+                <a href="https://instagram.com/your_profile" target="_blank" class="social-btn btn-insta">
+                    <i class="fa-brands fa-instagram"></i> Instagram Follow
+                </a>
+            </div>
 
-    checkTaskStatus();
+            <p style="font-size: 13px; margin-top: 10px;">Aapka Access PIN / Unlock Code enter karein:</p>
+            
+            <div class="input-group">
+                <i class="fa-solid fa-key"></i>
+                <input type="password" id="pinInput" placeholder="Enter access PIN...">
+            </div>
+            
+            <button onclick="unlockPortal()" class="btn-primary">
+                <i class="fa-solid fa-unlock"></i> UNLOCK ACCESS
+            </button>
+        </div>
+    </div>
 
-    function completeTask(taskType) {
-      vibratePhone(40);
-      localStorage.setItem(`task_${taskType}`, 'done');
-      
-      setTimeout(() => {
-        checkTaskStatus();
-      }, 400);
-    }
+    <!-- 3. MAIN PORTAL CONTENT -->
+    <div id="mainContent" class="hidden">
+        <!-- Header -->
+        <header class="header">
+            <div class="brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <div>
+                    <h2>FREE STUDY</h2>
+                    <span>CAMPUS</span>
+                </div>
+            </div>
+        </header>
 
-    function checkTaskStatus() {
-      let completedCount = 0;
-      
-      tasks.forEach(task => {
-        if (localStorage.getItem(`task_${task}`) === 'done') {
-          const btn = document.getElementById(`btn-${task}`);
-          const statusSpan = document.getElementById(`status-${task}`);
-          if (btn && statusSpan) {
-            btn.classList.add('completed');
-            statusSpan.innerText = 'Verified ✅';
-          }
-          completedCount++;
-        }
-      });
+        <!-- Hero Section -->
+        <section class="hero">
+            <span class="portal-badge">⚡ Next-Generation Open Learning Portal</span>
+            <h1>Empowering Your Future with <span>FREE STUDY CAMPUS</span></h1>
+            <p>A modern, premier educational space delivering top-tier learning batches.</p>
+            
+            <!-- Search Bar -->
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" oninput="filterBatches()" placeholder="Search by name or code...">
+            </div>
+        </section>
 
-      const openBtn = document.getElementById('btn-open-now');
-      const statusMsg = document.getElementById('statusMsg');
+        <!-- Batches Grid -->
+        <section class="batches-section">
+            <h3>Curated Batches</h3>
+            <div id="batchContainer" class="grid-container">
+                <!-- Batches JS se dynamic render honge -->
+            </div>
+        </section>
 
-      if (completedCount === tasks.length) {
-        localStorage.setItem('all_tasks_completed', 'true');
-        if (openBtn) openBtn.style.display = 'block';
-        if (statusMsg) statusMsg.style.display = 'block';
-      } else {
-        localStorage.setItem('all_tasks_completed', 'false');
-        if (openBtn) openBtn.style.display = 'none';
-        if (statusMsg) statusMsg.style.display = 'none';
-      }
-    }
+        <!-- Telegram Join Footer Banner -->
+        <footer class="telegram-banner">
+            <i class="fa-brands fa-telegram tg-icon"></i>
+            <h3>FREE STUDY CAMPUS</h3>
+            <p>Join our Telegram channel for updates and new batch links.</p>
+            <a href="https://t.me/your_channel_link" target="_blank" class="btn-telegram">
+                <i class="fa-paper-plane"></i> JOIN MY TELEGRAM
+            </a>
+        </footer>
+    </div>
 
-    function openBatch(e) {
-      vibratePhone(50);
-      if (localStorage.getItem('all_tasks_completed') !== 'true') {
-        e.preventDefault();
-        alert('Please complete all 4 tasks first!');
-      }
-    }
-
-    function resetTaskProgress() {
-      vibratePhone(30);
-      tasks.forEach(task => {
-        localStorage.removeItem(`task_${task}`);
-        const btn = document.getElementById(`btn-${task}`);
-        const statusSpan = document.getElementById(`status-${task}`);
-        if (btn && statusSpan) {
-          btn.classList.remove('completed');
-          statusSpan.innerText = '➔';
-        }
-      });
-      localStorage.setItem('all_tasks_completed', 'false');
-      document.getElementById('btn-open-now').style.display = 'none';
-      document.getElementById('statusMsg').style.display = 'none';
-    }
-
-    function vibratePhone(ms) {
-      if ("vibrate" in navigator) {
-        navigator.vibrate(ms);
-      }
-    }
-  </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
