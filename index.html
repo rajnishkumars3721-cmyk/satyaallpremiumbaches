@@ -61,10 +61,52 @@
       font-weight: 800;
       line-height: 1.1;
       letter-spacing: 2.5px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       background: linear-gradient(180deg, #FFFFFF 0%, #CBD5E1 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    /* Clear & Bold Instruction Box Styling */
+    .instruction-box {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      border: 2px dashed #38bdf8;
+      border-radius: 18px;
+      padding: 14px 12px;
+      margin-bottom: 12px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+    }
+
+    .instruction-text {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.5;
+    }
+
+    .highlight-yellow {
+      color: #facc15;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .highlight-cyan {
+      color: #38bdf8;
+      font-weight: 800;
+    }
+
+    /* Bouncing Arrow Animation */
+    .pointer-arrow {
+      font-size: 22px;
+      margin-top: 6px;
+      animation: bounce 1.2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
     }
 
     .task-locker-card {
@@ -188,7 +230,7 @@
       color: #94a3b8;
     }
 
-    /* Open Your Batch Now - Positioned Higher & Ultra-Attractive */
+    /* Open Your Batch Now Button */
     .btn-open-now {
       background: linear-gradient(135deg, #6366F1 0%, #A855F7 50%, #EC4899 100%);
       color: #ffffff;
@@ -220,39 +262,49 @@
   <div class="landing-content">
     <h1 class="landing-title">RAJNISH<br>PRIME</h1>
 
+    <!-- Clear Bold Instruction Box -->
+    <div class="instruction-box">
+      <div class="instruction-text">
+        <span class="highlight-yellow">📢 BATCHES OPEN KARNE KE LIYE:</span><br>
+        Neeche diye gaye <span class="highlight-cyan">SABHI 4 Links</span> ko join/follow karo!<br>
+        Saare steps complete hote hi Batches <span class="highlight-yellow">UNLOCK</span> ho jayenge!
+      </div>
+      <div class="pointer-arrow">👇 👇 👇</div>
+    </div>
+
     <div class="task-locker-card">
-      <div class="task-locker-title"> Link Locked</div>
+      <div class="task-locker-title">🔒 Link Locked</div>
       <p class="task-locker-desc">Complete all steps below to unlock destination link.</p>
 
       <a href="https://www.youtube.com/@Rajnishstudyshorts" target="_blank" id="btn-yt" class="task-btn task-btn-yt" onclick="completeTask('yt')">
-        <span> Subscribe YouTube</span>
-        <span class="status-badge" id="status-yt"></span>
+        <span>📺 Subscribe YouTube</span>
+        <span class="status-badge" id="status-yt">➔</span>
       </a>
 
       <a href="https://whatsapp.com/channel/0029VbDI4yFK5cDHjEHcNk16" target="_blank" id="btn-wa" class="task-btn task-btn-wa" onclick="completeTask('wa')">
-        <span> Join WhatsApp Channel</span>
-        <span class="status-badge" id="status-wa"></span>
+        <span>📢 Join WhatsApp Channel</span>
+        <span class="status-badge" id="status-wa">➔</span>
       </a>
 
       <a href="https://t.me/+cL3-XYVYH6VkYmNl" target="_blank" id="btn-tg" class="task-btn task-btn-tg" onclick="completeTask('tg')">
-        <span> Join Telegram Channel</span>
-        <span class="status-badge" id="status-tg"></span>
+        <span>✈️ Join Telegram Channel</span>
+        <span class="status-badge" id="status-tg">➔</span>
       </a>
 
       <a href="https://www.instagram.com/all_cousre_1?stkn=MTk0djQwbWtibGFm" target="_blank" id="btn-ig" class="task-btn task-btn-ig" onclick="completeTask('ig')">
-        <span> Follow on Instagram</span>
-        <span class="status-badge" id="status-ig"></span>
+        <span>📸 Follow on Instagram</span>
+        <span class="status-badge" id="status-ig">➔</span>
       </a>
 
-      <div class="status-msg" id="statusMsg"> All tasks verified! Unlocking...</div>
+      <div class="status-msg" id="statusMsg">🎉 All tasks verified! Unlocking...</div>
 
       <div>
         <span class="reset-link" onclick="resetTaskProgress()">Reset Progress</span>
       </div>
     </div>
 
-    <!-- Final Open Button Shifted Higher -->
-    <a href="./main.html" class="btn-open-now" id="btn-open-now" onclick="openBatch(event)"> Open Your Batch Now </a>
+    <!-- Final Open Button -->
+    <a href="./main.html" class="btn-open-now" id="btn-open-now" onclick="openBatch(event)">🔥 Open Your Batch Now 🔥</a>
   </div>
 
   <script>
@@ -278,7 +330,7 @@
           const statusSpan = document.getElementById(`status-${task}`);
           if (btn && statusSpan) {
             btn.classList.add('completed');
-            statusSpan.innerText = 'Verified ';
+            statusSpan.innerText = 'Verified ✅';
           }
           completedCount++;
         }
@@ -314,7 +366,7 @@
         const statusSpan = document.getElementById(`status-${task}`);
         if (btn && statusSpan) {
           btn.classList.remove('completed');
-          statusSpan.innerText = '';
+          statusSpan.innerText = '➔';
         }
       });
       localStorage.setItem('all_tasks_completed', 'false');
