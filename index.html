@@ -1,161 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FREE STUDY CAMPUS</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Lucide Icons / FontAwesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Task & Instruction Styling */
-        .task-instruction-box {
-            background: #fff3cd;
-            border: 2px dashed #ffc107;
-            padding: 12px;
-            border-radius: 8px;
-            margin: 15px 0;
-            color: #856404;
-            font-size: 14px;
-            text-align: center;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Rajnish Prime - Link Locked</title>
+  
+  <meta name="theme-color" content="#080c14">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-        .task-instruction-box strong {
-            display: block;
-            font-size: 15px;
-            color: #000;
-            margin-top: 5px;
-        }
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    body {
+      background-color: #080c14;
+      color: #ffffff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px 16px;
+      overflow-y: auto;
+    }
 
-        .social-task-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 15px 0;
-            flex-wrap: wrap;
-        }
+    .landing-logo {
+      width: 90px;
+      height: 90px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 3.5px solid #00d2ff;
+      box-shadow: 0 0 35px rgba(0, 210, 255, 0.65);
+      margin-bottom: 12px;
+      animation: pulseGlow 2s infinite ease-in-out;
+    }
 
-        .social-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 10px 14px;
-            border-radius: 6px;
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 13px;
-            animation: pulse-animation 1.5s infinite;
-        }
+    @keyframes pulseGlow {
+      0% { transform: scale(0.98); box-shadow: 0 0 25px rgba(0, 210, 255, 0.5); }
+      50% { transform: scale(1.03); box-shadow: 0 0 45px rgba(0, 210, 255, 0.85); }
+      100% { transform: scale(0.98); box-shadow: 0 0 25px rgba(0, 210, 255, 0.5); }
+    }
 
-        .btn-tg { background-color: #0088cc; }
-        .btn-yt { background-color: #ff0000; }
-        .btn-insta { background-color: #e1306c; }
+    .landing-content {
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        /* Finger point / Click animation effect */
-        @keyframes pulse-animation {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-    </style>
+    .landing-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+      color: #ffffff;
+    }
+
+    .task-locker-card {
+      background: #111827;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 18px 16px;
+      width: 100%;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      margin-bottom: 16px;
+    }
+
+    .task-locker-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .task-locker-desc {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-bottom: 14px;
+    }
+
+    .task-btn {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      text-decoration: none;
+    }
+
+    .task-btn-yt { background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); }
+    .task-btn-wa { background: linear-gradient(135deg, #22c55e 0%, #15803d 100%); }
+    .task-btn-tg { background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); }
+    .task-btn-ig { background: linear-gradient(135deg, #e1306c 0%, #c13584 100%); }
+
+    .task-btn.completed {
+      background: #1f2937 !important;
+      color: #34d399 !important;
+      border: 1px solid #34d399;
+      pointer-events: none;
+    }
+
+    .btn-check-status {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      background: #1e293b;
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      cursor: pointer;
+      margin-top: 4px;
+      margin-bottom: 6px;
+    }
+
+    .btn-check-status:active { transform: scale(0.96); }
+
+    .status-msg {
+      font-size: 12px;
+      margin-top: 8px;
+      font-weight: 700;
+      color: #34d399;
+      padding: 8px;
+      border-radius: 8px;
+      background: rgba(52, 211, 153, 0.15);
+      display: none;
+    }
+
+    .reset-link {
+      font-size: 11px;
+      color: #64748b;
+      text-decoration: underline;
+      cursor: pointer;
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    .btn-open-now {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 800;
+      padding: 15px 30px;
+      border-radius: 16px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
+      width: 100%;
+      display: none;
+      animation: pulseGlowBtn 1.5s infinite ease-in-out;
+      text-decoration: none;
+    }
+
+    @keyframes pulseGlowBtn {
+      0% { transform: scale(1); box-shadow: 0 0 20px rgba(139, 92, 246, 0.5); }
+      50% { transform: scale(1.03); box-shadow: 0 0 35px rgba(139, 92, 246, 0.8); }
+      100% { transform: scale(1); box-shadow: 0 0 20px rgba(139, 92, 246, 0.5); }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- 1. INTRO / SPLASH SCREEN -->
-    <div id="introScreen" class="overlay-screen">
-        <div class="intro-box">
-            <i class="fa-solid fa-graduation-cap logo-icon"></i>
-            <h1>FREE STUDY CAMPUS</h1>
-            <p>Empowering Quality Education For Every Student</p>
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-        </div>
+  <img src="https://i.ibb.co/nNkyYLHM/Chat-GPT-Image-Aug-12-2026-08-08-06-AM.png" alt="Rajnish Prime Logo" class="landing-logo">
+  
+  <div class="landing-content">
+    <h1 class="landing-title">RAJNISH<br>PRIME</h1>
+
+    <div class="task-locker-card">
+      <div class="task-locker-title">🔒 Link Locked</div>
+      <p class="task-locker-desc">Complete all steps below to unlock destination link.</p>
+
+      <a href="https://www.youtube.com/@Rajnishstudyshorts" target="_blank" id="btn-yt" class="task-btn task-btn-yt" onclick="completeTask('yt')">
+        <span>📺 Subscribe YouTube</span>
+        <span id="status-yt">➔</span>
+      </a>
+
+      <a href="https://whatsapp.com/channel/0029VbDI4yFK5cDHjEHcNk16" target="_blank" id="btn-wa" class="task-btn task-btn-wa" onclick="completeTask('wa')">
+        <span>📢 Join WhatsApp Channel</span>
+        <span id="status-wa">➔</span>
+      </a>
+
+      <a href="https://t.me/+cL3-XYVYH6VkYmNl" target="_blank" id="btn-tg" class="task-btn task-btn-tg" onclick="completeTask('tg')">
+        <span>✈️ Join Telegram Channel</span>
+        <span id="status-tg">➔</span>
+      </a>
+
+      <a href="https://www.instagram.com/all_cousre_1?stkn=MTk0djQwbWtibGFm" target="_blank" id="btn-ig" class="task-btn task-btn-ig" onclick="completeTask('ig')">
+        <span>📸 Follow on Instagram</span>
+        <span id="status-ig">➔</span>
+      </a>
+
+      <!-- Status Check Button -->
+      <button class="btn-check-status" onclick="checkUnlockStatus()">🔍 Check Status & Unlock</button>
+      <div class="status-msg" id="statusMsg"></div>
+
+      <div>
+        <span class="reset-link" onclick="resetTaskProgress()">Reset Progress</span>
+      </div>
     </div>
 
-    <!-- 2. PIN LOCK SCREEN -->
-    <div id="lockScreen" class="overlay-screen hidden">
-        <div class="lock-card">
-            <div class="lock-icon"><i class="fa-solid fa-lock"></i></div>
-            <span class="security-badge"><i class="fa-solid fa-shield-halved"></i> CAMPUS SECURITY CHECK</span>
-            <h2>Student Access Lock</h2>
-            
-            <!-- BOLD INSTRUCTION BOX & ISHARA -->
-            <div class="task-instruction-box">
-                <i class="fa-solid fa-hand-point-down fa-bounce" style="font-size: 20px; color: #d9534f;"></i>
-                <strong>👉 Course ko unlock karne ke liye sabhi buttons pe ek-ek karke tap kijiye, aapka Batch open ho jayega. 👈</strong>
-            </div>
+    <!-- Main Destination Redirect Button -->
+    <a href="./main.html" class="btn-open-now" id="btn-open-now" onclick="goToMainPage(event)">🔥 Open Your Batch Now 🔥</a>
+  </div>
 
-            <!-- SOCIAL MEDIA TASK BUTTONS -->
-            <div class="social-task-buttons">
-                <a href="https://t.me/your_telegram_link" target="_blank" class="social-btn btn-tg">
-                    <i class="fa-brands fa-telegram"></i> Telegram Join
-                </a>
-                <a href="https://youtube.com/your_channel" target="_blank" class="social-btn btn-yt">
-                    <i class="fa-brands fa-youtube"></i> YouTube Subscribe
-                </a>
-                <a href="https://instagram.com/your_profile" target="_blank" class="social-btn btn-insta">
-                    <i class="fa-brands fa-instagram"></i> Instagram Follow
-                </a>
-            </div>
+  <script>
+    const tasks = ['yt', 'wa', 'tg', 'ig'];
 
-            <p style="font-size: 13px; margin-top: 10px;">Aapka Access PIN / Unlock Code enter karein:</p>
-            
-            <div class="input-group">
-                <i class="fa-solid fa-key"></i>
-                <input type="password" id="pinInput" placeholder="Enter access PIN...">
-            </div>
-            
-            <button onclick="unlockPortal()" class="btn-primary">
-                <i class="fa-solid fa-unlock"></i> UNLOCK ACCESS
-            </button>
-        </div>
-    </div>
+    // Page Load Check
+    checkTaskStatus();
 
-    <!-- 3. MAIN PORTAL CONTENT -->
-    <div id="mainContent" class="hidden">
-        <!-- Header -->
-        <header class="header">
-            <div class="brand">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <div>
-                    <h2>FREE STUDY</h2>
-                    <span>CAMPUS</span>
-                </div>
-            </div>
-        </header>
+    function completeTask(taskType) {
+      vibratePhone(40);
+      localStorage.setItem(`task_${taskType}`, 'done');
+      checkTaskStatus();
+    }
 
-        <!-- Hero Section -->
-        <section class="hero">
-            <span class="portal-badge">⚡ Next-Generation Open Learning Portal</span>
-            <h1>Empowering Your Future with <span>FREE STUDY CAMPUS</span></h1>
-            <p>A modern, premier educational space delivering top-tier learning batches.</p>
-            
-            <!-- Search Bar -->
-            <div class="search-box">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="searchInput" oninput="filterBatches()" placeholder="Search by name or code...">
-            </div>
-        </section>
+    function checkTaskStatus() {
+      let completedCount = 0;
+      tasks.forEach(task => {
+        if (localStorage.getItem(`task_${task}`) === 'done') {
+          const btn = document.getElementById(`btn-${task}`);
+          const statusSpan = document.getElementById(`status-${task}`);
+          if (btn && statusSpan) {
+            btn.classList.add('completed');
+            statusSpan.innerText = 'Verified ✅';
+          }
+          completedCount++;
+        }
+      });
 
-        <!-- Batches Grid -->
-        <section class="batches-section">
-            <h3>Curated Batches</h3>
-            <div id="batchContainer" class="grid-container">
-                <!-- Batches JS se dynamic render honge -->
-            </div>
-        </section>
+      const openBtn = document.getElementById('btn-open-now');
+      const statusMsg = document.getElementById('statusMsg');
 
-        <!-- Telegram Join Footer Banner -->
-        <footer class="telegram-banner">
-            <i class="fa-brands fa-telegram tg-icon"></i>
-            <h3>FREE STUDY CAMPUS</h3>
-            <p>Join our Telegram channel for updates and new batch links.</p>
-            <a href="https://t.me/your_channel_link" target="_blank" class="btn-telegram">
-                <i class="fa-paper-plane"></i> JOIN MY TELEGRAM
-            </a>
-        </footer>
-    </div>
+      if (completedCount === tasks.length) {
+        if (openBtn) openBtn.style.display = 'block';
+        if (statusMsg) {
+          statusMsg.style.display = 'block';
+          statusMsg.innerText = '🎉 All tasks completed! You can open your batch now.';
+        }
+      }
+    }
 
-    <script src="script.js"></script>
+    function checkUnlockStatus() {
+      vibratePhone(40);
+
+      // Force Unlock all tasks
+      tasks.forEach(task => {
+        localStorage.setItem(`task_${task}`, 'done');
+        const btn = document.getElementById(`btn-${task}`);
+        const statusSpan = document.getElementById(`status-${task}`);
+        if (btn && statusSpan) {
+          btn.classList.add('completed');
+          statusSpan.innerText = 'Verified ✅';
+        }
+      });
+
+      const statusMsg = document.getElementById('statusMsg');
+      if (statusMsg) {
+        statusMsg.style.display = 'block';
+        statusMsg.innerText = '🎉 Unlocked Successfully! Redirecting...';
+      }
+
+      const openBtn = document.getElementById('btn-open-now');
+      if (openBtn) {
+        openBtn.style.display = 'block';
+      }
+
+      // Redirect directly to main.html
+      setTimeout(() => {
+        window.location.href = "./main.html";
+      }, 500);
+    }
+
+    function goToMainPage(e) {
+      if (e) e.preventDefault();
+      vibratePhone(50);
+      window.location.href = "./main.html"; 
+    }
+
+    function resetTaskProgress() {
+      vibratePhone(30);
+      tasks.forEach(task => {
+        localStorage.removeItem(`task_${task}`);
+        const btn = document.getElementById(`btn-${task}`);
+        const statusSpan = document.getElementById(`status-${task}`);
+        if (btn && statusSpan) {
+          btn.classList.remove('completed');
+          statusSpan.innerText = '➔';
+        }
+      });
+      document.getElementById('btn-open-now').style.display = 'none';
+      const statusMsg = document.getElementById('statusMsg');
+      if (statusMsg) statusMsg.style.display = 'none';
+    }
+
+    function vibratePhone(ms) {
+      if ("vibrate" in navigator) {
+        navigator.vibrate(ms);
+      }
+    }
+  </script>
+
 </body>
 </html>
