@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Rajnish Prime - Unlock Links</title>
+  <title>Rajnish Prime - Link Locked</title>
   
   <meta name="theme-color" content="#080c14">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -16,321 +16,317 @@
     body {
       background-color: #080c14;
       background-image: 
-        radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.1) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.1) 0px, transparent 50%);
+        radial-gradient(at 20% 20%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
+        radial-gradient(at 80% 80%, rgba(139, 92, 246, 0.08) 0px, transparent 50%);
       color: #ffffff;
       font-family: 'Plus Jakarta Sans', sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      padding: 20px 16px;
+      align-items: center;
+      text-align: center;
+      padding: 12px 16px;
+      overflow-y: auto;
     }
 
-    .container {
+    .landing-logo {
+      width: 85px;
+      height: 85px;
+      border-radius: 22px;
+      object-fit: cover;
+      border: 3px solid #00d2ff;
+      box-shadow: 0 0 30px rgba(0, 210, 255, 0.6);
+      margin-bottom: 8px;
+      animation: pulseGlow 2.5s infinite ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(0.98); box-shadow: 0 0 20px rgba(0, 210, 255, 0.4); }
+      50% { transform: scale(1.03); box-shadow: 0 0 40px rgba(0, 210, 255, 0.8); }
+      100% { transform: scale(0.98); box-shadow: 0 0 20px rgba(0, 210, 255, 0.4); }
+    }
+
+    .landing-content {
       width: 100%;
-      max-width: 400px;
+      max-width: 390px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    /* Logo & Title */
-    .brand-logo {
-      width: 90px;
-      height: 90px;
-      border-radius: 22px;
-      object-fit: cover;
-      border: 3px solid #38bdf8;
-      box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
-      margin-bottom: 12px;
-    }
-
-    .brand-title {
+    .landing-title {
       font-family: 'Syne', sans-serif;
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 800;
-      letter-spacing: 2px;
-      text-align: center;
+      line-height: 1.1;
+      letter-spacing: 2.5px;
+      margin-bottom: 14px;
       background: linear-gradient(180deg, #FFFFFF 0%, #CBD5E1 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 16px;
     }
 
-    /* Instruction Box Styling */
-    .instruction-box {
-      width: 100%;
-      background: rgba(15, 23, 42, 0.9);
-      border: 2px dashed #38bdf8;
-      border-radius: 18px;
-      padding: 16px;
-      margin-bottom: 16px;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    .instruction-text {
-      font-size: 14px;
-      font-weight: 800;
-      color: #ffffff;
-      line-height: 1.5;
-    }
-
-    .highlight-yellow {
-      color: #facc15;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    .highlight-cyan {
-      color: #38bdf8;
-      font-weight: 800;
-    }
-
-    /* Bouncing Arrow Animation */
-    .pointer-arrow {
-      font-size: 24px;
-      margin-top: 8px;
-      animation: bounce 1.2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(6px); }
-    }
-
-    /* Card Container */
-    .card {
-      width: 100%;
+    .task-locker-card {
       background: rgba(17, 24, 39, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      padding: 16px 14px;
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      margin-bottom: 10px;
     }
 
-    .card-header {
-      font-size: 18px;
-      font-weight: 700;
+    .task-locker-title {
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 2px;
       color: #38bdf8;
-      text-align: center;
-      margin-bottom: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;
+      letter-spacing: 0.5px;
     }
 
-    .card-subtitle {
-      font-size: 12px;
+    .task-locker-desc {
+      font-size: 11px;
       color: #94a3b8;
-      text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 12px;
+      font-weight: 500;
     }
 
-    /* Action Buttons Styling */
-    .btn-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .btn-step {
+    /* Attractive Task Buttons */
+    .task-btn {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 18px;
-      border-radius: 14px;
+      margin-bottom: 10px;
       text-decoration: none;
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 14px;
-      transition: all 0.3s ease;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       position: relative;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
-    .btn-step:active {
+    .task-btn:active {
       transform: scale(0.97);
     }
 
-    /* Platforms Colors */
-    .btn-youtube { background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); }
-    .btn-whatsapp { background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); }
-    .btn-telegram { background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); }
-    .btn-instagram { background: linear-gradient(135deg, #d946ef 0%, #a855f7 100%, #ec4899 100%); }
-
-    .btn-content {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    /* Vibrant Gradient Themes */
+    .task-btn-yt { 
+      background: linear-gradient(135deg, #FF0000 0%, #990000 100%);
+      box-shadow: 0 4px 18px rgba(255, 0, 0, 0.35);
+    }
+    .task-btn-wa { 
+      background: linear-gradient(135deg, #25D366 0%, #075E54 100%);
+      box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35);
+    }
+    .task-btn-tg { 
+      background: linear-gradient(135deg, #0088CC 0%, #004466 100%);
+      box-shadow: 0 4px 18px rgba(0, 136, 204, 0.35);
+    }
+    .task-btn-ig { 
+      background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      box-shadow: 0 4px 18px rgba(225, 48, 108, 0.35);
     }
 
-    .btn-icon {
-      font-size: 18px;
+    .task-btn.completed {
+      background: rgba(16, 185, 129, 0.12) !important;
+      color: #10B981 !important;
+      border: 1.5px solid #10B981;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+      pointer-events: none;
     }
 
-    .btn-arrow {
-      font-size: 16px;
+    .status-badge {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 8px;
       background: rgba(255, 255, 255, 0.2);
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      backdrop-filter: blur(4px);
     }
 
-    .completed-check {
+    .completed .status-badge {
+      background: #10B981;
+      color: #ffffff;
+    }
+
+    .status-msg {
+      font-size: 11.5px;
+      margin-top: 6px;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 10px;
       display: none;
-      color: #4ade80;
-      font-size: 18px;
+      color: #34d399;
+      background: rgba(52, 211, 153, 0.12);
+      border: 1px solid rgba(52, 211, 153, 0.3);
     }
 
-    .btn-step.done {
-      background: rgba(30, 41, 59, 0.8) !important;
-      border-color: #4ade80 !important;
+    .reset-link {
+      font-size: 11px;
+      color: #64748b;
+      text-decoration: underline;
+      cursor: pointer;
+      margin-top: 8px;
+      display: inline-block;
+      transition: color 0.2s;
+    }
+
+    .reset-link:hover {
       color: #94a3b8;
     }
 
-    .btn-step.done .completed-check {
-      display: inline-block;
-    }
-
-    .btn-step.done .btn-arrow {
-      display: none;
-    }
-
-    /* Reset Button */
-    .reset-container {
-      text-align: center;
-      margin-top: 18px;
-    }
-
-    .btn-reset {
-      background: none;
-      border: none;
-      color: #64748b;
-      font-size: 12px;
-      text-decoration: underline;
+    /* Open Your Batch Now - Positioned Higher & Ultra-Attractive */
+    .btn-open-now {
+      background: linear-gradient(135deg, #6366F1 0%, #A855F7 50%, #EC4899 100%);
+      color: #ffffff;
+      font-size: 15.5px;
+      font-weight: 800;
+      padding: 14px 20px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
       cursor: pointer;
+      box-shadow: 0 8px 30px rgba(168, 85, 247, 0.55);
+      width: 100%;
+      display: none;
+      animation: batchPulse 1.8s infinite cubic-bezier(0.4, 0, 0.6, 1);
+      text-decoration: none;
+      letter-spacing: 0.5px;
     }
 
+    @keyframes batchPulse {
+      0% { transform: translateY(0) scale(1); box-shadow: 0 8px 25px rgba(168, 85, 247, 0.5); }
+      50% { transform: translateY(-2px) scale(1.02); box-shadow: 0 12px 35px rgba(236, 72, 153, 0.75); }
+      100% { transform: translateY(0) scale(1); box-shadow: 0 8px 25px rgba(168, 85, 247, 0.5); }
+    }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <!-- App Logo -->
-    <img src="https://i.ibb.co/nNkyYLHM/Chat-GPT-Image-Aug-12-2026-08-08-06-AM.png" alt="Rajnish Prime Logo" class="brand-logo">
-    
-    <!-- Title -->
-    <div class="brand-title">RAJNISH PRIME</div>
+  <img src="https://i.ibb.co/nNkyYLHM/Chat-GPT-Image-Aug-12-2026-08-08-06-AM.png" alt="Rajnish Prime Logo" class="landing-logo">
+  
+  <div class="landing-content">
+    <h1 class="landing-title">RAJNISH<br>PRIME</h1>
 
-    <!-- Instruction Box -->
-    <div class="instruction-box">
-      <div class="instruction-text">
-        <span class="highlight-yellow"> BATCHES OPEN KARNE KE LIYE:</span><br>
-        Neeche diye gaye <span class="highlight-cyan">SABHI Social Media Platforms</span> ko join/follow karo!<br>
-        Saare steps complete hote hi Batches <span class="highlight-yellow">UNLOCK</span> ho jayenge!
-      </div>
-      <div class="pointer-arrow">  </div>
-    </div>
+    <div class="task-locker-card">
+      <div class="task-locker-title"> Link Locked</div>
+      <p class="task-locker-desc">Complete all steps below to unlock destination link.</p>
 
-    <!-- Link Locked Box -->
-    <div class="card">
-      <div class="card-header">
-         Link Locked
-      </div>
-      <div class="card-subtitle">Complete all steps below to unlock destination link.</div>
+      <a href="https://www.youtube.com/@Rajnishstudyshorts" target="_blank" id="btn-yt" class="task-btn task-btn-yt" onclick="completeTask('yt')">
+        <span> Subscribe YouTube</span>
+        <span class="status-badge" id="status-yt"></span>
+      </a>
 
-      <div class="btn-list">
-        <!-- YouTube Step -->
-        <a href="https://youtube.com" target="_blank" class="btn-step btn-youtube" id="step-yt" onclick="completeTask('yt')">
-          <div class="btn-content">
-            <span class="btn-icon"></span>
-            <span>Subscribe YouTube</span>
-          </div>
-          <span class="btn-arrow"></span>
-          <span class="completed-check"></span>
-        </a>
+      <a href="https://whatsapp.com/channel/0029VbDI4yFK5cDHjEHcNk16" target="_blank" id="btn-wa" class="task-btn task-btn-wa" onclick="completeTask('wa')">
+        <span> Join WhatsApp Channel</span>
+        <span class="status-badge" id="status-wa"></span>
+      </a>
 
-        <!-- WhatsApp Step -->
-        <a href="https://whatsapp.com" target="_blank" class="btn-step btn-whatsapp" id="step-wa" onclick="completeTask('wa')">
-          <div class="btn-content">
-            <span class="btn-icon"></span>
-            <span>Join WhatsApp Channel</span>
-          </div>
-          <span class="btn-arrow"></span>
-          <span class="completed-check"></span>
-        </a>
+      <a href="https://t.me/+cL3-XYVYH6VkYmNl" target="_blank" id="btn-tg" class="task-btn task-btn-tg" onclick="completeTask('tg')">
+        <span> Join Telegram Channel</span>
+        <span class="status-badge" id="status-tg"></span>
+      </a>
 
-        <!-- Telegram Step -->
-        <a href="https://telegram.org" target="_blank" class="btn-step btn-telegram" id="step-tg" onclick="completeTask('tg')">
-          <div class="btn-content">
-            <span class="btn-icon"></span>
-            <span>Join Telegram Channel</span>
-          </div>
-          <span class="btn-arrow"></span>
-          <span class="completed-check"></span>
-        </a>
+      <a href="https://www.instagram.com/all_cousre_1?stkn=MTk0djQwbWtibGFm" target="_blank" id="btn-ig" class="task-btn task-btn-ig" onclick="completeTask('ig')">
+        <span> Follow on Instagram</span>
+        <span class="status-badge" id="status-ig"></span>
+      </a>
 
-        <!-- Instagram Step -->
-        <a href="https://instagram.com" target="_blank" class="btn-step btn-instagram" id="step-insta" onclick="completeTask('insta')">
-          <div class="btn-content">
-            <span class="btn-icon"></span>
-            <span>Follow on Instagram</span>
-          </div>
-          <span class="btn-arrow"></span>
-          <span class="completed-check"></span>
-        </a>
-      </div>
+      <div class="status-msg" id="statusMsg"> All tasks verified! Unlocking...</div>
 
-      <div class="reset-container">
-        <button class="btn-reset" onclick="resetProgress()">Reset Progress</button>
+      <div>
+        <span class="reset-link" onclick="resetTaskProgress()">Reset Progress</span>
       </div>
     </div>
+
+    <!-- Final Open Button Shifted Higher -->
+    <a href="./main.html" class="btn-open-now" id="btn-open-now" onclick="openBatch(event)"> Open Your Batch Now </a>
   </div>
 
   <script>
-    const requiredTasks = ['yt', 'wa', 'tg', 'insta'];
+    const tasks = ['yt', 'wa', 'tg', 'ig'];
 
-    function updateUI() {
+    checkTaskStatus();
+
+    function completeTask(taskType) {
+      vibratePhone(40);
+      localStorage.setItem(`task_${taskType}`, 'done');
+      
+      setTimeout(() => {
+        checkTaskStatus();
+      }, 400);
+    }
+
+    function checkTaskStatus() {
       let completedCount = 0;
-      requiredTasks.forEach(task => {
-        if (localStorage.getItem('task_' + task) === 'true') {
-          const btn = document.getElementById('step-' + task);
-          if (btn) btn.classList.add('done');
+      
+      tasks.forEach(task => {
+        if (localStorage.getItem(`task_${task}`) === 'done') {
+          const btn = document.getElementById(`btn-${task}`);
+          const statusSpan = document.getElementById(`status-${task}`);
+          if (btn && statusSpan) {
+            btn.classList.add('completed');
+            statusSpan.innerText = 'Verified ';
+          }
           completedCount++;
         }
       });
 
-      if (completedCount === requiredTasks.length) {
+      const openBtn = document.getElementById('btn-open-now');
+      const statusMsg = document.getElementById('statusMsg');
+
+      if (completedCount === tasks.length) {
         localStorage.setItem('all_tasks_completed', 'true');
-        setTimeout(() => {
-          // Redirecting to main.html to prevent 404 error
-          window.location.href = "./main.html";
-        }, 600);
+        if (openBtn) openBtn.style.display = 'block';
+        if (statusMsg) statusMsg.style.display = 'block';
+      } else {
+        localStorage.setItem('all_tasks_completed', 'false');
+        if (openBtn) openBtn.style.display = 'none';
+        if (statusMsg) statusMsg.style.display = 'none';
       }
     }
 
-    function completeTask(task) {
-      localStorage.setItem('task_' + task, 'true');
-      setTimeout(updateUI, 500);
+    function openBatch(e) {
+      vibratePhone(50);
+      if (localStorage.getItem('all_tasks_completed') !== 'true') {
+        e.preventDefault();
+        alert('Please complete all 4 tasks first!');
+      }
     }
 
-    function resetProgress() {
-      requiredTasks.forEach(task => localStorage.removeItem('task_' + task));
-      localStorage.removeItem('all_tasks_completed');
-      location.reload();
+    function resetTaskProgress() {
+      vibratePhone(30);
+      tasks.forEach(task => {
+        localStorage.removeItem(`task_${task}`);
+        const btn = document.getElementById(`btn-${task}`);
+        const statusSpan = document.getElementById(`status-${task}`);
+        if (btn && statusSpan) {
+          btn.classList.remove('completed');
+          statusSpan.innerText = '';
+        }
+      });
+      localStorage.setItem('all_tasks_completed', 'false');
+      document.getElementById('btn-open-now').style.display = 'none';
+      document.getElementById('statusMsg').style.display = 'none';
     }
 
-    // Initialize check on page load
-    updateUI();
+    function vibratePhone(ms) {
+      if ("vibrate" in navigator) {
+        navigator.vibrate(ms);
+      }
+    }
   </script>
 
 </body>
