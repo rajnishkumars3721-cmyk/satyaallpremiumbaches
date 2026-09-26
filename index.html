@@ -234,17 +234,17 @@
     <!-- Instruction Box -->
     <div class="instruction-box">
       <div class="instruction-text">
-        <span class="highlight-yellow">📢 BATCHES OPEN KARNE KE LIYE:</span><br>
+        <span class="highlight-yellow"> BATCHES OPEN KARNE KE LIYE:</span><br>
         Neeche diye gaye <span class="highlight-cyan">SABHI Social Media Platforms</span> ko join/follow karo!<br>
         Saare steps complete hote hi Batches <span class="highlight-yellow">UNLOCK</span> ho jayenge!
       </div>
-      <div class="pointer-arrow">👇 👇 👇</div>
+      <div class="pointer-arrow">  </div>
     </div>
 
     <!-- Link Locked Box -->
     <div class="card">
       <div class="card-header">
-        🔒 Link Locked
+         Link Locked
       </div>
       <div class="card-subtitle">Complete all steps below to unlock destination link.</div>
 
@@ -252,41 +252,41 @@
         <!-- YouTube Step -->
         <a href="https://youtube.com" target="_blank" class="btn-step btn-youtube" id="step-yt" onclick="completeTask('yt')">
           <div class="btn-content">
-            <span class="btn-icon">📺</span>
+            <span class="btn-icon"></span>
             <span>Subscribe YouTube</span>
           </div>
-          <span class="btn-arrow">➜</span>
-          <span class="completed-check">✓</span>
+          <span class="btn-arrow"></span>
+          <span class="completed-check"></span>
         </a>
 
         <!-- WhatsApp Step -->
         <a href="https://whatsapp.com" target="_blank" class="btn-step btn-whatsapp" id="step-wa" onclick="completeTask('wa')">
           <div class="btn-content">
-            <span class="btn-icon">📢</span>
+            <span class="btn-icon"></span>
             <span>Join WhatsApp Channel</span>
           </div>
-          <span class="btn-arrow">➜</span>
-          <span class="completed-check">✓</span>
+          <span class="btn-arrow"></span>
+          <span class="completed-check"></span>
         </a>
 
         <!-- Telegram Step -->
         <a href="https://telegram.org" target="_blank" class="btn-step btn-telegram" id="step-tg" onclick="completeTask('tg')">
           <div class="btn-content">
-            <span class="btn-icon">🚀</span>
+            <span class="btn-icon"></span>
             <span>Join Telegram Channel</span>
           </div>
-          <span class="btn-arrow">➜</span>
-          <span class="completed-check">✓</span>
+          <span class="btn-arrow"></span>
+          <span class="completed-check"></span>
         </a>
 
         <!-- Instagram Step -->
         <a href="https://instagram.com" target="_blank" class="btn-step btn-instagram" id="step-insta" onclick="completeTask('insta')">
           <div class="btn-content">
-            <span class="btn-icon">📷</span>
+            <span class="btn-icon"></span>
             <span>Follow on Instagram</span>
           </div>
-          <span class="btn-arrow">➜</span>
-          <span class="completed-check">✓</span>
+          <span class="btn-arrow"></span>
+          <span class="completed-check"></span>
         </a>
       </div>
 
@@ -312,7 +312,8 @@
       if (completedCount === requiredTasks.length) {
         localStorage.setItem('all_tasks_completed', 'true');
         setTimeout(() => {
-          window.location.href = "./platforms.html"; // Redirect to platforms page
+          // Redirecting to main.html to prevent 404 error
+          window.location.href = "./main.html";
         }, 600);
       }
     }
