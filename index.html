@@ -267,41 +267,41 @@
     <!-- Clear Bold Instruction Box (Hides when all tasks complete) -->
     <div class="instruction-box" id="instructionBox">
       <div class="instruction-text">
-        <span class="highlight-yellow"> BATCHES OPEN KARNE KE LIYE:</span><br>
-        Neeche diye gaye <span class="highlight-cyan">SABHI 4 Links</span> ko join/follow karo!<br>
+        <span class="highlight-yellow">🔓 BATCHES OPEN KARNE KE LIYE:</span><br>
+        Neeche दिए गए <span class="highlight-cyan">SABHI 4 Links</span> ko join/follow karo!<br>
         Saare steps complete hote hi Batches <span class="highlight-yellow">UNLOCK</span> ho jayenge!
       </div>
-      <div class="pointer-arrow">  </div>
+      <div class="pointer-arrow">👇 👇 👇</div>
     </div>
 
     <div class="task-locker-card">
-      <div class="task-locker-title" id="cardHeaderTitle"> Link Locked</div>
+      <div class="task-locker-title" id="cardHeaderTitle">🔒 Link Locked</div>
       <p class="task-locker-desc" id="cardHeaderDesc">Complete all steps below to unlock destination link.</p>
 
       <!-- Open Button Top Positioned -->
-      <a href="./main.html" class="btn-open-now" id="btn-open-now" onclick="openBatch(event)"> Open Your Batch Now </a>
+      <a href="./main.html" class="btn-open-now" id="btn-open-now" onclick="openBatch(event)">🚀 Open Your Batch Now 🚀</a>
 
-      <a href="https://www.youtube.com/@Rajnishstudyshorts" target="_blank" id="btn-yt" class="task-btn task-btn-yt" onclick="completeTask('yt')">
-        <span> Subscribe YouTube</span>
-        <span class="status-badge" id="status-yt"></span>
+      <a href="https://www.youtube.com/@courseunlockbyrajnish" target="_blank" id="btn-yt" class="task-btn task-btn-yt" onclick="completeTask('yt')">
+        <span>▶️ Subscribe YouTube</span>
+        <span class="status-badge" id="status-yt">📌</span>
       </a>
 
       <a href="https://whatsapp.com/channel/0029VbDI4yFK5cDHjEHcNk16" target="_blank" id="btn-wa" class="task-btn task-btn-wa" onclick="completeTask('wa')">
-        <span> Join WhatsApp Channel</span>
-        <span class="status-badge" id="status-wa"></span>
+        <span>💬 Join WhatsApp Channel</span>
+        <span class="status-badge" id="status-wa">📌</span>
       </a>
 
       <a href="https://t.me/+cL3-XYVYH6VkYmNl" target="_blank" id="btn-tg" class="task-btn task-btn-tg" onclick="completeTask('tg')">
-        <span> Join Telegram Channel</span>
-        <span class="status-badge" id="status-tg"></span>
+        <span>✈️ Join Telegram Channel</span>
+        <span class="status-badge" id="status-tg">📌</span>
       </a>
 
       <a href="https://www.instagram.com/all_cousre_1?stkn=MTk0djQwbWtibGFm" target="_blank" id="btn-ig" class="task-btn task-btn-ig" onclick="completeTask('ig')">
-        <span> Follow on Instagram</span>
-        <span class="status-badge" id="status-ig"></span>
+        <span>📸 Follow on Instagram</span>
+        <span class="status-badge" id="status-ig">📌</span>
       </a>
 
-      <div class="status-msg" id="statusMsg"> All tasks verified! Click above to open.</div>
+      <div class="status-msg" id="statusMsg">✅ All tasks verified! Click above to open.</div>
 
       <div>
         <span class="reset-link" onclick="resetTaskProgress()">Reset Progress</span>
@@ -332,7 +332,7 @@
           const statusSpan = document.getElementById(`status-${task}`);
           if (btn && statusSpan) {
             btn.classList.add('completed');
-            statusSpan.innerText = 'Verified ';
+            statusSpan.innerText = 'Verified ✅';
           }
           completedCount++;
         }
@@ -349,14 +349,14 @@
         if (openBtn) openBtn.style.display = 'block';
         if (statusMsg) statusMsg.style.display = 'block';
         if (instructionBox) instructionBox.style.display = 'none'; // Hides instruction box to save space
-        if (cardHeaderTitle) cardHeaderTitle.innerText = ' Link Unlocked!';
+        if (cardHeaderTitle) cardHeaderTitle.innerText = '🔓 Link Unlocked!';
         if (cardHeaderDesc) cardHeaderDesc.innerText = 'Click the button below to access your batches.';
       } else {
         localStorage.setItem('all_tasks_completed', 'false');
         if (openBtn) openBtn.style.display = 'none';
         if (statusMsg) statusMsg.style.display = 'none';
         if (instructionBox) instructionBox.style.display = 'block';
-        if (cardHeaderTitle) cardHeaderTitle.innerText = ' Link Locked';
+        if (cardHeaderTitle) cardHeaderTitle.innerText = '🔒 Link Locked';
         if (cardHeaderDesc) cardHeaderDesc.innerText = 'Complete all steps below to unlock destination link.';
       }
     }
@@ -377,7 +377,7 @@
         const statusSpan = document.getElementById(`status-${task}`);
         if (btn && statusSpan) {
           btn.classList.remove('completed');
-          statusSpan.innerText = '';
+          statusSpan.innerText = '📌';
         }
       });
       localStorage.setItem('all_tasks_completed', 'false');
