@@ -87,85 +87,123 @@
     .section-tag { font-size: 11px; color: #38bdf8; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 4px; }
     .section-title { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; margin-bottom: 6px; }
     .section-desc { color: #94a3b8; font-size: 13px; margin-bottom: 20px; }
-    
-        .search-wrapper {
-      width: 100%;
-      margin-bottom: 20px;
-      position: relative;
-      display: block;
-    }
-    .search-input {
-      width: 100%;
-      background: #111827;
-      border: 1.5px solid rgba(6, 182, 212, 0.4);
-      border-radius: 16px;
-      padding: 14px 18px 14px 46px;
-      color: #ffffff;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 14px;
-      outline: none;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-    .search-input:focus { border-color: #06b6d4; box-shadow: 0 0 20px rgba(6, 182, 212, 0.3); }
-    .search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-size: 16px; color: #38bdf8; pointer-events: none; }
 
-    .apps-list { display: flex; flex-direction: column; gap: 16px; }
-    .app-card { background: #111827; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 20px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); cursor: pointer; transition: transform 0.2s ease, border-color 0.2s ease; }
-    .app-card:active { transform: scale(0.98); border-color: rgba(6, 182, 212, 0.4); }
-    
-    .app-card-top { display: flex; align-items: flex-start; gap: 16px; width: 100%; }
-    .app-icon { width: 60px; height: 60px; border-radius: 14px; object-fit: cover; border: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; background: #1f2937; }
-    .app-info { flex: 1; min-width: 0; }
-    .app-info h3 { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: #ffffff; margin-bottom: 4px; word-break: break-word; }
-    .app-info p { font-size: 13px; color: #94a3b8; line-height: 1.4; }
-    .live-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; font-size: 11px; font-weight: 600; padding: 6px 14px; border-radius: 20px; align-self: flex-start; }
-    .live-dot { width: 6px; height: 6px; background-color: #34d399; border-radius: 50%; box-shadow: 0 0 8px #34d399; }
+    .search-wrapper { position: relative; margin-bottom: 20px; }
+    .search-input { width: 100%; padding: 14px 16px 14px 44px; background: #111827; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 14px; color: #fff; font-size: 14px; outline: none; }
+    .search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); opacity: 0.6; }
+
+    .apps-list { display: flex; flex-direction: column; gap: 14px; }
+    .app-card { background: #111827; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 16px; text-decoration: none; color: #fff; display: block; transition: all 0.3s; }
+    .app-card-top { display: flex; gap: 14px; align-items: center; margin-bottom: 12px; }
+    .app-icon { width: 48px; height: 48px; border-radius: 12px; object-fit: cover; }
+    .app-info h3 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .app-info p { font-size: 12px; color: #94a3b8; line-height: 1.4; }
+    .live-badge { font-size: 10px; font-weight: 700; color: #10b981; display: flex; align-items: center; gap: 6px; background: rgba(16, 185, 129, 0.1); padding: 4px 8px; border-radius: 6px; width: fit-content; }
+    .live-dot { width: 6px; height: 6px; background: #10b981; border-radius: 50%; }
+
+    /* Custom Grid Layout for PW Platforms */
+    .pw-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .pw-grid-card {
+      background: #111827;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      padding: 16px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      position: relative;
+      transition: border-color 0.3s;
+    }
+    .pw-grid-card:hover { border-color: #fbbf24; }
+    .pw-icon-box {
+      position: relative;
+      width: 56px;
+      height: 56px;
+      background: #ffffff;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    .pw-icon-box img { width: 38px; height: 38px; object-fit: contain; }
+    .pw-fav { position: absolute; top: -6px; right: -16px; color: #94a3b8; font-size: 12px; }
+    .pw-grid-title { color: #ffffff; font-size: 13px; font-weight: 700; text-align: center; line-height: 1.2; }
   </style>
 </head>
 <body>
-
-  <!-- Main Content Dashboard -->
   <div id="main-content">
-
-    <nav class="navbar">
+    <div class="navbar">
       <a href="#" class="nav-brand">
-        <img src="https://i.ibb.co/nNkyYLHM/Chat-GPT-Image-Aug-12-2026-08-08-06-AM.png" alt="Rajnish Prime Logo" class="nav-logo-img">
+        <img src="https://i.ibb.co/8LJLjzD4/Physics-Wallah-Logo.jpg" class="nav-logo-img" alt="Logo">
         <span class="nav-title">RAJNISH PRIME</span>
       </a>
-      <div class="menu-btn" onclick="vibratePhone(30)">
-        <span></span><span></span><span></span>
-      </div>
-    </nav>
-
-    <header class="hero">
-      <div class="pill-badge">
-        <span class="dot"></span> 100% Free • Premium Courses Unlocked
-      </div>
-      <h1>Study Smarter. Pay <span>Nothing.</span></h1>
-      <p>Access premium paid courses from India's top ed-tech platforms — completely free. All your favourite educators, one place.</p>
-      
-      <div class="btn-group">
-        <button class="btn btn-primary" onclick="focusSearch(); vibratePhone(40);">🚀 Explore Apps</button>
-      </div>
-    </header>
-
-    <div class="stats-bar">
-      <div class="stat-item"><div class="num">1000+</div><div class="label">Batches</div></div>
-      <div class="stat-item"><div class="num">30+</div><div class="label">Platforms</div></div>
-      <div class="stat-item"><div class="num">₹0</div><div class="label">Cost</div></div>
-      <div class="stat-item"><div class="num">24/7</div><div class="label">Access</div></div>
+      <div class="menu-btn"><span></span><span></span></div>
     </div>
     
-    <!-- Apps Section Container -->
+        <!-- Apps Section Container -->
     <div class="section-container" id="apps">
       <p class="section-tag">Official Platforms</p>
       <h2 class="section-title">Explore Our Apps</h2>
       <p class="section-desc">Pick your platform and get instant free access to all premium batches.</p>
 
       <div class="search-wrapper" id="searchWrapper">
-        <span class="search-icon">🔍</span>
+        <span class="search-icon"></span>
         <input type="text" id="searchInput" class="search-input" placeholder="Search batches, platforms or courses..." onkeyup="filterApps()">
+      </div>
+
+      <!-- Physics Wallah Grid Section -->
+      <div class="pw-grid">
+        <!-- PW 1 -->
+        <a href="Https://thescholarverse.site/study/pw/batches" target="_blank" class="pw-grid-card app-card" onclick="vibratePhone(35)">
+          <div class="pw-icon-box">
+            <img src="https://i.ibb.co/8LJLjzD4/Physics-Wallah-Logo.jpg" alt="PW Logo">
+            <span class="pw-fav"></span>
+          </div>
+          <div class="pw-grid-title"><h3>Physics Wallah 1</h3></div>
+        </a>
+
+        <!-- PW 2 -->
+        <a href="https://www.learnxpw.site/study/batches" target="_blank" class="pw-grid-card app-card" onclick="vibratePhone(35)">
+          <div class="pw-icon-box">
+            <img src="https://i.ibb.co/8LJLjzD4/Physics-Wallah-Logo.jpg" alt="PW Logo">
+            <span class="pw-fav"></span>
+          </div>
+          <div class="pw-grid-title"><h3>Physics Wallah 2</h3></div>
+        </a>
+
+        <!-- PW 3 -->
+        <a href="https://m.pwmarco.site/study/batches" target="_blank" class="pw-grid-card app-card" onclick="vibratePhone(35)">
+          <div class="pw-icon-box">
+            <img src="https://i.ibb.co/8LJLjzD4/Physics-Wallah-Logo.jpg" alt="PW Logo">
+            <span class="pw-fav"></span>
+          </div>
+          <div class="pw-grid-title"><h3>Physics Wallah 3</h3></div>
+        </a>
+
+        <!-- PW 4 -->
+        <a href="https://physicswallah.pwnexus.dpdns.org/study/batches" target="_blank" class="pw-grid-card app-card" onclick="vibratePhone(35)">
+          <div class="pw-icon-box">
+            <img src="https://i.ibb.co/8LJLjzD4/Physics-Wallah-Logo.jpg" alt="PW Logo">
+            <span class="pw-fav"></span>
+          </div>
+          <div class="pw-grid-title"><h3>Physics Wallah 4</h3></div>
+        </a>
+
+        <!-- PW 5 -->
+        <a href="https://pw-t2.space-z.ai/" target="_blank" class="pw-grid-card app-card" onclick="vibratePhone(35)">
+          <div class="pw-icon-box">
+            <img src="https://i.ibb.co/8LJLjzD4/Physics-Wallah-Logo.jpg" alt="PW Logo">
+            <span class="pw-fav"></span>
+          </div>
+          <div class="pw-grid-title"><h3>Physics Wallah 5</h3></div>
+        </a>
       </div>
 
       <div class="apps-list" id="appsList">
@@ -242,18 +280,6 @@
           <div class="live-badge"><span class="live-dot"></span> BOOKS & NOTES AVAILABLE</div>
         </a>
 
-        <!-- 7. Physics Wallah -->
-        <a href="https://pwthor.live/study/batches" target="_blank" class="app-card" onclick="vibratePhone(35)">
-          <div class="app-card-top">
-            <img src="https://i.ibb.co/8LJLjzD4/Physics-Wallah-Logo.jpg" alt="Physics Wallah" class="app-icon">
-            <div class="app-info">
-              <h3>Physics Wallah</h3>
-              <p>Master Physics concepts with high-quality free lectures and notes.</p>
-            </div>
-          </div>
-          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
-        </a>
-
         <!-- 8. PI PRO -->
         <a href="https://pipro.deltastudy.fun/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
@@ -271,20 +297,8 @@
           <div class="app-card-top">
             <img src="https://i.ibb.co/vCcJ6ssY/image.jpg" alt="PRASHANT SOLANKI TOPPERS WISDOM" class="app-icon">
             <div class="app-info">
-              <h3>PRASHANT SOLANKI TOPPERS WISDOM 🔥</h3>
+              <h3>PRASHANT SOLANKI TOPPERS WISDOM </h3>
               <p>Access high-yield topper strategies, premium lectures, and guidance modules.</p>
-            </div>
-          </div>
-          <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
-        </a>
-
-        <!-- 10. PW 2 -->
-        <a href="https://pw.studybison.in/" target="_blank" class="app-card" onclick="vibratePhone(35)">
-          <div class="app-card-top">
-            <img src="https://i.ibb.co/8LJLjzD4/Physics-Wallah-Logo.jpg" alt="PW 2" class="app-icon">
-            <div class="app-info">
-              <h3>PW 2</h3>
-              <p>Access backup and secondary Physics Wallah live batches, lectures and notes.</p>
             </div>
           </div>
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
@@ -326,7 +340,7 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- 14. NEXT TOPPERS 2 (UPDATED LINK) -->
+        <!-- 14. NEXT TOPPERS 2 -->
         <a href="https://eduvibe-nt.pages.dev/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/xS2ksMk5/Next-Toppers-Logo.jpg" alt="NEXT TOPPERS 2" class="app-icon">
@@ -483,7 +497,7 @@
         </a>
 
         <!-- 27. SELECTION WAY 2 -->
-        <a href="https://studyapkmodsway.vercel.app/" target="_blank" class="app-card" onclick="vibratePhone(35)">
+        <a href="https://selectionwayvivid.edgeone.dev/" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/nMk354fp/logo.png" alt="SELECTION WAY 2" class="app-icon">
             <div class="app-info">
@@ -752,7 +766,7 @@
             <img src="https://i.ibb.co/Y7rQffqY/image.png" alt="Books PDF Collection" class="app-icon">
             <div class="app-info">
               <h3>Books PDF Collection</h3>
-              <p>Complete Competitive Exam Books · 2026 Edition</p>
+              <p>Complete Competitive Exam Books � 2026 Edition</p>
             </div>
           </div>
           <div class="live-badge"><span class="live-dot"></span> E-BOOKS AVAILABLE</div>
@@ -806,8 +820,8 @@
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
 
-        <!-- 54. GYAN BINDU -->
-        <a href="https://t.me/c/4461346099/886/6461" target="_blank" class="app-card" onclick="vibratePhone(35)">
+        <!-- 54. GYAN BINDU (UPDATED LINK) -->
+        <a href="https://t.me/c/4461346099/6649" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/b5DDpzwY/Screenshot-20260826-091531.jpg" alt="GYAN BINDU" class="app-icon">
             <div class="app-info">
@@ -889,8 +903,8 @@
           </div>
           <div class="live-badge"><span class="live-dot"></span> LIVE BATCHES AVAILABLE</div>
         </a>
-
-        <!-- 61. ALLEN AND MORE OTHER BACHES PLATFORM -->
+        
+                <!-- 61. ALLEN AND MORE OTHER BACHES PLATFORM -->
         <a href="https://preppronetwork.vercel.app/viewer" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/7xm5w42r/image.png" alt="ALLEN AND MORE OTHER BACHES PLATFORM" class="app-icon">
@@ -1002,7 +1016,7 @@
         <a href="https://deltastudy.fun/munilsir/86?title=SPARK%201.0%20(2026-2027)%20FROM%201%20APRIL" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
             <img src="https://i.ibb.co/FkMfyr7j/image.png" alt="MUNIL SIR" class="app-icon">
-            <div class="app-info">
+            <div class="app-icon-info app-info">
               <h3>MUNIL SIR</h3>
               <p>Access SPARK 1.0 and expert educational batches from Munil Sir.</p>
             </div>
@@ -1089,19 +1103,25 @@
 
     function filterApps() {
       let input = document.getElementById('searchInput').value.toLowerCase().trim();
+      let pwGrid = document.querySelector('.pw-grid');
+      let pwCards = Array.from(pwGrid.getElementsByClassName('app-card'));
       let appsList = document.getElementById('appsList');
-      let cards = Array.from(appsList.getElementsByClassName('app-card'));
+      let normalCards = Array.from(appsList.getElementsByClassName('app-card'));
 
-      cards.forEach(card => {
+      let allCards = pwCards.concat(normalCards);
+
+      allCards.forEach(card => {
         let title = card.getElementsByTagName('h3')[0];
         let desc = card.getElementsByTagName('p')[0];
-        if (title || desc) {
-          let textValue = (title.textContent || title.innerText) + " " + (desc.textContent || desc.innerText);
-          if (textValue.toLowerCase().indexOf(input) > -1) {
-            card.style.display = "";
-          } else {
-            card.style.display = "none";
-          }
+        let textValue = "";
+        
+        if (title) textValue += title.textContent || title.innerText;
+        if (desc) textValue += " " + (desc.textContent || desc.innerText);
+
+        if (textValue.toLowerCase().indexOf(input) > -1) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
         }
       });
     }
